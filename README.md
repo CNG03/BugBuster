@@ -1,5 +1,5 @@
-# Thiết kế Web nâng cao
-
+# Bugbuster.
+### Dự án phát triển phần mềm quản lý lỗi sử dụng framework Laravel.
 ### Thành viên nhóm
 - **[Giảng viên hướng dẫn: Nguyễn Lệ Thu](https://github.com/nglthu)**
 - **[Bùi Văn Công](https://github.com/CNG03)**
