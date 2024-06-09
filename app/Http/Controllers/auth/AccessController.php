@@ -43,6 +43,7 @@ class AccessController extends Controller
                 $existingUser->save();
 
                 // Gửi email xác thực mới
+                // dd($existingUser->token);
                 Mail::to($existingUser->email)->send(new VerifyEmail($existingUser->token));
 
                 // Chuyển hướng đến trang thông báo người dùng kiểm tra email
@@ -60,7 +61,7 @@ class AccessController extends Controller
                 'email_verified' => false, // Đảm bảo email chưa được xác thực
                 'token' => Str::random(60),
             ]);
-
+            // dd($user->token);
             // Gửi email xác thực
             Mail::to($user->email)->send(new VerifyEmail($user->token));
 
@@ -71,14 +72,19 @@ class AccessController extends Controller
 
     public function verifyEmail($token)
     {
+        // dd($token);
         $user = User::where('token', $token)->firstOrFail();
 
         // Xác thực email
-        $user->email_verified = true;
-        $user->token = null;
-        $user->save();
-
-        return redirect()->route('access')->with('success', 'Xác thực email thành công. Bây giờ bạn có thể đăng nhập!');
+        if($user) {
+            $user->email_verified = true;
+            $user->token = null;
+            $user->save();
+            return redirect()->route('access')->with('success', 'Xác thực email thành công. Bây giờ bạn có thể đăng nhập!');
+        } else {
+            return redirect()->route('access')->with('fault_token', 'Xác thực email thành công. Bây giờ bạn có thể đăng nhập!');
+        }
+        
     }
 
     public function login(Request $request)
