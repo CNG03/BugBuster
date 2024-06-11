@@ -5,51 +5,54 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
-
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class GoogleAuthController extends Controller
 {
-    public function redirect()  {
+    public function redirect()
+    {
         return Socialite::driver('google')->redirect();
     }
 
-    public function callbackGoogle()  {
-        
+    public function callbackGoogle()
+    {
+
         try {
-            $user = Socialite::driver('google')->user();
+            $ggUser = Socialite::driver('google')->user();
         } catch (\Exception $e) {
             // Xử lý khi người dùng nhấn hủy
             return redirect('/access')->withErrors(['gg_cancel' => 'Bạn đã hủy đăng ký Google.']);
         }
 
         // Tìm người dùng đã đăng ký
-        $existingUser = User::where('email', $user->getEmail())->orWhere('google_id', $user->getId())->first();
+        $user = User::where('email', $ggUser->getEmail())->orWhere('google_id', $ggUser->getId())->first();
 
-        if ($existingUser) {
-            // Cập nhật thông tin nếu cần thiết
-            $existingUser->google_id = $user->getId();
-            // $existingUser->avatar = $user->getAvatar();
-            $existingUser->token = $user->token;
-            $existingUser->email_verified = $user->user['email_verified'];
-            $existingUser->save();
-
-            Auth::login($existingUser, true);
-            return redirect()->intended('/app');
-        } else {
-            // Tạo tài khoản mới nếu chưa đăng ký
-            $newUser = new User;
-            $newUser->name = $user->getName();
-            $newUser->email = $user->getEmail();
-            $newUser->google_id = $user->getId();
-            $newUser->avatar = $user->getAvatar();
-            $newUser->token = $user->token;
-            $newUser->email_verified = $user->user['email_verified'];
-            $newUser->save();
-
-            Auth::login($newUser, true);
-            return redirect()->intended('/app');
+        if (!$user) {
+            $user = User::create([
+                'name' => $ggUser->getName(),
+                'email' => $ggUser->getEmail(),
+                'google_id' => $ggUser->getId(),
+                'avatar' =>  $ggUser->getAvatar(),
+                'email_verified' => $ggUser->user['email_verified'],
+                'token' => $ggUser->token
+            ]);
         }
+
+        $token = JWTAuth::fromUser($user);
+        $refreshToken = JWTAuth::claims(['type' => 'refresh'])->fromUser($user);
+        $user->refresh_token = $refreshToken;
+        $user->save();
+
+        Session::put('accessToken', 'Bearer ' . $token);
+        Session::put('refreshToken', $refreshToken);
+        Session::put('user_id', $user->id);
+        Session::put('user_name', $user->name);
+        Session::put('user_email', $user->email);
+
+
+        return redirect()->intended('/token');
     }
 }

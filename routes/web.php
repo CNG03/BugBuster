@@ -7,7 +7,8 @@ use App\Http\Controllers\GoogleAuthController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\auth\ForgotPasswordController;
-
+use App\Http\Middleware\AddAuthorizationHeader;
+use App\Http\Middleware\JwtAuthMiddleware;
 
 /*
 | Web Routes
@@ -45,12 +46,20 @@ Route::get('password/reset', [ForgotPasswordController::class, 'showResetForm'])
 Route::post('password/reset', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 
 // Ví dụ về nhóm route theo middleware
-Route::middleware(['auth'])->group(function () {
+Route::middleware([
+    AddAuthorizationHeader::class,
+    JwtAuthMiddleware::class
+])->group(function () {
+    Route::get('/token', function () {
+        return view('layouts.token');
+    });
+
     Route::get('/app', function () {
         return view('layouts.app');
     });
+
+    Route::post('logout', [AccessController::class, 'logout'])->name('logout');
 });
 
 // Xác thực email của người dùng 
 Route::get('verify-email/{token}', [AccessController::class, 'verifyEmail'])->name('verify.email');
-
