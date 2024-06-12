@@ -20,7 +20,7 @@ class ProjectController extends Controller
     {
         $user = JWTAuth::parseToken()->authenticate();
 
-        $pageSize = $request->page_size || 10;
+        $pageSize = $request->page_size ?? 10;
 
         $projects = Project::where('admin_id', $user->id)->paginate($pageSize);
 

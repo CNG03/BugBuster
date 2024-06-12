@@ -20,7 +20,7 @@ class Project extends Model
 
     public function projectMembers()
     {
-        return $this->hasMany('App\ProjectMember');
+        return $this->hasMany(ProjectMember::class);
     }
 
     // public function errors()

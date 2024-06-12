@@ -10,6 +10,8 @@
 
 <body>
     <p> Access token:: {{ Session::get('accessToken') }}</p>
+
+
 </body>
 
 </html>
