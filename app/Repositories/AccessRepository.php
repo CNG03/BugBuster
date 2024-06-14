@@ -45,16 +45,14 @@ class AccessRepository
     }
     public function changePassword($user, array $attributes)
     {
-        return DB::transaction(function () use ($user, $attributes) {
 
-            $updated = $user->update([
-                'password' => Hash::make(data_get($attributes, 'new_password')),
-            ]);
+        $updated = $user->update([
+            'password' => Hash::make(data_get($attributes, 'new_password')),
+        ]);
 
-            throw_if(!$updated, GeneralJsonException::class, 'Failed to change password');
+        throw_if(!$updated, GeneralJsonException::class, 'Failed to change password');
 
-            return $user;
-        });
+        return $user;
     }
 
     public function createRefreshToken(User $user)

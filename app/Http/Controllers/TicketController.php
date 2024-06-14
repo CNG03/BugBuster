@@ -7,13 +7,21 @@ use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Http\Resources\TicketResource;
 use App\Repositories\TicketRepository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class TicketController extends Controller
 {
+    protected $repository;
+
+    function __construct(TicketRepository $repository)
+    {
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
+     * 
      */
     public function index()
     {
@@ -21,12 +29,12 @@ class TicketController extends Controller
     /**
      *  get tickets created
      */
-    public function getUserTickets(Request $request, TicketRepository $repository)
+    public function getUserTickets(Request $request)
     {
         $user = JWTAuth::parseToken()->authenticate();
         $pageSize = $request->page_size ?? 10;
 
-        $tickets = $repository->getUserTickets($user->id, $pageSize);
+        $tickets = $this->repository->getUserTickets($user->id, $pageSize);
 
         return TicketResource::collection($tickets);
     }
@@ -34,12 +42,12 @@ class TicketController extends Controller
     /**
      *  get tickets assigned
      */
-    public function getAssignedTickets(Request $request, TicketRepository $repository)
+    public function getAssignedTickets(Request $request)
     {
         $user = JWTAuth::parseToken()->authenticate();
         $pageSize = $request->page_size ?? 10;
 
-        $tickets = $repository->getAssignedTickets($user->id, $pageSize);
+        $tickets = $this->repository->getAssignedTickets($user->id, $pageSize);
 
         return TicketResource::collection($tickets);
     }
@@ -47,11 +55,11 @@ class TicketController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTicketRequest $request, TicketRepository $repository)
+    public function store(StoreTicketRequest $request)
     {
         $validatedData = $request->validated();
 
-        $ticket = $repository->create($validatedData);
+        $ticket = $this->repository->create($validatedData);
 
         return new TicketResource($ticket);
     }
@@ -61,7 +69,9 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        $ticket = $this->repository->show($ticket);
+
+        return new TicketResource($ticket);
     }
 
     /**
@@ -69,7 +79,13 @@ class TicketController extends Controller
      */
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
-        //
+        $validatedData = $request->validated();
+
+        $this->repository($ticket, $validatedData);
+
+        return new JsonResponse([
+            'message' => 'update ticket success'
+        ]);
     }
 
     /**
@@ -77,6 +93,10 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $ticket->delete();
+
+        return new JsonResponse([
+            'message' => 'delete ticket success'
+        ]);
     }
 }

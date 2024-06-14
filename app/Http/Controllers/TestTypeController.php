@@ -7,6 +7,9 @@ use App\Http\Requests\StoreTestTypeRequest;
 use App\Http\Requests\UpdateTestTypeRequest;
 use App\Http\Resources\TestTypeResource;
 use Illuminate\Http\JsonResponse;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Log;
+use App\Policies\TestTypePolicy;
 
 class TestTypeController extends Controller
 {
@@ -25,6 +28,8 @@ class TestTypeController extends Controller
      */
     public function store(StoreTestTypeRequest $request)
     {
+        $this->authorize('create', TestType::class);
+
         $testType = TestType::create($request->only('name'));
 
         return new JsonResponse($testType, 201);
@@ -43,6 +48,8 @@ class TestTypeController extends Controller
      */
     public function update(UpdateTestTypeRequest $request, TestType $testType)
     {
+        $this->authorize('update', $testType);
+
         $testType->update($request->only(['name']));
 
         return new TestTypeResource($testType);
@@ -53,6 +60,8 @@ class TestTypeController extends Controller
      */
     public function destroy(TestType $testType)
     {
+        $this->authorize('delete', $testType);
+
         $testType->delete();
 
         return new JsonResponse([

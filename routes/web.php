@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\auth\ForgotPasswordController;
 use App\Http\Middleware\AddAuthorizationHeader;
 use App\Http\Middleware\JwtAuthMiddleware;
+use Illuminate\Support\Facades\Log;
 
 /*
 | Web Routes
@@ -63,3 +64,8 @@ Route::middleware([
 
 // Xác thực email của người dùng 
 Route::get('verify-email/{token}', [AccessController::class, 'verifyEmail'])->name('verify.email');
+
+Route::get('/test-log', function () {
+    Log::info('Test log message');
+    return 'Check the log file.';
+});

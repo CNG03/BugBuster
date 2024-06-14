@@ -18,6 +18,12 @@ use App\Repositories\ProjectMemberRepository;
 
 class ProjectMemberController extends Controller
 {
+    protected $repository;
+
+    public function __construct(ProjectMemberRepository $repository)
+    {
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -29,13 +35,11 @@ class ProjectMemberController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProjectMemberRequest $request, Project $project, ProjectMemberRepository $repository)
+    public function store(StoreProjectMemberRequest $request, Project $project)
     {
-        // $projectId = $request->route('project');
-        // $project = Project::findOrFail($projectId);
         $validatedData = $request->validated();
 
-        $repository->addMembersToProject($project, $validatedData);
+        $this->repository->addMembersToProject($project, $validatedData);
 
         return new JsonResponse([
             'message' => 'Members added successfully.'
@@ -56,12 +60,12 @@ class ProjectMemberController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectMemberRequest $request, Project $project, ProjectMemberRepository $repository)
+    public function update(UpdateProjectMemberRequest $request, Project $project)
     {
         $validatedData = $request->validated();
         $membersData = $validatedData['members'];
 
-        $repository->updateMembersInProject($project, $membersData);
+        $this->repository->updateMembersInProject($project, $membersData);
 
         return new JsonResponse([
             'message' => 'Project members updated successfully.'

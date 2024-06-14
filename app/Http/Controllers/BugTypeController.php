@@ -25,6 +25,8 @@ class BugTypeController extends Controller
      */
     public function store(StoreBugTypeRequest $request)
     {
+        $this->authorize('create', BugType::class);
+
         $bugType = BugType::create($request->only('name'));
 
         return new JsonResponse($bugType, 201);
@@ -43,6 +45,8 @@ class BugTypeController extends Controller
      */
     public function update(UpdateBugTypeRequest $request, BugType $bugType)
     {
+        $this->authorize('update', $bugType);
+
         $bugType->update($request->only('name'));
 
         return new BugTypeResource($bugType);
@@ -53,6 +57,8 @@ class BugTypeController extends Controller
      */
     public function destroy(BugType $bugType)
     {
+        $this->authorize('delete', $bugType);
+
         $bugType->delete();
 
         return new JsonResponse([

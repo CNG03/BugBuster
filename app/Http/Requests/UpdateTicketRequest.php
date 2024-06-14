@@ -11,7 +11,7 @@ class UpdateTicketRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class UpdateTicketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'sometimes|string|max:255',
+            'description' => 'sometimes|string',
+            'estimated_hours' => 'sometimes|date_format:Y-m-d',
+            'steps_to_reproduce' => 'sometimes|string',
+            'expected_result' => 'sometimes|string',
+            'actual_result' => 'sometimes|string',
+            'priority' => 'sometimes|in:HIGH,MEDIUM,LOW',
+            'bug_type_id' => 'sometimes|integer|exists:bug_types,id',
+            'test_type_id' => 'sometimes|integer|exists:test_types,id',
         ];
     }
 }

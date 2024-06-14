@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware([
     'api',
+    'auth',
     'checkProjectPermissions:MANAGER'
 ])
     ->name('projectmember.')

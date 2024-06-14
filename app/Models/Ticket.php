@@ -20,12 +20,21 @@ class Ticket extends Model
 
     public function setEstimatedHoursAttribute($value)
     {
-        $this->attributes['estimated_hours'] = Carbon::createFromFormat('Y-m-d', $value);
+        if (!empty($value)) {
+            $this->attributes['estimated_hours'] = Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
+            $this->attributes['is_outdate'] = $this->isOutdate();
+        } else {
+            $this->attributes['estimated_hours'] = null;
+            $this->attributes['is_outdate'] = false;
+        }
     }
 
-    public function getEstimatedHoursAttribute($value)
+    public function isOutdate()
     {
-        return Carbon::parse($value)->format('Y-m-d');
+        if ($this->estimated_hours && $this->estimated_hours->isPast()) {
+            return true;
+        }
+        return false;
     }
 
     public function project()
@@ -33,7 +42,7 @@ class Ticket extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function createdBy()
+    public function createdUser()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
@@ -45,12 +54,12 @@ class Ticket extends Model
 
     public function bugType()
     {
-        return $this->belongsTo(BugType::class);
+        return $this->belongsTo(BugType::class, 'bug_type_id');
     }
 
     public function testType()
     {
-        return $this->belongsTo(TestType::class);
+        return $this->belongsTo(TestType::class, 'test_type_id');
     }
 
     public function histories()

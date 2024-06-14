@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateBugTypeRequest extends FormRequest
 {
@@ -21,8 +22,17 @@ class UpdateBugTypeRequest extends FormRequest
      */
     public function rules(): array
     {
+        $bugTypeId = $this->route('bug_type')->id;
+
         return [
-            'name' => 'required|string|max:255|unique'
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('bug_types')->where(function ($query) use ($bugTypeId) {
+                    return $query->where('id', '<>', $bugTypeId);
+                }),
+            ],
         ];
     }
 

@@ -11,15 +11,14 @@ class TestTypePolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(User $user)
     {
-        //
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, TestType $testType): bool
+    public function view(User $user, TestType $testType)
     {
         //
     }
@@ -29,7 +28,7 @@ class TestTypePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->role === 'ADMIN';
     }
 
     /**
@@ -37,7 +36,7 @@ class TestTypePolicy
      */
     public function update(User $user, TestType $testType): bool
     {
-        //
+        return $user->role === 'ADMIN';
     }
 
     /**
@@ -45,13 +44,13 @@ class TestTypePolicy
      */
     public function delete(User $user, TestType $testType): bool
     {
-        //
+        return $user->role === 'ADMIN';
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, TestType $testType): bool
+    public function restore(User $user, TestType $testType)
     {
         //
     }
@@ -59,7 +58,7 @@ class TestTypePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, TestType $testType): bool
+    public function forceDelete(User $user, TestType $testType)
     {
         //
     }
