@@ -27,14 +27,13 @@ class StoreTicketRequest extends FormRequest
             'description' => 'nullable|string',
             'created_by' => 'required|integer|exists:users,id',
             'assigned_to' => 'nullable|integer|exists:users,id',
-            'estimated_hours' => 'nullable|date', // Kiểm tra xem estimated_hours có phải là kiểu date không
-            'is_outdate' => 'boolean', // Kiểm tra xem is_outdate có phải là kiểu boolean không
+            'estimated_hours' => 'nullable|date_format:Y-m-d',
             'steps_to_reproduce' => 'nullable|string',
             'expected_result' => 'nullable|string',
             'actual_result' => 'nullable|string',
             'priority' => 'required|in:HIGH,MEDIUM,LOW',
-            'bug_type_id' => 'nullable|integer|exists:bug_types,id',
-            'test_type_id' => 'nullable|integer|exists:test_types,id',
+            'bug_type_id' => 'required|integer|exists:bug_types,id',
+            'test_type_id' => 'required|integer|exists:test_types,id',
         ];
     }
 }

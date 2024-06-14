@@ -7,24 +7,31 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\ProjectResource;
+use App\Repositories\projectRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ProjectController extends Controller
 {
+    protected $repository;
+
+    public function __construct(projectRepository $repository)
+    {
+        $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
+        $this->authorize('viewAny', Project::class);
+
         $user = JWTAuth::parseToken()->authenticate();
 
         $pageSize = $request->page_size ?? 10;
 
-        $projects = Project::where('admin_id', $user->id)->paginate($pageSize);
-
-        throw_if($projects->isEmpty(), CustomQueryException::class, 'No projects found for this admin.');
+        $projects = $this->repository->getProjects($user, $pageSize);
 
         return ProjectResource::collection($projects);
     }
@@ -34,15 +41,15 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        $this->authorize('create', Project::class);
+
         $user = JWTAuth::parseToken()->authenticate();
 
         $validatedData = $request->validated();
 
         $validatedData['admin_id'] = $user->id;
 
-        $project = Project::create($validatedData);
-
-        throw_if(!$project, CustomQueryException::class, 'Error occurred while creating the project.');
+        $project = $this->repository->createProject($validatedData);
 
         return new ProjectResource($project);
     }
@@ -52,9 +59,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $user = JWTAuth::parseToken()->authenticate();
-
-        throw_if($project->admin_id !== $user->id, CustomQueryException::class, 'You do not have permission to read.');
+        $this->authorize('view', $project);
 
         return new ProjectResource($project);
     }
@@ -64,11 +69,11 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        $this->authorize('update', $project);
+
         $validatedData = $request->validated();
 
-        $updated = $project->update($validatedData);
-
-        throw_if(!$updated, CustomQueryException::class, 'Error occurred while updating the project.');
+        $this->repository->updateProject($project, $validatedData);
 
         return new ProjectResource($project);
     }
@@ -78,13 +83,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        $user = JWTAuth::parseToken()->authenticate();
+        $this->authorize('delete', $project);
 
-        throw_if($project->admin_id !== $user->id, CustomQueryException::class, 'You do not have permission to delete this project.');
-
-        $deleted = $project->delete();
-
-        throw_if(!$deleted, CustomQueryException::class, 'Error occurred while deleting the project.');
+        $this->repository->deleteProject($project);
 
         return new JsonResponse([
             'message' => 'delete success'

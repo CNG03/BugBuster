@@ -5,8 +5,10 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Gate;
 
 use App\Models\BugType;
+use App\Models\Project;
 use App\Models\TestType;
 use App\Policies\BugTypePolicy;
+use App\Policies\ProjectPolicy;
 use App\Policies\TestTypePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -19,7 +21,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         TestType::class => TestTypePolicy::class,
-        BugType::class => BugTypePolicy::class
+        BugType::class => BugTypePolicy::class,
+        Project::class => ProjectPolicy::class
     ];
 
     /**
