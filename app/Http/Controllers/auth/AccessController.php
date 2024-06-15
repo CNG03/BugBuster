@@ -5,6 +5,7 @@ namespace App\Http\Controllers\auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
@@ -107,5 +108,24 @@ class AccessController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('login')->with('status', 'Đăng xuất thành công');
+    }
+
+    public function profile()
+    {
+        $user = JWTAuth::user();
+        return new UserResource($user);
+    }
+
+    public function index(Request $request)
+    {
+        $pageSize = $request->page_size ?? 10;
+
+        $user = JWTAuth::user();
+        if ($user->role === 'ADMIN') {
+            $users = User::query()->paginate($pageSize);
+            return UserResource::collection($users);
+        } else {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
     }
 }

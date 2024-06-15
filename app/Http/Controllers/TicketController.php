@@ -29,25 +29,22 @@ class TicketController extends Controller
     /**
      *  get tickets created
      */
-    public function getUserTickets(Request $request)
+    public function getUserTickets(Request $request, $projectId)
     {
         $user = JWTAuth::parseToken()->authenticate();
         $pageSize = $request->page_size ?? 10;
 
-        $tickets = $this->repository->getUserTickets($user->id, $pageSize);
+        $tickets = $this->repository->getUserTickets($user->id, $projectId, $pageSize);
 
         return TicketResource::collection($tickets);
     }
 
-    /**
-     *  get tickets assigned
-     */
-    public function getAssignedTickets(Request $request)
+    public function getAssignedTickets(Request $request, $projectId)
     {
         $user = JWTAuth::parseToken()->authenticate();
         $pageSize = $request->page_size ?? 10;
 
-        $tickets = $this->repository->getAssignedTickets($user->id, $pageSize);
+        $tickets = $this->repository->getAssignedTickets($user->id, $projectId, $pageSize);
 
         return TicketResource::collection($tickets);
     }
@@ -57,9 +54,11 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
+        $user = JWTAuth::parseToken()->authenticate();
+
         $validatedData = $request->validated();
 
-        $ticket = $this->repository->create($validatedData);
+        $ticket = $this->repository->create($user->id, $validatedData);
 
         return new TicketResource($ticket);
     }
@@ -81,7 +80,7 @@ class TicketController extends Controller
     {
         $validatedData = $request->validated();
 
-        $this->repository($ticket, $validatedData);
+        $this->repository->update($ticket, $validatedData);
 
         return new JsonResponse([
             'message' => 'update ticket success'
@@ -97,6 +96,13 @@ class TicketController extends Controller
 
         return new JsonResponse([
             'message' => 'delete ticket success'
+        ]);
+    }
+
+    public function test()
+    {
+        return new JsonResponse([
+            'message' => 'test sussess'
         ]);
     }
 }

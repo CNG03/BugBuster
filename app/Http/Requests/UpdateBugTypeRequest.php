@@ -22,7 +22,7 @@ class UpdateBugTypeRequest extends FormRequest
      */
     public function rules(): array
     {
-        $bugTypeId = $this->route('bug_type')->id;
+        $bugTypeId = $this->route('bugType') ? $this->route('bugType')->id : null;
 
         return [
             'name' => [

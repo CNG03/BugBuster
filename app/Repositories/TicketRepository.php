@@ -17,28 +17,44 @@ class TicketRepository
     {
     }
 
-    public function getUserTickets($userId, $pageSize = 10)
+    public function getUserTickets($userId, $projectId, $pageSize = 10)
     {
         return Ticket::where('created_by', $userId)
+            ->where('project_id', $projectId)
             ->with(['histories' => function ($query) {
-                $query->latest()->first();
+                $query->orderBy('created_at', 'desc');
             }])
             ->paginate($pageSize);
     }
 
-    public function getAssignedTickets($userId, $pageSize = 10)
+    public function getAssignedTickets($userId, $projectId, $pageSize = 10)
     {
         return Ticket::where('assigned_to', $userId)
+            ->where('project_id', $projectId)
             ->with(['histories' => function ($query) {
-                $query->latest()->first();
+                $query->orderBy('created_at', 'desc');
             }])
             ->paginate($pageSize);
     }
 
-    public function create(array $data)
+    public function create($user_id, array $data)
     {
-        return DB::transaction(function () use ($data) {
-            $ticket = Ticket::create($data);
+
+        return DB::transaction(function () use ($user_id, $data) {
+            $ticket = Ticket::create([
+                'project_id' => $data['project_id'],
+                'name' => $data['name'],
+                'description' => data_get($data, 'description'),
+                'created_by' => $user_id,
+                'assigned_to' => $data['assigned_to'],
+                'estimated_hours' => data_get($data, 'estimated_hours'),
+                'steps_to_reproduce' => data_get($data, 'steps_to_reproduce'),
+                'expected_result' => data_get($data, 'expected_result'),
+                'actual_result' => data_get($data, 'actual_result'),
+                'priority' => $data['priority'],
+                'bug_type_id' => $data['bug_type_id'],
+                'test_type_id' => $data['test_type_id']
+            ]);
 
             TicketHistory::create([
                 'ticket_id' => $ticket->id,
@@ -52,7 +68,7 @@ class TicketRepository
     public function show(Ticket $ticket)
     {
         return $ticket->load(['histories' => function ($query) {
-            $query->latest('created_at');
+            $query->orderBy('created_at', 'desc');
         }]);
     }
 

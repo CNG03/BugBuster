@@ -22,7 +22,7 @@ class UpdateTestTypeRequest extends FormRequest
      */
     public function rules(): array
     {
-        $testTypeId = $this->route('test_type')->id;
+        $testTypeId = $this->route('testType') ? $this->route('testType')->id : null;
 
         return [
             'name' => [
