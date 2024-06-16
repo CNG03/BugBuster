@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('assigned_to')->nullable();
             $table->date('estimated_hours')->nullable();
             $table->boolean('is_outdate')->default(false);
+            $table->string('illustration')->nullable();
             $table->text('steps_to_reproduce')->nullable();
             $table->text('expected_result')->nullable();
             $table->text('actual_result')->nullable();

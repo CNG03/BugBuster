@@ -23,14 +23,25 @@ class TicketController extends Controller
      * Display a listing of the resource.
      * 
      */
+
     public function index()
     {
+    }
+
+    public function dashboard()
+    {
+        $user = JWTAuth::parseToken()->authenticate();
+        $data = $this->repository->getUserDashboardData($user->id);
+
+        return new JsonResponse($data);
     }
     /**
      *  get tickets created
      */
     public function getUserTickets(Request $request, $projectId)
     {
+        $this->authorize('viewAny', [Ticket::class, $projectId]);
+
         $user = JWTAuth::parseToken()->authenticate();
         $pageSize = $request->page_size ?? 10;
 
@@ -41,6 +52,8 @@ class TicketController extends Controller
 
     public function getAssignedTickets(Request $request, $projectId)
     {
+        $this->authorize('viewAny', [Ticket::class, $projectId]);
+
         $user = JWTAuth::parseToken()->authenticate();
         $pageSize = $request->page_size ?? 10;
 
@@ -55,10 +68,15 @@ class TicketController extends Controller
     public function store(StoreTicketRequest $request)
     {
         $user = JWTAuth::parseToken()->authenticate();
-
         $validatedData = $request->validated();
 
-        $ticket = $this->repository->create($user->id, $validatedData);
+        $illustrationPath = null;
+        if ($request->hasFile('illustration')) {
+            $illustration = $request->file('illustration');
+            $illustrationPath = $illustration->store('illustrations', 'public');
+        }
+
+        $ticket = $this->repository->create($user->id, $validatedData, $illustrationPath);
 
         return new TicketResource($ticket);
     }
@@ -80,12 +98,21 @@ class TicketController extends Controller
     {
         $validatedData = $request->validated();
 
+        if ($request->hasFile('illustration')) {
+            $illustration = $request->file('illustration');
+            $illustrationPath = $illustration->store('illustrations', 'public');
+            $validatedData['illustration'] = $illustrationPath;
+        } else {
+            $validatedData['illustration'] = $ticket->illustration;
+        }
+
         $this->repository->update($ticket, $validatedData);
 
         return new JsonResponse([
             'message' => 'update ticket success'
         ]);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -96,13 +123,6 @@ class TicketController extends Controller
 
         return new JsonResponse([
             'message' => 'delete ticket success'
-        ]);
-    }
-
-    public function test()
-    {
-        return new JsonResponse([
-            'message' => 'test sussess'
         ]);
     }
 }

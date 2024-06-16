@@ -27,6 +27,7 @@ class UpdateTicketRequest extends FormRequest
             'name' => 'sometimes|string|max:255',
             'description' => 'sometimes|string',
             'estimated_hours' => 'sometimes|date_format:Y-m-d',
+            'illustration' => 'sometimes|image|max:2048',
             'steps_to_reproduce' => 'sometimes|string',
             'expected_result' => 'sometimes|string',
             'actual_result' => 'sometimes|string',

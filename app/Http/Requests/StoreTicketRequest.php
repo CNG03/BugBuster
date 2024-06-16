@@ -27,6 +27,7 @@ class StoreTicketRequest extends FormRequest
             'description' => 'nullable|string',
             'assigned_to' => 'required|integer|exists:users,id',
             'estimated_hours' => 'nullable|date_format:Y-m-d',
+            'illustration' => 'nullable|image|max:2048',
             'steps_to_reproduce' => 'nullable|string',
             'expected_result' => 'nullable|string',
             'actual_result' => 'nullable|string',

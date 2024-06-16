@@ -32,6 +32,7 @@ class TicketResource extends JsonResource
             'priority' => $this->priority,
             'bug_type' => $this->bugType ? $this->bugType->name : null,
             'test_type' => $this->testType ? $this->testType->name : null,
+            'illustration' => $this->illustration ? $this->illustration : null
         ];
     }
 }

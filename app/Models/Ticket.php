@@ -12,7 +12,7 @@ class Ticket extends Model
 
     protected $fillable = [
         'project_id', 'name', 'description', 'created_by', 'assigned_to', 'estimated_hours',
-        'is_outdate', 'steps_to_reproduce', 'expected_result', 'actual_result',
+        'is_outdate', 'illustration', 'steps_to_reproduce', 'expected_result', 'actual_result',
         'priority', 'bug_type_id', 'test_type_id'
     ];
 

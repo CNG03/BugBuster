@@ -27,9 +27,15 @@ class ProjectMemberController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request, $projectId)
     {
-        //
+        $sizePage = $request->size_page ?? 10;
+
+        // Lấy danh sách thành viên trong dự án này
+        $members = ProjectMember::where('project_id', $projectId)->paginate($sizePage);
+
+        // Trả về danh sách thành viên dưới dạng JSON
+        return ProjectMemberResource::collection($members);
     }
 
     /**

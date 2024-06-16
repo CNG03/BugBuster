@@ -7,15 +7,18 @@ use App\Http\Requests\StoreBugTypeRequest;
 use App\Http\Requests\UpdateBugTypeRequest;
 use App\Http\Resources\BugTypeResource;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class BugTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bugTypes = BugType::query()->get();
+        $sizePage = $request->size_page ?? 10;
+
+        $bugTypes = BugType::query()->paginate($sizePage);
 
         return BugTypeResource::collection($bugTypes);
     }
@@ -27,7 +30,9 @@ class BugTypeController extends Controller
     {
         $this->authorize('create', BugType::class);
 
-        $bugType = BugType::create($request->only('name'));
+        $validatedData = $request->validated();
+
+        $bugType = BugType::create($validatedData);
 
         return new JsonResponse($bugType, 201);
     }
@@ -47,7 +52,9 @@ class BugTypeController extends Controller
     {
         $this->authorize('update', $bugType);
 
-        $bugType->update($request->only('name'));
+        $validatedData = $request->validated();
+
+        $bugType->update($validatedData);
 
         return new BugTypeResource($bugType);
     }

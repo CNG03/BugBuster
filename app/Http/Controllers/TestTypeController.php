@@ -10,15 +10,19 @@ use Illuminate\Http\JsonResponse;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Log;
 use App\Policies\TestTypePolicy;
+use Illuminate\Http\Request;
 
 class TestTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $testTypes = TestType::query()->get();
+
+        $pageSize = $request->page_size ?? 10;
+
+        $testTypes = TestType::query()->paginate($pageSize);
 
         return TestTypeResource::collection($testTypes);
     }
@@ -29,6 +33,8 @@ class TestTypeController extends Controller
     public function store(StoreTestTypeRequest $request)
     {
         $this->authorize('create', TestType::class);
+        
+        
 
         $testType = TestType::create($request->only('name'));
 

@@ -3,12 +3,13 @@
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(
-    ['auth:api']
-)
+Route::middleware([
+    'auth:api'
+])
     ->name('ticket.')
     ->namespace('\App\Http\Controllers')
     ->group(function () {
+        Route::get('/tickets/dashboard', [TicketController::class, 'dashboard'])->name('dashboard');
         Route::get('/tickets/created/{projectId}', [TicketController::class, 'getUserTickets'])->name('userTicket');
         Route::get('/tickets/assigned/{projectId}', [TicketController::class, 'getAssignedTickets'])->name('assignedTicket');
         Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('show');

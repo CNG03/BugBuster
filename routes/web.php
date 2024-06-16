@@ -65,7 +65,6 @@ Route::middleware([
 // Xác thực email của người dùng 
 Route::get('verify-email/{token}', [AccessController::class, 'verifyEmail'])->name('verify.email');
 
-Route::get('/test-log', function () {
-    Log::info('Test log message');
-    return 'Check the log file.';
+Route::get('/hello', function () {
+    return 'Hello World';
 });

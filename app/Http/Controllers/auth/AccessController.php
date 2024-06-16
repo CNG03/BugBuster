@@ -109,23 +109,4 @@ class AccessController extends Controller
 
         return redirect()->route('login')->with('status', 'Đăng xuất thành công');
     }
-
-    public function profile()
-    {
-        $user = JWTAuth::user();
-        return new UserResource($user);
-    }
-
-    public function index(Request $request)
-    {
-        $pageSize = $request->page_size ?? 10;
-
-        $user = JWTAuth::user();
-        if ($user->role === 'ADMIN') {
-            $users = User::query()->paginate($pageSize);
-            return UserResource::collection($users);
-        } else {
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
-    }
 }

@@ -22,7 +22,8 @@ class StoreTestTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:test_types,name'
+            'name' => 'required|string|max:255|unique:test_types,name',
+            'description' => 'nullable|string'
         ];
     }
 
