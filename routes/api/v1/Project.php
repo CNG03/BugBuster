@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\APIControllers\ProjectController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
-    'api',
-    AdminMiddleware::class
+    'auth:api'
 ])
     ->name('project.')
     ->namespace('\App\Http\Controllers')

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\APIControllers;
 
+use App\Http\Controllers\APIControllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,6 +54,6 @@ class GoogleAuthController extends Controller
         Session::put('user_email', $user->email);
 
 
-        return redirect()->intended('/token');
+        return redirect()->intended('/app');
     }
 }

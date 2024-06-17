@@ -13,7 +13,7 @@ class ProjectPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +21,9 @@ class ProjectPolicy
      */
     public function view(User $user, Project $project): bool
     {
-        //
+        //return $user->role === 'ADMIN' || $project->isAdmin($user->id) || $project->isMember($user->id);
+
+        return $user->role === 'ADMIN' || $user->id === $project->admin_id || $project->isMember($user->id);
     }
 
     /**
@@ -29,7 +31,7 @@ class ProjectPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->role === 'ADMIN';
     }
 
     /**
@@ -37,7 +39,7 @@ class ProjectPolicy
      */
     public function update(User $user, Project $project): bool
     {
-        //
+        return $user->role === 'ADMIN' && $user->id === $project->admin_id;
     }
 
     /**
@@ -45,22 +47,22 @@ class ProjectPolicy
      */
     public function delete(User $user, Project $project): bool
     {
-        //
+        return $user->role === 'ADMIN' && $user->id === $project->admin_id;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Project $project): bool
-    {
-        //
-    }
+    // public function restore(User $user, Project $project)
+    // {
+    //     //
+    // }
 
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Project $project): bool
-    {
-        //
-    }
+    // /**
+    //  * Determine whether the user can permanently delete the model.
+    //  */
+    // public function forceDelete(User $user, Project $project)
+    // {
+    //     //
+    // }
 }

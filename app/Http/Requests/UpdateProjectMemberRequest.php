@@ -11,7 +11,7 @@ class UpdateProjectMemberRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateProjectMemberRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'members' => 'required|array',
+            'members.*.user_id' => 'required|exists:users,id',
+            'members.*.role_in_project' => 'required|in:MANAGER,DEVELOPER,TESTER',
         ];
     }
 }

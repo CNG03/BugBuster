@@ -1,21 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\APIControllers;
 
 use App\Models\BugType;
 use App\Http\Requests\StoreBugTypeRequest;
 use App\Http\Requests\UpdateBugTypeRequest;
 use App\Http\Resources\BugTypeResource;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
 
 class BugTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bugTypes = BugType::query()->get();
+        $sizePage = $request->size_page ?? 10;
+
+        $bugTypes = BugType::query()->paginate($sizePage);
 
         return BugTypeResource::collection($bugTypes);
     }
@@ -25,7 +29,11 @@ class BugTypeController extends Controller
      */
     public function store(StoreBugTypeRequest $request)
     {
-        $bugType = BugType::create($request->only('name'));
+        $this->authorize('create', BugType::class);
+
+        $validatedData = $request->validated();
+
+        $bugType = BugType::create($validatedData);
 
         return new JsonResponse($bugType, 201);
     }
@@ -43,7 +51,11 @@ class BugTypeController extends Controller
      */
     public function update(UpdateBugTypeRequest $request, BugType $bugType)
     {
-        $bugType->update($request->only('name'));
+        $this->authorize('update', $bugType);
+
+        $validatedData = $request->validated();
+
+        $bugType->update($validatedData);
 
         return new BugTypeResource($bugType);
     }
@@ -53,6 +65,8 @@ class BugTypeController extends Controller
      */
     public function destroy(BugType $bugType)
     {
+        $this->authorize('delete', $bugType);
+
         $bugType->delete();
 
         return new JsonResponse([

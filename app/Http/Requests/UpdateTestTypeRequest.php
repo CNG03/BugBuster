@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateTestTypeRequest extends FormRequest
 {
@@ -21,8 +22,18 @@ class UpdateTestTypeRequest extends FormRequest
      */
     public function rules(): array
     {
+        $testTypeId = $this->route('testType') ? $this->route('testType')->id : null;
+
         return [
-            'name' => 'required|string|max:255|unique'
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('test_types')->where(function ($query) use ($testTypeId) {
+                    return $query->where('id', '<>', $testTypeId);
+                }),
+                'description' => 'nullable|string'
+            ],
         ];
     }
 

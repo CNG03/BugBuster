@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\auth;
+namespace App\Http\Controllers\APIControllers\auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\APIControllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
