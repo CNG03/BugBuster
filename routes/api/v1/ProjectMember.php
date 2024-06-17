@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProjectMemberController;
-use App\Http\Middleware\AdminMiddleware;
-use App\Http\Resources\ProjectMemberResource;
+use App\Http\Controllers\APIControllers\ProjectMemberController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([

@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\auth;
+namespace App\Http\Controllers\APIControllers\auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\APIControllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;

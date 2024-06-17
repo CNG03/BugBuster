@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\APIControllers;
 
 use App\Models\TestType;
 use App\Http\Requests\StoreTestTypeRequest;
 use App\Http\Requests\UpdateTestTypeRequest;
 use App\Http\Resources\TestTypeResource;
 use Illuminate\Http\JsonResponse;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use Illuminate\Support\Facades\Log;
-use App\Policies\TestTypePolicy;
 use Illuminate\Http\Request;
 
 class TestTypeController extends Controller
@@ -33,8 +30,6 @@ class TestTypeController extends Controller
     public function store(StoreTestTypeRequest $request)
     {
         $this->authorize('create', TestType::class);
-        
-        
 
         $testType = TestType::create($request->only('name'));
 

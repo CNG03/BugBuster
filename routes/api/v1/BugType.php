@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BugTypeController;
+use App\Http\Controllers\APIControllers\BugTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([

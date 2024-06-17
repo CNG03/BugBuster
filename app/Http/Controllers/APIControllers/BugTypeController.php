@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\APIControllers;
 
 use App\Models\BugType;
 use App\Http\Requests\StoreBugTypeRequest;
@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateBugTypeRequest;
 use App\Http\Resources\BugTypeResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+
 
 class BugTypeController extends Controller
 {

@@ -1,10 +1,7 @@
 <?php
 
-use App\Http\Controllers\auth\AccessController;
-use App\Http\Controllers\UserController;
-use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
+use App\Http\Controllers\APIControllers\UserController;
 use Illuminate\Support\Facades\Route;
-
 
 Route::middleware([
     'auth:api'

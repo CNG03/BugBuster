@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TestTypeController;
+use App\Http\Controllers\APIControllers\TestTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
