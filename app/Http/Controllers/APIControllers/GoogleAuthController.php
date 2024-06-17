@@ -54,6 +54,6 @@ class GoogleAuthController extends Controller
         Session::put('user_email', $user->email);
 
 
-        return redirect()->intended('/token');
+        return redirect()->intended('/app');
     }
 }

@@ -16,6 +16,7 @@ class TicketResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'project_id' => $this->project_id,
             'name' => $this->name,
             'description' => $this->description,
             'created_at' => $this->created_at,
@@ -30,7 +31,9 @@ class TicketResource extends JsonResource
             'expected_result' => $this->expected_result,
             'actual_result' => $this->actual_result,
             'priority' => $this->priority,
+            'bug_type_id' => $this->bugType ? $this->bugType->id : null,
             'bug_type' => $this->bugType ? $this->bugType->name : null,
+            'test_type_id' => $this->testType ? $this->testType->id : null,
             'test_type' => $this->testType ? $this->testType->name : null,
             'illustration' => $this->illustration ? $this->illustration : null
         ];
