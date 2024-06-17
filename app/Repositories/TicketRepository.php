@@ -39,12 +39,18 @@ class TicketRepository
             }
 
             if ($status) {
-                $tickets = Ticket::where('project_id', $projectId)
+                $ticketsQuery = Ticket::where('project_id', $projectId)
                     ->with(['histories' => function ($query) {
                         $query->orderBy('created_at', 'desc');
-                    }])
-                    ->get();
+                    }]);
 
+                if ($role === 'DEVELOPER') {
+                    $ticketsQuery->where('assigned_to', $userId);
+                } elseif ($role === 'TESTER') {
+                    $ticketsQuery->where('created_by', $userId);
+                }
+
+                $tickets = $ticketsQuery->get();
 
                 $filteredTickets = $tickets->filter(function ($ticket) use ($status) {
                     return $ticket->histories->first()->status === $status;
@@ -65,6 +71,7 @@ class TicketRepository
 
         return $data;
     }
+
 
 
     public function getUserTickets($userId, $projectId, $pageSize = 10)
@@ -139,11 +146,14 @@ class TicketRepository
             ];
 
             $ticket->update($updateData);
-
-            TicketHistory::create([
-                'ticket_id' => $ticket->id,
-                'status' => data_get($data, 'status', 'Error')
-            ]);
         });
+    }
+
+    public function updateStatus(Ticket $ticket, array $data)
+    {
+        TicketHistory::create([
+            'ticket_id' => $ticket->id,
+            'status' => data_get($data, 'status', 'Error')
+        ]);
     }
 }

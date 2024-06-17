@@ -23,7 +23,6 @@ class UpdateTicketRequest extends FormRequest
     {
         return [
             'project_id' => 'required|integer|exists:projects,id',
-            'status' => 'sometimes|in:Error,Pending,Cancelled,Tested,Closed',
             'name' => 'sometimes|string|max:255',
             'description' => 'sometimes|string',
             'estimated_hours' => 'sometimes|date_format:Y-m-d',

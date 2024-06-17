@@ -96,6 +96,8 @@ class TicketController extends Controller
      */
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
+        $this->authorize('update', $ticket);
+
         $validatedData = $request->validated();
 
         if ($request->hasFile('illustration')) {
@@ -113,12 +115,25 @@ class TicketController extends Controller
         ]);
     }
 
+    public function updateStatus(Request $request, Ticket $ticket)
+    {
+        $validatedData = $request->validate([
+            'status' =>  'required|in:Error,Pending,Cancelled,Tested,Closed',
+        ]);
 
+        $this->repository->updateStatus($ticket, $validatedData);
+
+        return new JsonResponse([
+            'message' => 'update status success'
+        ]);
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Ticket $ticket)
     {
+        $this->authorize('delete', $ticket);
+
         $ticket->delete();
 
         return new JsonResponse([
