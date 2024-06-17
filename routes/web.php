@@ -74,3 +74,9 @@ Route::get('/profile', function () {
 Route::get('/dashboard', function () {
     return view('layouts.dashboard');
 });
+Route::get('/tickets', function () {
+    return view('layouts.tickets');
+});
+Route::get('/tickets/detail', function () {
+    return view('layouts.ticket_detail');
+});

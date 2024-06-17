@@ -1,0 +1,107 @@
+.priority-medium {
+    background-color: rgb(226 251 238);
+    color: rgb(85 226 166);
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+.priority-high {
+    background-color: rgb(251 250 226);
+    color: rgb(231 218 65);
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+.priority-low {
+    background-color: rgb(237 224 253);
+    color: rgb(169 91 243);
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
+.status-error {
+    color: #f44336; /* Red */
+    text-transform: uppercase;
+}
+
+.status-cancel {
+    text-transform: uppercase;
+    color: #9e9e9e;
+}
+
+.status-pending {
+    color: #ffeb3b;
+    text-transform: uppercase;
+}
+
+.status-close {
+    color: #4caf50;
+    text-transform: uppercase;
+}
+
+.status-tested {
+    color: #2196f3;
+    text-transform: uppercase;
+}
+
+.pagination {
+    justify-content: center;
+}
+
+.content-table {
+    border: 2px solid #d0d3d6;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.custom-rounded {
+    border-radius: 7px;
+}
+.caption-table {
+    text-align: end;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
+    background-color: #007bff; /* Màu nền của tab được chọn */
+    color: #fff; /* Màu chữ của tab được chọn */
+}
+.nav-tabs .nav-link {
+    color: black; /* Màu chữ của tab không được chọn */
+}
+.nav-tabs .nav-link:hover {
+    background-color: #d4d5d7; /* Màu nền khi hover */
+    border: none;
+}
+.label-new-ticket {
+    font-weight: bold;
+}
+.text {
+    display: inline-block;
+    position: relative;
+    /* font-size: 30px; */
+    /* font-weight: 600; */
+    transition: color 0.7s;
+  }
+
+  .text::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: flex-end;
+
+    content: attr(data-text);
+    color: rgb(238, 0, 255);
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out;
+  }
+
+  .text:hover::before {
+    left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
