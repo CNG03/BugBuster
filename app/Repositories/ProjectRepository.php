@@ -5,15 +5,9 @@ namespace App\Repositories;
 use App\Exceptions\CustomQueryException;
 use App\Models\ProjectMember;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\AddedProjectNotification;
-use App\Mail\RoleChangedNotification;
 use App\Models\Project;
-use App\Models\Ticket;
-use App\Models\TicketHistory;
 
-class projectRepository
+class ProjectRepository
 {
     public function getProjects(User $user, $pageSize)
     {

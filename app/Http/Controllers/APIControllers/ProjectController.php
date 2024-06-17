@@ -6,7 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\ProjectResource;
-use App\Repositories\projectRepository;
+use App\Repositories\ProjectRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -15,7 +15,7 @@ class ProjectController extends Controller
 {
     protected $repository;
 
-    public function __construct(projectRepository $repository)
+    public function __construct(ProjectRepository $repository)
     {
         $this->repository = $repository;
     }
