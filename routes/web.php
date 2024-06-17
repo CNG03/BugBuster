@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\auth\AccessController;
-use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\APIControllers\auth\AccessController;
+use App\Http\Controllers\APIControllers\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GoogleAuthController;
-use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\auth\ForgotPasswordController;
+use App\Http\Controllers\APIControllers\auth\ForgotPasswordController;
+use App\Http\Controllers\WebControllers\WebTicketController;
 use App\Http\Middleware\AddAuthorizationHeader;
 use App\Http\Middleware\JwtAuthMiddleware;
 
@@ -64,6 +62,8 @@ Route::middleware([
 // Xác thực email của người dùng 
 Route::get('verify-email/{token}', [AccessController::class, 'verifyEmail'])->name('verify.email');
 
+Route::get('/tickets/{ticket}/edit', [WebTicketController::class, 'edit'])->name('tickets.edit');
+Route::patch('/tickets/{ticket}', [WebTicketController::class, 'update'])->name('tickets.update');
 
 Route::get('/test', function () {
     return view('layouts.app');

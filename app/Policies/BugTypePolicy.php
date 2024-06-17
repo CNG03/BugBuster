@@ -11,7 +11,7 @@ class BugTypePolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): bool
+    public function viewAny(User $user)
     {
         //
     }
@@ -19,7 +19,7 @@ class BugTypePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, BugType $bugType): bool
+    public function view(User $user, BugType $bugType)
     {
         //
     }
@@ -29,7 +29,7 @@ class BugTypePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->role === 'ADMIN';
     }
 
     /**
@@ -37,7 +37,7 @@ class BugTypePolicy
      */
     public function update(User $user, BugType $bugType): bool
     {
-        //
+        return $user->role === 'ADMIN';
     }
 
     /**
@@ -45,13 +45,13 @@ class BugTypePolicy
      */
     public function delete(User $user, BugType $bugType): bool
     {
-        //
+        return $user->role === 'ADMIN';
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, BugType $bugType): bool
+    public function restore(User $user, BugType $bugType)
     {
         //
     }
@@ -59,7 +59,7 @@ class BugTypePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, BugType $bugType): bool
+    public function forceDelete(User $user, BugType $bugType)
     {
         //
     }

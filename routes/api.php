@@ -17,7 +17,7 @@ use  App\Helpers\Routes\RouteHelper;
 
 Route::prefix('v1')
     ->group(function () {
-        RouteHelper::includeRouteFile(__DIR__ . '\api\v1');
+        RouteHelper::includeRouteFile(__DIR__ . '/api/v1');
     });
 
 

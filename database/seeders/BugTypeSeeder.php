@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BugType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,6 @@ class BugTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        BugType::factory(50)->create();
     }
 }

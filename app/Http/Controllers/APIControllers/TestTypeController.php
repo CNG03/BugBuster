@@ -1,21 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\APIControllers;
 
 use App\Models\TestType;
 use App\Http\Requests\StoreTestTypeRequest;
 use App\Http\Requests\UpdateTestTypeRequest;
 use App\Http\Resources\TestTypeResource;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class TestTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $testTypes = TestType::query()->get();
+
+        $pageSize = $request->page_size ?? 10;
+
+        $testTypes = TestType::query()->paginate($pageSize);
 
         return TestTypeResource::collection($testTypes);
     }
@@ -25,6 +29,8 @@ class TestTypeController extends Controller
      */
     public function store(StoreTestTypeRequest $request)
     {
+        $this->authorize('create', TestType::class);
+
         $testType = TestType::create($request->only('name'));
 
         return new JsonResponse($testType, 201);
@@ -43,6 +49,8 @@ class TestTypeController extends Controller
      */
     public function update(UpdateTestTypeRequest $request, TestType $testType)
     {
+        $this->authorize('update', $testType);
+
         $testType->update($request->only(['name']));
 
         return new TestTypeResource($testType);
@@ -53,6 +61,8 @@ class TestTypeController extends Controller
      */
     public function destroy(TestType $testType)
     {
+        $this->authorize('delete', $testType);
+
         $testType->delete();
 
         return new JsonResponse([

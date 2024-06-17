@@ -20,11 +20,21 @@ class Project extends Model
 
     public function projectMembers()
     {
-        return $this->hasMany('App\ProjectMember');
+        return $this->hasMany(ProjectMember::class);
     }
 
-    // public function errors()
-    // {
-    //     return $this->hasMany('App\Error');
-    // }
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    public function isAdmin(User $user)
+    {
+        return $this->admin_id === $user->id;
+    }
+
+    public function isMember(User $user)
+    {
+        return $this->projectMembers()->where('user_id', $user->id)->exists();
+    }
 }
