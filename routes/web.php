@@ -62,10 +62,15 @@ Route::middleware([
 // Xác thực email của người dùng 
 Route::get('verify-email/{token}', [AccessController::class, 'verifyEmail'])->name('verify.email');
 
-Route::get('/hello', function () {
-    return 'Hello World';
-});
-
-
 Route::get('/tickets/{ticket}/edit', [WebTicketController::class, 'edit'])->name('tickets.edit');
 Route::patch('/tickets/{ticket}', [WebTicketController::class, 'update'])->name('tickets.update');
+
+Route::get('/test', function () {
+    return view('layouts.app');
+});
+Route::get('/profile', function () {
+    return view('layouts.profile');
+});
+Route::get('/dashboard', function () {
+    return view('layouts.dashboard');
+});
