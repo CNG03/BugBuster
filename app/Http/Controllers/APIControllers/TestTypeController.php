@@ -30,8 +30,8 @@ class TestTypeController extends Controller
     public function store(StoreTestTypeRequest $request)
     {
         $this->authorize('create', TestType::class);
-
-        $testType = TestType::create($request->only('name'));
+        $validateData = $request->validated();
+        $testType = TestType::create($validateData);
 
         return new JsonResponse($testType, 201);
     }
@@ -50,8 +50,8 @@ class TestTypeController extends Controller
     public function update(UpdateTestTypeRequest $request, TestType $testType)
     {
         $this->authorize('update', $testType);
-
-        $testType->update($request->only(['name']));
+        $validateData = $request->validated();
+        $testType->update($validateData);
 
         return new TestTypeResource($testType);
     }

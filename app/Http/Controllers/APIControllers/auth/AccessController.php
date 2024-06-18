@@ -10,6 +10,7 @@ use Illuminate\Validation\ValidationException;
 use App\Models\User;
 use App\Mail\VerifyEmail;
 use App\Repositories\AccessRepository;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -91,6 +92,8 @@ class AccessController extends Controller
         Session::put('user_id', $user->id);
         Session::put('user_name', $user->name);
         Session::put('user_email', $user->email);
+        Session::put('user_avatar', $user->avatar);
+        Session::put('user_role', $user->role);
 
         return redirect()->intended('/app');
     }

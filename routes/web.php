@@ -5,8 +5,10 @@ use App\Http\Controllers\APIControllers\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIControllers\auth\ForgotPasswordController;
 use App\Http\Controllers\WebControllers\WebTicketController;
+use App\Http\Controllers\WebControllers\DashboardController;
 use App\Http\Middleware\AddAuthorizationHeader;
 use App\Http\Middleware\JwtAuthMiddleware;
+use App\Http\Middleware\AdminMiddleware;
 
 /*
 | Web Routes
@@ -68,15 +70,16 @@ Route::patch('/tickets/{ticket}', [WebTicketController::class, 'update'])->name(
 Route::get('/test', function () {
     return view('layouts.app');
 });
-Route::get('/profile', function () {
-    return view('layouts.profile');
-});
-Route::get('/dashboard', function () {
-    return view('layouts.dashboard');
-});
 Route::get('/tickets', function () {
     return view('layouts.tickets');
 });
+
 Route::get('/tickets/detail', function () {
     return view('layouts.ticket_detail');
 });
+Route::get('/profile', function () {
+    return view('layouts.profile');
+})->name('myProfile');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(AdminMiddleware::class);
+

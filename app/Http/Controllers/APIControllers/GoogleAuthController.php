@@ -41,7 +41,7 @@ class GoogleAuthController extends Controller
                 'token' => $ggUser->token
             ]);
         }
-
+        Auth::login($user, true); // Đăng nhập người dùng
         $token = JWTAuth::fromUser($user);
         $refreshToken = JWTAuth::claims(['type' => 'refresh'])->fromUser($user);
         $user->refresh_token = $refreshToken;
@@ -52,8 +52,10 @@ class GoogleAuthController extends Controller
         Session::put('user_id', $user->id);
         Session::put('user_name', $user->name);
         Session::put('user_email', $user->email);
+        Session::put('user_avatar', $user->avatar);
+        Session::put('user_role', $user->role);
 
 
-        return redirect()->intended('/app');
+        return redirect()->intended('/dashboard');
     }
 }

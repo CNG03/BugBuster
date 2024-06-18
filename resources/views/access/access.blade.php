@@ -89,6 +89,13 @@
                 <strong>{{  session('success')  }}!</strong>
             </div>
         @endif
+        @if(session('status'))
+            <div class="alert2 fixed-top-right" id="errorAlert">
+                <i class="fa-solid fa-circle-check"></i>
+                <span style="font-size: 30px;order: 3;" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong>{{  session('status')  }}!</strong>
+            </div>
+        @endif
         @if(session('password_reset'))
             <div class="alert2 fixed-top-right" id="errorAlert">
                 <i class="fa-solid fa-circle-check"></i>
