@@ -13,6 +13,6 @@ class BugTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        BugType::factory(50)->create();
+        BugType::factory(10)->create();
     }
 }

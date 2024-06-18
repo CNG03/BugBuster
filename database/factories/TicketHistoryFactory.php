@@ -18,7 +18,7 @@ class TicketHistoryFactory extends Factory
     {
         return [
             'ticket_id' => 1,
-            'status' => 'Pending'
+            'status' => 'ERROR'
         ];
     }
 }

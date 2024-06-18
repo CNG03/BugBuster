@@ -18,6 +18,7 @@ class BugTypeFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'description' => fake()->word(),
         ];
     }
 }

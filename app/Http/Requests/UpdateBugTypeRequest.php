@@ -32,8 +32,8 @@ class UpdateBugTypeRequest extends FormRequest
                 Rule::unique('bug_types')->where(function ($query) use ($bugTypeId) {
                     return $query->where('id', '<>', $bugTypeId);
                 }),
-                'description' => 'nullable|string'
             ],
+            'description' => 'nullable|string'
         ];
     }
 

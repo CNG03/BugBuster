@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title', 'Bug Buster')</title>
+    <title>@yield('title', 'Dashboard | Buster')</title>
     <script src="{{ asset('assets') }}/js/home/choice.min.js"></script>
     <script src="{{ asset('assets') }}/js/home/main.js"></script>
     <link rel="stylesheet" href="{{ asset('assets') }}/css/home/bootstrap.min.css">
@@ -50,10 +50,10 @@
                         <div class="card-body p-0">
                             <div class="header-user text-center mt-3">
                                 <span class="avatar avatar-xxl rounded-circle mx-auto"><img
-                                        src="https://cdn.24h.com.vn/upload/3-2022/images/2022-08-19/Gai-xinh-ngay-tho-lo-qua-khu-277585438_4600347833405176_193249803126218059_n-1660905398-70-width1754height2048.jpg"
+                                        src="{{Session::get('user_avatar')}}"
                                         alt="Profile-img" class="avatar avatar-xxl rounded-circle" /></span>
-                                <div class="text-center fw-semibold user mt-2 h6 mb-0">Elizabeth Jane</div>
-                                <span class="text-muted">App Developer</span>
+                                <div class="text-center fw-semibold user mt-2 h6 mb-0">{{Session::get('user_name')}}</div>
+                                <span class="text-muted">{{Session::get('role')}} System</span>
                             </div>
                             <div class="card-body p-3">
                                 <p class="fw-semibold mb-1">Offline/Online</p>
@@ -126,10 +126,12 @@
                                         <div>Settings</div>
                                     </div>
                                     <div class="col-4 text-center">
-                                        <a class="" href="signin.html"><i style="font-size: 30px; color:rgb(13 110 253);" class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form1').submit();">
+                                            <i style="font-size: 30px; color:rgb(13 110 253);" class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        </a>
                                         <div>Sign out</div>
                                     </div>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    <form id="logout-form1" action="{{ route('logout') }}" method="POST"
                                         style="display: none;">
                                         @csrf
                                     </form>
@@ -646,7 +648,7 @@
                                                 <div class="simplebar-content" style="padding: 0px;">
                                                     <li class="dropdown-item">
                                                         <div class="d-flex align-items-start">
-                                                            <img src="https://static.vecteezy.com/system/resources/previews/026/603/556/non_2x/beautiful-girl-with-autumn-leaves-free-photo.jpg" alt="img" class="avatar avatar-md rounded-5 me-2" />
+                                                            <img src="{{asset('assets')}}/img/us1.jpeg" alt="img" class="avatar avatar-md rounded-5 me-2" />
                                                             <div class="flex-grow-1">
                                                                 <div
                                                                     class="d-flex align-items-start justify-content-between mb-0">
@@ -666,7 +668,7 @@
                                                     </li>
                                                     <li class="dropdown-item">
                                                         <div class="d-flex align-items-start">
-                                                            <img src="../assets/images/users/2.jpg" alt="img"
+                                                            <img src="{{asset('assets')}}/img/us1.jpeg" alt="img"
                                                                 class="avatar avatar-md rounded-5 me-2" />
                                                             <div class="flex-grow-1">
                                                                 <div
@@ -687,7 +689,7 @@
                                                     </li>
                                                     <li class="dropdown-item">
                                                         <div class="d-flex align-items-start">
-                                                            <img src="../assets/images/users/9.jpg" alt="img"
+                                                            <img src="{{asset('assets')}}/img/us1.jpeg" alt="img"
                                                                 class="avatar avatar-md rounded-5 me-2" />
                                                             <div class="flex-grow-1">
                                                                 <div
@@ -708,7 +710,7 @@
                                                     </li>
                                                     <li class="dropdown-item">
                                                         <div class="d-flex align-items-start">
-                                                            <img src="../assets/images/users/12.jpg" alt="img"
+                                                            <img src="{{asset('assets')}}/img/us1.jpeg" alt="img"
                                                                 class="avatar avatar-md rounded-5 me-2" />
                                                             <div class="flex-grow-1">
                                                                 <div
@@ -729,7 +731,7 @@
                                                     </li>
                                                     <li class="dropdown-item">
                                                         <div class="d-flex align-items-start">
-                                                            <img src="https://cdn.24h.com.vn/upload/3-2022/images/2022-08-19/Gai-xinh-ngay-tho-lo-qua-khu-277585438_4600347833405176_193249803126218059_n-1660905398-70-width1754height2048.jpg"
+                                                            <img src="{{asset('assets')}}/img/us1.jpeg"
                                                                 alt="img"
                                                                 class="avatar avatar-md rounded-5 me-2" />
                                                             <div class="flex-grow-1">
@@ -766,7 +768,7 @@
                                 </div>
                             </ul>
                             <div class="p-2 empty-header-item border-top bg-primary-transparent">
-                                <div class="d-grid text-center"><a href="mail.html" class="text-primary">VIEW ALL</a>
+                                <div class="d-grid text-center"><a href="#" class="text-primary">VIEW ALL</a>
                                 </div>
                             </div>
                         </div>
@@ -967,7 +969,7 @@
                                 </div>
                             </ul>
                             <div class="p-2 empty-header-item border-top bg-primary-transparent">
-                                <div class="d-grid text-center"><a href="notifications.html"
+                                <div class="d-grid text-center"><a href="#"
                                         class="text-primary">VIEW ALL</a></div>
                             </div>
                         </div>
@@ -997,12 +999,12 @@
                             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                             <div class="d-flex align-items-center">
                                 <div class="me-sm-2 me-0"><img
-                                        src="https://cdn.24h.com.vn/upload/3-2022/images/2022-08-19/Gai-xinh-ngay-tho-lo-qua-khu-277585438_4600347833405176_193249803126218059_n-1660905398-70-width1754height2048.jpg"
+                                        src="{{Session::get('user_avatar')}}"
                                         alt="img" width="32" height="32" class="rounded-circle" />
                                 </div>
                                 <div class="d-sm-block d-none">
-                                    <p class="fw-semibold mb-0">Elizabeth Zane</p>
-                                    <span class="op-7 fw-normal d-block fs-11 lh-1">Premium Member</span>
+                                    <p class="fw-semibold mb-0">{{Session:get('user_name')}}</p>
+                                    <span class="op-7 fw-normal d-block fs-11 lh-1">{{Session:get('user_role')}} System</span>
                                 </div>
                             </div>
                         </a>

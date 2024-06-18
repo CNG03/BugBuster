@@ -17,7 +17,9 @@ class ProjectMemberFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'project_id' => 1,
+            'user_id' => 3,
+            'role_in_project' => 'DEVELOPER'
         ];
     }
 }

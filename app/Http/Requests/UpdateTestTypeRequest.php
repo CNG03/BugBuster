@@ -32,8 +32,8 @@ class UpdateTestTypeRequest extends FormRequest
                 Rule::unique('test_types')->where(function ($query) use ($testTypeId) {
                     return $query->where('id', '<>', $testTypeId);
                 }),
-                'description' => 'nullable|string'
             ],
+            'description' => 'nullable|string'
         ];
     }
 

@@ -19,7 +19,7 @@ class ProjectFactory extends Factory
         return [
             'name' => fake()->word,
             'description' => fake()->sentence(),
-            'admin_id' => 2
+            'admin_id' => 5
         ];
     }
 }
