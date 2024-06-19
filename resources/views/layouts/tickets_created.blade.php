@@ -210,7 +210,7 @@
                         <form action="{{route('newTicket', ['projectID' => $projectID])}}" id="ticketForm" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="" id="ticket">
-                                    <input name="project_id" hidden type="text" value="{{$projectID}}">
+                                    <input name="project_id" hidden type="text" value="{{$projectID}}"> 
                                     <div class="form-group mt-3">
                                         <label class="label-new-ticket" for="ticketName">Name:</label>
                                         <input type="text" class="form-control" id="ticketName" name="name" placeholder="Enter the name of the ticket">
