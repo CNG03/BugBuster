@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\APIControllers\ProjectMemberController;
+use App\Http\Middleware\CustomAuthenticate;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
-    'auth:api'
+    CustomAuthenticate::class
 ])
     ->name('projectmember.')
     ->namespace('\App\Http\Controllers')
