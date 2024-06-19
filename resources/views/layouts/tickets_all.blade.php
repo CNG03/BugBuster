@@ -42,7 +42,9 @@
                 </div> --}}
             </div>
             <table class="table table-hover align-middle text-center">
-                <caption class="caption-table">Showing 1 to 6 of 12 Rows.</caption>
+                <caption class="caption-table">
+                    Showing {{ $paginationMeta['from'] }} to {{ $paginationMeta['to'] }} of {{ $paginationMeta['total'] }} Rows.
+                </caption>
                 <thead class="table-primary">
                     <tr>
                         <th>Ticket Title</th>
@@ -56,144 +58,140 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><a class="text" data-text="Ticket update log" href="#">Ticket update log</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-medium">Medium</span></td>
-                        <td>Bug - Error</td>
-                        <td>Bug - Error</td>
-                        <td>1</td>
-                        <td><span class="status-error">Error</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="text" data-text="Training" href="#">Training</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-medium">Medium</span></td>
-                        <td>Training</td>
-                        <td>Training</td>
-                        <td>3</td>
-                        <td><span class="status-pending">Pending</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="text" data-text="Documentation" href="#">Documentation</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-high">High</span></td>
-                        <td>Documentation</td>
-                        <td>Documentation</td>
-                        <td>5</td>
-                        <td><span class="status-cancel">Cancel</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="text" data-text="Comment" href="#">Comment</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-low">Low</span></td>
-                        <td>Feature request</td>
-                        <td>Feature request</td>
-                        <td>1</td>
-                        <td><span class="status-error">error</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="text" data-text="Logs" href="#">Logs</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-high">High</span></td>
-                        <td>Feature request</td>
-                        <td>Feature request</td>
-                        <td>1</td>
-                        <td><span class="status-close">Close</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="text" data-text="Filter" href="#">Filter</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-medium">Medium</span></td>
-                        <td>Feature request</td>
-                        <td>Feature request</td>
-                        <td>1</td>
-                        <td><span class="status-tested">Tested</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                        {{-- <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td> --}}
-                    </tr>
+                    @foreach($dashboard['data'] as $ticket)
+                        <tr>
+                            <td><a class="text" data-text="{{ $ticket['name'] }}" href="#">{{ $ticket['name'] }}</a></td>
+                            <td>{{ $ticket['created_by'] }}</td>
+                            @switch($ticket['priority'])
+                                @case('HIGH')
+                                    <td><span class="priority-high">HIGH</span></td>
+                                    @break
+                                @case('MEDIUM')
+                                    <td><span class="priority-medium">MEDIUM</span></td>
+                                    @break
+                                @case('LOW')
+                                    <td><span class="priority-low">LOW</span></td>
+                                    @break
+                            @endswitch
+                            <td>{{$ticket['bug_type']}}</td>
+                            <td>{{$ticket['test_type']}}</td>
+                            @php
+                                $date = \Carbon\Carbon::parse($ticket['estimated_hours']);
+                                $day = $date->format('jS'); // 30th, 21st, 22nd, etc.
+                                $month = $date->format('F'); // June
+                            @endphp
+                            <td>{{ $day }} {{ $month }}</td>
+                            @switch($ticket['status'])
+                                @case('Error')
+                                    <td><span class="status-error">Error</span></td>
+                                    @break
+                                @case('Cancelled')
+                                    <td><span class="status-cancel">Cancel</span></td>
+                                    @break
+                                @case('Pending')
+                                    <td><span class="status-pending">Pending</span></td>
+                                    @break
+                                @case('Tested')
+                                    <td><span class="status-tested">Tested</span></td>
+                                    @break
+                                @case('Closed')
+                                    <td><span class="status-close">Closed</span></td>
+                                    @break
+                            @endswitch
+                            <td>
+                                @switch($role['role'])
+                                    @case('TESTER')
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
+                                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
+                                            </ul>
+                                        </div>                                    
+                                        @break
+                                    @case('MANAGER')
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
+                                            </ul>
+                                        </div> 
+                                        @break
+                                    @case('DEVELOPER')
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
+                                            </ul>
+                                        </div>
+                                        @break
+                                    @case('READER')
+                                        <div class="fw-bold">
+                                            <i class="fa-solid fa-lock"></i>
+                                        </div>
+                                        @break
+                                @endswitch
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">»</a></li>
+                    @if($paginationMeta['current_page'] > 1)
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ $paginationMeta['current_page'] - 1 }}" aria-label="Previous">
+                                &laquo; Previous
+                            </a>
+                        </li>
+                    @endif
+            
+                    @php
+                        $startPage = max(1, $paginationMeta['current_page'] - 2);
+                        $endPage = min($paginationMeta['last_page'], $paginationMeta['current_page'] + 2);
+                    @endphp
+            
+                    @if($startPage > 1)
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">1</a>
+                        </li>
+                        @if($startPage > 2)
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">...</a>
+                            </li>
+                        @endif
+                    @endif
+            
+                    @for ($page = $startPage; $page <= $endPage; $page++)
+                        <li class="page-item {{ $page == $paginationMeta['current_page'] ? 'active' : '' }}">
+                            <a class="page-link" href="?page={{ $page }}">{{ $page }}</a>
+                        </li>
+                    @endfor
+            
+                    @if($endPage < $paginationMeta['last_page'])
+                        @if($endPage < $paginationMeta['last_page'] - 1)
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">...</a>
+                            </li>
+                        @endif
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ $paginationMeta['last_page'] }}">{{ $paginationMeta['last_page'] }}</a>
+                        </li>
+                    @endif
+            
+                    @if($paginationMeta['current_page'] < $paginationMeta['last_page'])
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ $paginationMeta['current_page'] + 1 }}" aria-label="Next">
+                                Next &raquo;
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </nav>
         </div>
@@ -209,7 +207,9 @@
                 </div>
             </div>
             <table class="table table-hover align-middle text-center">
-                <caption class="caption-table">Showing 1 to 6 of 12 Rows.</caption>
+                <caption class="caption-table">
+                    Showing {{ $paginationMeta['from'] }} to {{ $paginationMeta['to'] }} of {{ $paginationMeta['total'] }} Rows.
+                </caption>
                 <thead class="table-primary">
                     <tr>
                         <th>Ticket Title</th>
@@ -223,133 +223,140 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><a class="text" data-text="Ticket update log" href="#">Ticket update log</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-medium">Medium</span></td>
-                        <td>Bug - Error</td>
-                        <td>Bug - Error</td>
-                        <td>1</td>
-                        <td><span class="status-error">error</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="text" data-text="Training" href="#">Training</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-medium">Medium</span></td>
-                        <td>Training</td>
-                        <td>Training</td>
-                        <td>3</td>
-                        <td><span class="status-error">error</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="text" data-text="Documentation" href="#">Documentation</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-high">High</span></td>
-                        <td>Documentation</td>
-                        <td>Documentation</td>
-                        <td>5</td>
-                        <td><span class="status-error">error</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="text" data-text="Comment" href="#">Comment</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-low">Low</span></td>
-                        <td>Feature request</td>
-                        <td>Feature request</td>
-                        <td>1</td>
-                        <td><span class="status-error">error</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="text" data-text="Logs" href="#">Logs</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-high">High</span></td>
-                        <td>Feature request</td>
-                        <td>Feature request</td>
-                        <td>1</td>
-                        <td><span class="status-error">error</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a class="text" data-text="Filter" href="#">Filter</a></td>
-                        <td>Admin</td>
-                        <td><span class="priority-medium">Medium</span></td>
-                        <td>Feature request</td>
-                        <td>Feature request</td>
-                        <td>1</td>
-                        <td><span class="status-error">error</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach($dashboard['data'] as $ticket)
+                        <tr>
+                            <td><a class="text" data-text="{{ $ticket['name'] }}" href="#">{{ $ticket['name'] }}</a></td>
+                            <td>{{ $ticket['created_by'] }}</td>
+                            @switch($ticket['priority'])
+                                @case('HIGH')
+                                    <td><span class="priority-high">HIGH</span></td>
+                                    @break
+                                @case('MEDIUM')
+                                    <td><span class="priority-medium">MEDIUM</span></td>
+                                    @break
+                                @case('LOW')
+                                    <td><span class="priority-low">LOW</span></td>
+                                    @break
+                            @endswitch
+                            <td>{{$ticket['bug_type']}}</td>
+                            <td>{{$ticket['test_type']}}</td>
+                            @php
+                                $date = \Carbon\Carbon::parse($ticket['estimated_hours']);
+                                $day = $date->format('jS'); // 30th, 21st, 22nd, etc.
+                                $month = $date->format('F'); // June
+                            @endphp
+                            <td>{{ $day }} {{ $month }}</td>
+                            @switch($ticket['status'])
+                                @case('Error')
+                                    <td><span class="status-error">Error</span></td>
+                                    @break
+                                @case('Cancelled')
+                                    <td><span class="status-cancel">Cancel</span></td>
+                                    @break
+                                @case('Pending')
+                                    <td><span class="status-pending">Pending</span></td>
+                                    @break
+                                @case('Tested')
+                                    <td><span class="status-tested">Tested</span></td>
+                                    @break
+                                @case('Closed')
+                                    <td><span class="status-close">Closed</span></td>
+                                    @break
+                            @endswitch
+                            <td>
+                                @switch($role['role'])
+                                    @case('TESTER')
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
+                                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
+                                            </ul>
+                                        </div>                                    
+                                        @break
+                                    @case('MANAGER')
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
+                                            </ul>
+                                        </div> 
+                                        @break
+                                    @case('DEVELOPER')
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
+                                            </ul>
+                                        </div>
+                                        @break
+                                    @case('READER')
+                                        <div class="fw-bold">
+                                            <i class="fa-solid fa-lock"></i>
+                                        </div>
+                                        @break
+                                @endswitch
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">»</a></li>
+                    @if($paginationMeta['current_page'] > 1)
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ $paginationMeta['current_page'] - 1 }}" aria-label="Previous">
+                                &laquo; Previous
+                            </a>
+                        </li>
+                    @endif
+            
+                    @php
+                        $startPage = max(1, $paginationMeta['current_page'] - 2);
+                        $endPage = min($paginationMeta['last_page'], $paginationMeta['current_page'] + 2);
+                    @endphp
+            
+                    @if($startPage > 1)
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">1</a>
+                        </li>
+                        @if($startPage > 2)
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">...</a>
+                            </li>
+                        @endif
+                    @endif
+            
+                    @for ($page = $startPage; $page <= $endPage; $page++)
+                        <li class="page-item {{ $page == $paginationMeta['current_page'] ? 'active' : '' }}">
+                            <a class="page-link" href="?page={{ $page }}">{{ $page }}</a>
+                        </li>
+                    @endfor
+            
+                    @if($endPage < $paginationMeta['last_page'])
+                        @if($endPage < $paginationMeta['last_page'] - 1)
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">...</a>
+                            </li>
+                        @endif
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ $paginationMeta['last_page'] }}">{{ $paginationMeta['last_page'] }}</a>
+                        </li>
+                    @endif
+            
+                    @if($paginationMeta['current_page'] < $paginationMeta['last_page'])
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ $paginationMeta['current_page'] + 1 }}" aria-label="Next">
+                                Next &raquo;
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </nav>
         </div>

@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\APIControllers\ProjectMemberController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\test;
 Route::middleware([
-    'auth:api'
+    test::class
 ])
     ->name('projectmember.')
     ->namespace('\App\Http\Controllers')

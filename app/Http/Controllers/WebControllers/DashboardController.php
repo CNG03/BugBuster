@@ -5,26 +5,47 @@ namespace App\Http\Controllers\WebControllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\APIControllers\Controller;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
     //
     public function index()
     {
-        $user = Auth::user();
         // $tasks = $this->getUserTasks($user->id);
-
-        return view('layouts.dashboard');
-    }
-
-    private function getUserTasks($userId)
-    {
-        // Giả sử bạn sử dụng Guzzle để gọi API lấy danh sách công việc
-        $client = new \GuzzleHttp\Client();
-        $response = $client->get('http://api-url/tasks', [
-            'query' => ['user_id' => $userId]
-        ]);
-
-        return json_decode($response->getBody()->getContents(), true);
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->get('http://127.0.0.1:7000/api/v1/tickets/dashboard');
+        
+        if ($response->successful()) {
+            $dashboard = $response->json();
+             // Nhóm các tickets theo ngày tạo
+            $groupedTickets = [];
+            foreach ($dashboard as $projectData) {
+                foreach ($projectData['tickets'] as $ticket) {
+                    $date = \Carbon\Carbon::parse($ticket['created_at'])->toDateString();
+                    $projectId = $projectData['project']['id'];
+                     
+                    if (!isset($groupedTickets[$projectId])) {
+                        $groupedTickets[$projectId] = [
+                            'project' => $projectData['project'],
+                            'dates' => []
+                        ];
+                    }
+                     
+                    if (!isset($groupedTickets[$projectId]['dates'][$date])) {
+                        $groupedTickets[$projectId]['dates'][$date] = [];
+                    }
+                     
+                    $groupedTickets[$projectId]['dates'][$date][] = $ticket;
+                }
+            }
+            // dd($groupedTickets[1]);
+     
+             return view('layouts.dashboard', compact('groupedTickets'));
+        } else {
+            abort(500, 'Internal Server Error');
+        }
     }
 }

@@ -353,8 +353,28 @@ input[type=checkbox] + label, input[type=radio] + label {
     display: flex;
 }
 .dLyYq_zGXc {
-    border-color: #E0061F;
-    color: #E0061F;
+    border-color: #f44336;
+    color: #f44336;
+}
+
+.dLyYq_zGXc_pending {
+    border-color: #ffeb3b;
+    color: #ffeb3b;
+}
+
+.dLyYq_zGXc_cancel {
+    border-color: #6B7780;
+    color: #6B7780;
+}
+
+.dLyYq_zGXc_tested {
+    border-color: #2196f3;
+    color: #2196f3;
+}
+
+.dLyYq_zGXc_close {
+    border-color: #4caf50;
+    color: #4caf50;
 }
 
 .cECYn_zGXc {

@@ -1,5 +1,3 @@
-<!-- resources/views/layouts/app.blade.php -->
-
 <!DOCTYPE html>
 <html>
 
@@ -93,36 +91,14 @@
                                 </div>
                             </div>
                             <a class="dropdown-item border-top" href="faq.html"> <i class="dropdown-icon fa-regular fa-circle-question"></i> Need Help? </a>
-                            {{-- Followers --}}
-                            {{-- <div class="card-body border-top p-3">
-                                <h6 class="mb-0">Followers</h6>
-                                <div class="row mt-2">
-                                    <div class="col-12">
-                                        <div class="avatar-list-stacked">
-                                            <span class="avatar avatar-rounded"> <img
-                                                    src="../assets/images/users/3.jpg" alt="img" /> </span> <span
-                                                class="avatar avatar-rounded"> <img src="../assets/images/users/6.jpg"
-                                                    alt="img" /> </span>
-                                            <span class="avatar avatar-rounded"> <img
-                                                    src="../assets/images/users/3.jpg" alt="img" /> </span> <span
-                                                class="avatar avatar-rounded"> <img src="../assets/images/users/4.jpg"
-                                                    alt="img" /> </span>
-                                            <span class="avatar avatar-rounded"> <img
-                                                    src="../assets/images/users/9.jpg" alt="img" /> </span> <a
-                                                class="avatar bg-primary avatar-rounded text-fixed-white"
-                                                href="javascript:void(0);"> +34 </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
                             <div class="card-body border-top border-bottom p-3 mt-5">
                                 <div class="row">
                                     <div class="col-4 text-center">
-                                        <a class="" href="mail.html"><i style="font-size: 30px; color:rgb(13 110 253);" class="fa-regular fa-message"></i></a>
+                                        <a class="" href="#"><i style="font-size: 30px; color:rgb(13 110 253);" class="fa-regular fa-message"></i></a>
                                         <div>Inbox</div>
                                     </div>
                                     <div class="col-4 text-center">
-                                        <a class="" href="settings.html"><i style="font-size: 30px; color:rgb(13 110 253);" class="fa-solid fa-sliders"></i></a>
+                                        <a class="" href="#"><i style="font-size: 30px; color:rgb(13 110 253);" class="fa-solid fa-sliders"></i></a>
                                         <div>Settings</div>
                                     </div>
                                     <div class="col-4 text-center">
@@ -139,119 +115,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- tab Friends --}}
-                    {{-- <div class="tab-pane" id="tab1" role="tabpanel">
-                        <div class="chat">
-                            <div class="contacts_card">
-                                <div class="input-group mb-0 p-3">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control text-truncate"
-                                            placeholder="Search ..." aria-label="Search ..." />
-                                        <button class="btn btn-primary" type="button"><i class="fe fe-search"
-                                                aria-hidden="true"></i></button>
-                                    </div>
-                                </div>
-                                <ul class="contacts mb-0 list-unstyled">
-                                    <li class="active">
-                                        <div class="d-flex bd-highlight w-100">
-                                            <div class="img_cont"><img src="../assets/images/users/12.jpg"
-                                                    class="rounded-circle user_img" alt="img" /> <span
-                                                    class="online_icon"></span></div>
-                                            <div class="user_info">
-                                                <h5 class="my-1">Maryam Naz</h5>
-                                                <small class="text-muted">is online</small>
-                                            </div>
-                                            <div class="ms-auto my-auto"><small>01-02-2019</small></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight w-100">
-                                            <div class="img_cont"><img src="../assets/images/users/2.jpg"
-                                                    class="rounded-circle user_img" alt="img" /> <span
-                                                    class="online_icon"></span></div>
-                                            <div class="user_info">
-                                                <h5 class="my-1">Sahar Darya</h5>
-                                                <small class="text-muted">left 7 mins ago</small>
-                                            </div>
-                                            <div class="ms-auto my-auto"><small>01-02-2019</small></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight w-100">
-                                            <div class="img_cont"><img
-                                                    src="https://cdn.24h.com.vn/upload/3-2022/images/2022-08-19/Gai-xinh-ngay-tho-lo-qua-khu-277585438_4600347833405176_193249803126218059_n-1660905398-70-width1754height2048.jpg"
-                                                    class="rounded-circle user_img" alt="img" /> <span
-                                                    class="online_icon"></span></div>
-                                            <div class="user_info">
-                                                <h5 class="my-1">Maryam Naz</h5>
-                                                <small class="text-muted">online</small>
-                                            </div>
-                                            <div class="ms-auto my-auto"><small>01-02-2019</small></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight w-100">
-                                            <div class="img_cont"><img src="../assets/images/users/7.jpg"
-                                                    class="rounded-circle user_img" alt="img" /> <span
-                                                    class="online_icon"></span></div>
-                                            <div class="user_info">
-                                                <h5 class="my-1">Yolduz Rafi</h5>
-                                                <small class="text-muted">online</small>
-                                            </div>
-                                            <div class="ms-auto my-auto"><small>02-02-2019</small></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight w-100">
-                                            <div class="img_cont"><img src="../assets/images/users/8.jpg"
-                                                    class="rounded-circle user_img" alt="img" /> <span
-                                                    class="online_icon"></span></div>
-                                            <div class="user_info">
-                                                <h5 class="my-1">Nargis Hawa</h5>
-                                                <small class="text-muted">30 mins ago</small>
-                                            </div>
-                                            <div class="ms-auto my-auto"><small>02-02-2019</small></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight w-100">
-                                            <div class="img_cont"><img src="../assets/images/users/3.jpg"
-                                                    class="rounded-circle user_img" alt="img" /> <span
-                                                    class="online_icon"></span></div>
-                                            <div class="user_info">
-                                                <h5 class="my-1">Khadija Mehr</h5>
-                                                <small class="text-muted">50 mins ago</small>
-                                            </div>
-                                            <div class="ms-auto my-auto"><small>03-02-2019</small></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight w-100">
-                                            <div class="img_cont"><img src="../assets/images/users/14.jpg"
-                                                    class="rounded-circle user_img" alt="img" /> <span
-                                                    class="online_icon"></span></div>
-                                            <div class="user_info">
-                                                <h5 class="my-1">Petey Cruiser</h5>
-                                                <small class="text-muted">1hr ago</small>
-                                            </div>
-                                            <div class="ms-auto my-auto"><small>03-02-2019</small></div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex bd-highlight w-100">
-                                            <div class="img_cont"><img src="../assets/images/users/11.jpg"
-                                                    class="rounded-circle user_img" alt="img" /></div>
-                                            <div class="user_info">
-                                                <h5 class="my-1">Khadija Mehr</h5>
-                                                <small class="text-muted">2hr ago</small>
-                                            </div>
-                                            <div class="ms-auto my-auto"><small>03-02-2019</small></div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="tab-pane" id="tab2" role="tabpanel">
                         <div class="list d-flex align-items-center border-bottom p-3 mt-3">
                             <div class=""><span class="avatar bg-primary rounded-circle avatar-md">CH</span>
@@ -377,141 +240,6 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="tab3" role="tabpanel">
-                        {{-- <div class="mt-3">
-                            <div class="d-flex p-3">
-                                <div class="form-check"><input class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault1" checked="" /> <label
-                                        class="form-check-label" for="flexCheckDefault1"> Do Even More... </label>
-                                </div>
-                                <span class="ms-auto">
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-title="Edit"
-                                        data-bs-placement="top"><i class="si si-pencil text-primary me-2"></i></a>
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-title="Delete"
-                                        data-bs-placement="top"><i class="si si-trash text-danger me-2"></i></a>
-                                </span>
-                            </div>
-                            <div class="d-flex p-3 border-top">
-                                <div class="form-check"><input class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault2" checked="" /> <label
-                                        class="form-check-label" for="flexCheckDefault2"> Find an idea. </label></div>
-                                <span class="ms-auto">
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Edit" data-bs-original-title="Edit"><i
-                                            class="si si-pencil text-primary me-2"></i></a>
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Delete" data-bs-original-title="Delete"><i
-                                            class="si si-trash text-danger me-2"></i></a>
-                                </span>
-                            </div>
-                            <div class="d-flex p-3 border-top">
-                                <div class="form-check"><input class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault3" checked="" /> <label
-                                        class="form-check-label" for="flexCheckDefault3"> Hangout with friends
-                                    </label></div>
-                                <span class="ms-auto">
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Edit" data-bs-original-title="Edit"><i
-                                            class="si si-pencil text-primary me-2"></i></a>
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Delete" data-bs-original-title="Delete"><i
-                                            class="si si-trash text-danger me-2"></i></a>
-                                </span>
-                            </div>
-                            <div class="d-flex p-3 border-top">
-                                <div class="form-check"><input class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault4" /> <label class="form-check-label"
-                                        for="flexCheckDefault4"> Do Something else </label></div>
-                                <span class="ms-auto">
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Edit" data-bs-original-title="Edit"><i
-                                            class="si si-pencil text-primary me-2"></i></a>
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Delete" data-bs-original-title="Delete"><i
-                                            class="si si-trash text-danger me-2"></i></a>
-                                </span>
-                            </div>
-                            <div class="d-flex p-3 border-top">
-                                <div class="form-check"><input class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault5" /> <label class="form-check-label"
-                                        for="flexCheckDefault5"> Eat healthy, Eat Fresh.. </label></div>
-                                <span class="ms-auto">
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Edit" data-bs-original-title="Edit"><i
-                                            class="si si-pencil text-primary me-2"></i></a>
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Delete" data-bs-original-title="Delete"><i
-                                            class="si si-trash text-danger me-2"></i></a>
-                                </span>
-                            </div>
-                            <div class="d-flex p-3 border-top">
-                                <div class="form-check"><input class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault6" checked="" /> <label
-                                        class="form-check-label" for="flexCheckDefault6"> Finsh something more..
-                                    </label></div>
-                                <span class="ms-auto">
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Edit" data-bs-original-title="Edit"><i
-                                            class="si si-pencil text-primary me-2"></i></a>
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Delete" data-bs-original-title="Delete"><i
-                                            class="si si-trash text-danger me-2"></i></a>
-                                </span>
-                            </div>
-                            <div class="d-flex p-3 border-top">
-                                <div class="form-check"><input class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault7" checked="" /> <label
-                                        class="form-check-label" for="flexCheckDefault7"> Do something more </label>
-                                </div>
-                                <span class="ms-auto">
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Edit" data-bs-original-title="Edit"><i
-                                            class="si si-pencil text-primary me-2"></i></a>
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Delete" data-bs-original-title="Delete"><i
-                                            class="si si-trash text-danger me-2"></i></a>
-                                </span>
-                            </div>
-                            <div class="d-flex p-3 border-top">
-                                <div class="form-check"><input class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault8" /> <label class="form-check-label"
-                                        for="flexCheckDefault8"> Updated more files </label></div>
-                                <span class="ms-auto">
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Edit" data-bs-original-title="Edit"><i
-                                            class="si si-pencil text-primary me-2"></i></a>
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Delete" data-bs-original-title="Delete"><i
-                                            class="si si-trash text-danger me-2"></i></a>
-                                </span>
-                            </div>
-                            <div class="d-flex p-3 border-top">
-                                <div class="form-check"><input class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault9" /> <label class="form-check-label"
-                                        for="flexCheckDefault9"> System updated </label></div>
-                                <span class="ms-auto">
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Edit" data-bs-original-title="Edit"><i
-                                            class="si si-pencil text-primary me-2"></i></a>
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Delete" data-bs-original-title="Delete"><i
-                                            class="si si-trash text-danger me-2"></i></a>
-                                </span>
-                            </div>
-                            <div class="d-flex p-3 border-top border-bottom">
-                                <div class="form-check"><input class="form-check-input" type="checkbox"
-                                        value="" id="flexCheckDefault10" /> <label class="form-check-label"
-                                        for="flexCheckDefault10"> Settings Changings... </label></div>
-                                <span class="ms-auto">
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Edit" data-bs-original-title="Edit"><i
-                                            class="si si-pencil text-primary me-2"></i></a>
-                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        aria-label="Delete" data-bs-original-title="Delete"><i
-                                            class="si si-trash text-danger me-2"></i></a>
-                                </span>
-                            </div>
-                            <div class="text-center pt-5"><a href="javascript:void(0);" class="btn btn-primary">Add more</a></div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -537,85 +265,7 @@
                             class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
-                <!-- End::header-content-left -->
-                <!-- Start::header-content-right -->
                 <div class="header-content-right">
-                    <!-- Start::header-element -->
-                    {{-- <div class="header-element country-selector">
-                        <!-- Start::header-link|dropdown-toggle -->
-                        <a href="javascript:void(0);" class="header-link dropdown-toggle"
-                            data-bs-auto-close="outside" data-bs-toggle="dropdown">
-                            <img src="https://www.spruko.com/demo/xino/dist/assets/images/flags/us_flag.jpg"
-                                alt="img" class="rounded-circle header-link-icon" />
-                        </a>
-                        <!-- End::header-link|dropdown-toggle -->
-                        <ul class="main-header-dropdown dropdown-menu dropdown-menu-end" data-popper-placement="none">
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
-                                    <span class="avatar avatar-xs lh-1 me-2"> <img
-                                            src="https://www.spruko.com/demo/xino/dist/assets/images/flags/us_flag.jpg"
-                                            alt="img" /> </span> English
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
-                                    <span class="avatar avatar-xs lh-1 me-2"> <img
-                                            src="https://www.spruko.com/demo/xino/dist/assets/images/flags/us_flag.jpg"
-                                            alt="img" /> </span> Spanish
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
-                                    <span class="avatar avatar-xs lh-1 me-2"> <img
-                                            src="https://www.spruko.com/demo/xino/dist/assets/images/flags/us_flag.jpg"
-                                            alt="img" /> </span> French
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
-                                    <span class="avatar avatar-xs lh-1 me-2"> <img
-                                            src="https://www.spruko.com/demo/xino/dist/assets/images/flags/us_flag.jpg"
-                                            alt="img" /> </span> German
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
-                                    <span class="avatar avatar-xs lh-1 me-2"> <img
-                                            src="https://www.spruko.com/demo/xino/dist/assets/images/flags/us_flag.jpg"
-                                            alt="img" /> </span> Italian
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0);">
-                                    <span class="avatar avatar-xs lh-1 me-2"> <img
-                                            src="https://www.spruko.com/demo/xino/dist/assets/images/flags/us_flag.jpg"
-                                            alt="img" /> </span> Russian
-                                </a>
-                            </li>
-                        </ul>
-                    </div> --}}
-                    <!-- End::header-element -->
-                    <!-- Start::header-element -->
-                    {{-- <div class="header-element header-theme-mode">
-                        <!-- Start::header-link|layout-setting -->
-                        <a href="javascript:void(0);" class="header-link layout-setting">
-                            <span class="light-layout lh-1">
-                                <!-- Start::header-link-icon -->
-                                <i class="fe fe-moon header-link-icon"></i>
-                                <!-- End::header-link-icon -->
-                            </span>
-                            <span class="dark-layout lh-1">
-                                <!-- Start::header-link-icon -->
-                                <i class="fe fe-sun header-link-icon"></i>
-                                <!-- End::header-link-icon -->
-                            </span>
-                        </a>
-                        <!-- End::header-link|layout-setting -->
-                    </div> --}}
-                    <!-- End::header-element -->
-                    <!-- Start::header-element -->
-                    <!-- End::header-element -->
-                    <!-- Start::header-element -->
                     <div class="header-element header-messages-dropdown d-sm-flex d-none">
                         <!-- Start::header-link|dropdown-toggle -->
                         <a href="javascript:void(0);" class="header-link dropdown-toggle"
@@ -653,7 +303,7 @@
                                                                 <div
                                                                     class="d-flex align-items-start justify-content-between mb-0">
                                                                     <div class="mb-0 fs-14 text-dark"><a
-                                                                            href="mail.html">Paul Molive</a></div>
+                                                                            href="#">Paul Molive</a></div>
                                                                     <div>
                                                                         <p class="fs-11 mb-0 text-muted">10 min ago</p>
                                                                     </div>
@@ -674,7 +324,7 @@
                                                                 <div
                                                                     class="d-flex align-items-start justify-content-between mb-0">
                                                                     <div class="mb-0 fs-14 text-dark"><a
-                                                                            href="mail.html">Sahar Dary</a></div>
+                                                                            href="#">Sahar Dary</a></div>
                                                                     <div>
                                                                         <p class="fs-11 mb-0 text-muted">13 min ago</p>
                                                                     </div>
@@ -695,7 +345,7 @@
                                                                 <div
                                                                     class="d-flex align-items-start justify-content-between mb-0">
                                                                     <div class="mb-0 fs-14 text-dark"><a
-                                                                            href="mail.html">Khadija Mehr</a></div>
+                                                                            href="#">Khadija Mehr</a></div>
                                                                     <div>
                                                                         <p class="fs-11 mb-0 text-muted">20 min ago</p>
                                                                     </div>
@@ -716,7 +366,7 @@
                                                                 <div
                                                                     class="d-flex align-items-start justify-content-between mb-0">
                                                                     <div class="mb-0 fs-14 text-dark"><a
-                                                                            href="mail.html">Barney Cull</a></div>
+                                                                            href="#">Barney Cull</a></div>
                                                                     <div>
                                                                         <p class="fs-11 mb-0 text-muted">30 min ago</p>
                                                                     </div>
@@ -738,7 +388,7 @@
                                                                 <div
                                                                     class="d-flex align-items-start justify-content-between mb-0">
                                                                     <div class="mb-0 fs-14 text-dark"><a
-                                                                            href="mail.html">Petey Cruiser</a></div>
+                                                                            href="#">Petey Cruiser</a></div>
                                                                     <div>
                                                                         <p class="fs-11 mb-0 text-muted">35 min ago</p>
                                                                     </div>
@@ -975,17 +625,6 @@
                         </div>
                         <!-- End::main-header-dropdown -->
                     </div>
-                    <!-- End::header-element -->
-                    <!-- Start::header-element -->
-                    {{-- <div class="header-element header-fullscreen">
-                        <!-- Start::header-link -->
-                        <a onclick="openFullscreen();" href="javascript:void(0);" class="header-link">
-                            <i class="fe fe-maximize full-screen-open header-link-icon"></i> <i class="fe fe-minimize full-screen-close header-link-icon d-none"></i>
-                        </a>
-                        <!-- End::header-link -->
-                    </div> --}}
-                    <!-- End::header-element -->
-                    <!-- Start::header-element -->
                     <div class="header-element">
                         <a href="javascript:void(0);" class="header-link" data-bs-toggle="offcanvas"
                             data-bs-target="#rightsidebar-canvas"> <i
@@ -1003,8 +642,8 @@
                                         alt="img" width="32" height="32" class="rounded-circle" />
                                 </div>
                                 <div class="d-sm-block d-none">
-                                    <p class="fw-semibold mb-0">{{Session:get('user_name')}}</p>
-                                    <span class="op-7 fw-normal d-block fs-11 lh-1">{{Session:get('user_role')}} System</span>
+                                    <p class="fw-semibold mb-0">{{Session::get('user_name')}}</p>
+                                    <span class="op-7 fw-normal d-block fs-11 lh-1">{{Session::get('user_role')}} System</span>
                                 </div>
                             </div>
                         </a>
@@ -1015,15 +654,15 @@
                                 <div class="">
                                     <div class="avatar avatar-xl rounded-circle"><img alt=""
                                             class="rounded-circle"
-                                            src="https://cdn.24h.com.vn/upload/3-2022/images/2022-08-19/Gai-xinh-ngay-tho-lo-qua-khu-277585438_4600347833405176_193249803126218059_n-1660905398-70-width1754height2048.jpg" />
+                                            src="{{Session::get('user_avatar')}}" />
                                     </div>
-                                    <p class="text-fixed-white fs-18 fw-semibold mb-0">Elizabeth Jane</p>
-                                    <span class="fs-13 text-fixed-white">Premium Member</span>
+                                    <p class="text-fixed-white fs-18 fw-semibold mb-0">{{Session::get('user_name')}}</p>
+                                    <span class="fs-13 text-fixed-white">{{Session::get('user_role')}} System</span>
                                 </div>
                             </div>
                             <div>
-                                <a class="dropdown-item" href="profile.html"><i class="fa fa-user me-1"></i> My Profile</a> <a class="dropdown-item" href="profile.html"><i class="fa fa-edit me-1"></i> Edit Profile</a>
-                                <a class="dropdown-item" href="settings.html"><i class="fa fa-sliders-h me-1"></i> Account Settings</a>
+                                <a class="dropdown-item" href="{{route('myProfile')}}"><i class="fa fa-user me-1"></i> My Profile</a> <a class="dropdown-item" href="{{route('myProfile')}}"><i class="fa fa-edit me-1"></i> Edit Profile</a>
+                                <a class="dropdown-item" href="{{route('myProfile')}}"><i class="fa fa-sliders-h me-1"></i> Account Settings</a>
                                 <a class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" href="{{route('logout')}}"><i class="fa fa-sign-out-alt me-1"></i> Sign Out</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -1072,9 +711,9 @@
                                             <!-- Start::slide -->
                                             <li class="slide active">
                                                 <a style="background-color: rgba(255, 255, 255, .05);color: #fff !important;"
-                                                    href="" class="side-menu__item active"><i
+                                                    href="{{route('dashboard')}}" class="side-menu__item active"><i
                                                         style="color: #fff !important; fill: #fff !important;"
-                                                        class=" side-menu__icon fa-solid fa-desktop"></i><span
+                                                        class=" side-menu__icon fa-solid fa-gauge"></i><span
                                                         style="color: #fff !important; fill: #fff !important;"
                                                         class="side-menu__label">Dashboard</span> </a>
                                             </li>
@@ -1109,71 +748,38 @@
                                             <!-- End::slide -->
                                             <!-- Start::slide__category -->
                                             <li class="slide__category"><span class="category-name">Project</span></li>
-                                            <!-- End::slide__category -->
-                                            <!-- Start::slide -->
-                                            <li class="slide has-sub">
-                                                <a href="javascript:void(0);" class="side-menu__item">
-                                                    <i class="side-menu__icon  fa-regular fa-folder-open"></i> <span class="side-menu__label">Project</span> <i class="fa fa-chevron-right side-menu__angle"></i>
-                                                </a>
-                                                <ul class="slide-menu child1" style="position: relative; left: 0px; top: 0px; margin: 0px; transform: translate(120px, 630px);" data-popper-placement="bottom">
-                                                    <li class="slide side-menu__label1"><a href="javascript:void(0)">Project</a></li>
-                                                    <li class="slide has-sub">
-                                                        <a href="javascript:void(0);" class="side-menu__item">Form
-                                                            Elements <i
-                                                                class="fe fe-chevron-right side-menu__angle"></i></a>
-                                                        <ul class="slide-menu child2">
-                                                            <li class="slide"><a href="" class="side-menu__item">Inputs</a></li>
-                                                            <li class="slide"><a href="" class="side-menu__item">Checks &amp; Radios</a></li>
-                                                            <li class="slide"><a href="" class="side-menu__item">Input Group</a></li>
-                                                            <li class="slide"><a href="" class="side-menu__item">Form Select</a></li>
-                                                            <li class="slide"><a href="" class="side-menu__item">Range Slider</a></li>
-                                                            <li class="slide"><a href="" class="side-menu__item">Input Masks</a></li>
-                                                            <li class="slide"><a href="" class="side-menu__item">File Uploads</a></li>
-                                                            <li class="slide"><a href="" class="side-menu__item">Date,Time Picker</a></li>
-                                                            <li class="slide"><a href="" class="side-menu__item">Color Pickers</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="slide"><a href="floating_labels.html"
-                                                            class="side-menu__item">Floating Labels</a></li>
-                                                    <li class="slide"><a href="form_layout.html"
-                                                            class="side-menu__item">Form Layouts</a></li>
-                                                    <li class="slide has-sub">
-                                                        <a href="javascript:void(0);" class="side-menu__item">Form
-                                                            Editors <i
-                                                                class="fe fe-chevron-right side-menu__angle"></i></a>
-                                                        <ul class="slide-menu child2">
-                                                            <li class="slide"><a href="quill_editor.html"
-                                                                    class="side-menu__item">Quill Editor</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="slide"><a href="form_validation.html"
-                                                            class="side-menu__item">Validation</a></li>
-                                                    <li class="slide"><a href="form_select2.html"
-                                                            class="side-menu__item">Select2</a></li>
-                                                </ul>
+                                            <li class="slide">
+                                                <a style="background-color: rgba(255, 255, 255, .05);color: #fff !important;"
+                                                    href="{{route('dashboard')}}" class="side-menu__item active"><i
+                                                        style="color: #fff !important; fill: #fff !important;"
+                                                        class=" side-menu__icon fa-solid fa-briefcase"></i><span
+                                                        style="color: #fff !important; fill: #fff !important;"
+                                                        class="side-menu__label">Project</span> </a>
                                             </li>
-                                            <li class="slide__category"><span class="category-name">Tickets</span></li>
-                                            <li class="slide has-sub">
-                                                <a href="javascript:void(0);" class="side-menu__item">
-                                                    <i class="side-menu__icon fa-solid fa-clipboard-list"></i> <span class="side-menu__label">Tickets</span> <i class="fa fa-chevron-right side-menu__angle"></i>
-                                                </a>
-                                                <ul class="slide-menu child1" style="position: relative; left: 0px; top: 0px; margin: 0px; transform: translate(120px, 772px);" data-popper-placement="bottom">
-                                                    <li class="slide side-menu__label1"><a href="javascript:void(0)">Tickets</a></li>
-                                                    <li class="slide has-sub">
-                                                        <a href="javascript:void(0);" class="side-menu__item">Blog
-                                                            <i class="fe fe-chevron-right side-menu__angle"></i></a>
-                                                        <ul class="slide-menu child2">
-                                                            <li class="slide"><a href="blog.html"
-                                                                    class="side-menu__item">Blog</a></li>
-                                                            <li class="slide"><a href="blog-details.html"
-                                                                    class="side-menu__item">Blog Details</a></li>
-                                                            <li class="slide"><a href="blog-post.html"
-                                                                    class="side-menu__item">Blog Post</a></li>
-                                                        </ul>
-                                                    </li>
-
-                                                </ul>
-                                            </li>
+                                            @if (Session::get('user_role') == 'ADMIN')
+                                                <li class="slide__category">
+                                                    <span class="category-name">Tickets</span>
+                                                </li>
+                                                <li class="slide has-sub">
+                                                    <a href="javascript:void(0);" class="side-menu__item">
+                                                        <i class="side-menu__icon fa-solid fa-clipboard-list"></i>
+                                                        <span class="side-menu__label">Tickets</span>
+                                                        <i class="fa fa-chevron-right side-menu__angle"></i>
+                                                    </a>
+                                                    <ul class="slide-menu child1" style="position: relative; left: 0px; top: 0px; margin: 0px; transform: translate(120px, 772px);" data-popper-placement="bottom">
+                                                        <li class="slide side-menu__label1"><a href="javascript:void(0)">Tickets</a></li>
+                                                        <li class="slide has-sub">
+                                                            <a href="javascript:void(0);" class="side-menu__item">
+                                                                Blog
+                                                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                                                            </a>
+                                                            <ul class="slide-menu child2">
+                                                                <li class="slide"><a href="blog.html" class="side-menu__item">Blog</a></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            @endif
                                         </ul>
                                         <div class="slide-right d-none" id="slide-right">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"
@@ -1207,78 +813,6 @@
                 @yield('content')
             </div>
         </div>
-        <!-- End::app-content -->
-        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModal"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="input-group">
-                            <a href="javascript:void(0);" class="input-group-text" id="Search-Grid"><i
-                                    class="fe fe-search header-link-icon fs-18"></i></a>
-                            <input type="search" class="form-control border-0 px-2" placeholder="Search"
-                                aria-label="Username" />
-                            <a href="javascript:void(0);" class="input-group-text" id="voice-search"><i
-                                    class="fe fe-mic header-link-icon"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-light btn-icon" data-bs-toggle="dropdown"
-                                aria-expanded="false"> <i class="fe fe-more-vertical"></i> </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
-                                <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
-                                <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:void(0);">Separated link</a></li>
-                            </ul>
-                        </div>
-                        <div class="mt-4">
-                            <p class="fw-semibold text-muted mb-2">Are You Looking For...</p>
-                            <span class="search-tags">
-                                <i class="fe fe-user me-2"></i>People<a href="javascript:void(0)"
-                                    class="tag-addon"><i class="fe fe-x"></i></a>
-                            </span>
-                            <span class="search-tags">
-                                <i class="fe fe-file-text me-2"></i>Pages<a href="javascript:void(0)"
-                                    class="tag-addon"><i class="fe fe-x"></i></a>
-                            </span>
-                            <span class="search-tags">
-                                <i class="fe fe-align-left me-2"></i>Articles<a href="javascript:void(0)"
-                                    class="tag-addon"><i class="fe fe-x"></i></a>
-                            </span>
-                            <span class="search-tags">
-                                <i class="fe fe-server me-2"></i>Tags<a href="javascript:void(0)"
-                                    class="tag-addon"><i class="fe fe-x"></i></a>
-                            </span>
-                        </div>
-                        <div class="my-4">
-                            <p class="fw-semibold text-muted mb-2">Recent Search :</p>
-                            <div class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert">
-                                <a href="notifications.html"><span>Notifications</span></a> <a class="ms-auto lh-1"
-                                    href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i
-                                        class="fe fe-x text-muted"></i></a>
-                            </div>
-                            <div class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert">
-                                <a href="alerts.html"><span>Alerts</span></a> <a class="ms-auto lh-1"
-                                    href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i
-                                        class="fe fe-x text-muted"></i></a>
-                            </div>
-                            <div class="p-2 border br-5 d-flex align-items-center text-muted mb-0 alert">
-                                <a href="mail.html"><span>Mail</span></a> <a class="ms-auto lh-1"
-                                    href="javascript:void(0);" data-bs-dismiss="alert" aria-label="Close"><i
-                                        class="fe fe-x text-muted"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="btn-group ms-auto"><button class="btn btn-sm btn-primary-light">Search</button>
-                            <button class="btn btn-sm btn-primary">Clear Recents</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer Start -->
         <footer class="footer mt-auto py-3 bg-white text-center">
             <div class="container">
                 <span class="text-muted">

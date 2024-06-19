@@ -20,10 +20,10 @@
         <div class="card mg-b-20">
             <div class="card-body p-0">
                 <div class="p-3">
-                    <div class="avatar avatar-xxl mb-3"><img alt="" class="rounded-circle" src="https://cdn.24h.com.vn/upload/3-2022/images/2022-08-19/Gai-xinh-ngay-tho-lo-qua-khu-277585438_4600347833405176_193249803126218059_n-1660905398-70-width1754height2048.jpg" /><a class="fa fa-camera profile-icon fs-14 text-primary" href="JavaScript:void(0);"></a></div>
+                    <div class="avatar avatar-xxl mb-3"><img alt="" class="rounded-circle" src="{{Session::get('user_avatar')}}"></a></div>
                     <div class="d-flex justify-content-between mg-b-20">
                         <div class="">
-                            <h5 class="main-profile-name">Mintrona Pechon</h5>
+                            <h5 class="main-profile-name">{{Session::get('user_name')}}</h5>
                             <p class="main-profile-name-text">Web Designer</p>
                         </div>
                         <div class="btn-list">
@@ -62,7 +62,7 @@
                             <div class="media-icon bg-primary-transparent text-primary"><i class="fa-brands fa-github"></i></div>
                             <div class="media-body">
                                 <h6 class="mb-0 text-dark">Github</h6>
-                                <a href="" class="text-primary">github.com/bugbuster</a>
+                                <a href="https://github.com/CNG03/BugBuster" class="text-primary">github.com/bugbuster</a>
                             </div>
                         </div>
                         <div class="media">
@@ -77,13 +77,6 @@
                             <div class="media-body">
                                 <h6 class="mb-0 text-dark">Linkedin</h6>
                                 <a href="" class="text-primary">linkedin.com/in/bugbuster</a>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="media-icon bg-danger-transparent text-danger"><i class="fa-solid fa-link"></i></div>
-                            <div class="media-body">
-                                <h6 class="mb-0">My Portfolio</h6>
-                                <a href="" class="text-primary">bugbuster.com/</a>
                             </div>
                         </div>
                     </div>
