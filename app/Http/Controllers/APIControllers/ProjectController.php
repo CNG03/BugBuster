@@ -60,6 +60,9 @@ class ProjectController extends Controller
     {
         $this->authorize('view', $project);
 
+
+        $project = Project::with('admin', 'projectMembers')->findOrFail($project->id);
+
         return new ProjectResource($project);
     }
 

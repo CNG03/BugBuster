@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->unsignedBigInteger('admin_id');
+            $table->boolean('is_complete')->default('false');
             $table->timestamps();
 
             $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
