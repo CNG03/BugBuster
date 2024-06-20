@@ -14,6 +14,7 @@ Route::middleware([
         Route::get('/projects', [ProjectController::class, 'index'])->name('index');
         Route::get('/projects/{project}',  [ProjectController::class, 'show'])->name('show');
         Route::post('/projects',  [ProjectController::class, 'store'])->name('store');
+        Route::post('/projects/close/{project}', [ProjectController::class, 'closeProject'])->name("closeProject");
         Route::patch('/projects/{project}',  [ProjectController::class, 'update'])->name('update');
         Route::delete('/projects/{project}',  [ProjectController::class, 'destroy'])->name('delete');
     });

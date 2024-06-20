@@ -42,6 +42,11 @@ class ProjectPolicy
         return $user->role === 'ADMIN' && $user->id === $project->admin_id;
     }
 
+    public function complete(User $user, Project $project)
+    {
+        return $user->role === 'ADMIN' || $project->isManager($user);
+    }
+
     /**
      * Determine whether the user can delete the model.
      */

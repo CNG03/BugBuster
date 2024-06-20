@@ -43,4 +43,24 @@ class ProjectRepository
 
         throw_if(!$deleted, CustomQueryException::class, 'Error occurred while deleting the project.');
     }
+
+    public function closeProject(Project $project)
+    {
+        $tickets = $project->tickets()->with(['histories' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->get();
+
+        $allTicketsClosed = $tickets->every(function ($ticket) {
+            $latestHistory = $ticket->histories->first();
+            return $latestHistory && $latestHistory->status === 'Closed';
+        });
+
+        if ($allTicketsClosed) {
+            $project->is_complete = true;
+            $project->save();
+
+            return true;
+        }
+        return false;
+    }
 }

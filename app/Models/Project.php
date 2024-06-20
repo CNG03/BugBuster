@@ -37,4 +37,9 @@ class Project extends Model
     {
         return $this->projectMembers()->where('user_id', $user->id)->exists();
     }
+
+    public function isManager(User $user)
+    {
+        return $this->projectMembers()->where('user_id', $user->id)->where('role_in_project', 'MANAGER')->exists();
+    }
 }
