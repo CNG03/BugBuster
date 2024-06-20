@@ -4,6 +4,7 @@ use App\Http\Controllers\APIControllers\auth\AccessController;
 use App\Http\Controllers\APIControllers\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIControllers\auth\ForgotPasswordController;
+use App\Http\Controllers\ProjectDetailController;
 use App\Http\Controllers\WebControllers\WebTicketController;
 use App\Http\Controllers\WebControllers\DashboardController;
 use App\Http\Middleware\AddAuthorizationHeader;
@@ -68,7 +69,7 @@ Route::get('/test', function () {
     return view('layouts.app');
 });
 Route::get('/tickets', function () {
-    return view('layouts.tickets');
+    return view('layouts.tickets_all');
 });
 
 Route::get('/tickets/detail', function () {
@@ -88,4 +89,7 @@ Route::post('/project/ticket/status', [WebTicketController::class, 'updateStatus
 Route::get('/project/ticket/detail/{ticketID}', [WebTicketController::class, 'ticketDetail'])->name('ticketDetail')->middleware(AdminMiddleware::class);
 Route::get('/project/ticket/edit/{ticketID}', [WebTicketController::class, 'editTicket'])->name('editTicket')->middleware(AdminMiddleware::class);
 Route::post('/project/ticket/edit/{ticketID}', [WebTicketController::class, 'updateTicket'])->name('updateTicket')->middleware(AdminMiddleware::class);
+
+
+Route::get('/project/detail/{projectID}', [ProjectDetailController::class, 'index'])->name('projectDetail')->middleware(AdminMiddleware::class);
 

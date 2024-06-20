@@ -11,16 +11,18 @@ use Illuminate\Support\Facades\Session;
 
 class WebTicketController extends Controller
 {
-    public function allTickets(Request $request, $projectID) {
+    public function allTickets(Request $request, $projectID)
+    {
         // Thêm header vào request
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'), // Thay thế API_TOKEN bằng token của bạn
-        ])->get('http://127.0.0.1:7000/api/v1/tickets/created/'.$projectID, [
-            'page' => $request->input('page', 1)]);
+        ])->get('http://127.0.0.1:7000/api/v1/project/tickets/' . $projectID, [
+            'page' => $request->input('page', 1)
+        ]);
 
         $response1 = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'), // Thay thế API_TOKEN bằng token của bạn
-        ])->get('http://127.0.0.1:7000/api/v1/user/role/'.$projectID);
+        ])->get('http://127.0.0.1:7000/api/v1/user/role/' . $projectID);
 
         if ($response1->successful()) {
             $role = $response1->json();
@@ -32,38 +34,39 @@ class WebTicketController extends Controller
             $dashboard = $response->json();
             $paginationLinks = $dashboard['links'];
             $paginationMeta = $dashboard['meta'];
-            return view('layouts.tickets-all', compact('dashboard', 'paginationLinks', 'paginationMeta', 'role'));
+            return view('layouts.tickets_all', compact('dashboard', 'paginationLinks', 'paginationMeta', 'role'));
         } else {
             abort(500, 'Internal Server Error');
         }
-        
     }
-    public function createdTickets(Request $request, $projectID) {
+    public function createdTickets(Request $request, $projectID)
+    {
         // Thêm header vào request
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
-        ])->get('http://127.0.0.1:7000/api/v1/tickets/created/'.$projectID, [
-            'page' => $request->input('page', 1)]);
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->get('http://127.0.0.1:7000/api/v1/tickets/created/' . $projectID, [
+            'page' => $request->input('page', 1)
+        ]);
 
         $response1 = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
-        ])->get('http://127.0.0.1:7000/api/v1/user/role/'.$projectID);
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->get('http://127.0.0.1:7000/api/v1/user/role/' . $projectID);
 
         $response2 = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
         ])->get('http://127.0.0.1:7000/api/v1/bugtypes');
 
         $response3 = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
         ])->get('http://127.0.0.1:7000/api/v1/testtypes');
 
         $response3 = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
         ])->get('http://127.0.0.1:7000/api/v1/testtypes');
 
         $response4 = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
-        ])->get('http://127.0.0.1:7000/api/v1/projectmembers/'.$projectID);
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->get('http://127.0.0.1:7000/api/v1/projectmembers/' . $projectID);
 
         if ($response1->successful()) {
             $role = $response1->json();
@@ -90,7 +93,7 @@ class WebTicketController extends Controller
 
         if ($response4->successful()) {
             $data4 = $response4->json();
-            $developers = array_filter($data4['data'], function($member) {
+            $developers = array_filter($data4['data'], function ($member) {
                 return $member['role_in_project'] === 'DEVELOPER';
             });
         } else {
@@ -103,12 +106,11 @@ class WebTicketController extends Controller
             $dashboard = $response->json();
             $paginationLinks = $dashboard['links'];
             $paginationMeta = $dashboard['meta'];
-            return view('layouts.tickets_created', compact('dashboard', 'paginationLinks', 'paginationMeta', 'role', 'bugTypes', 'testTypes','developers', 'projectID'));
+            return view('layouts.tickets_created', compact('dashboard', 'paginationLinks', 'paginationMeta', 'role', 'bugTypes', 'testTypes', 'developers', 'projectID'));
         } else {
             $status = $response->status();
             abort(500, 'Internal Server Error, status code: ' . $status);
         }
-        
     }
     public function createTicket(Request $request) {
         // Chuyển đổi định dạng ngày
@@ -236,7 +238,6 @@ class WebTicketController extends Controller
             $status = $response->status();
             abort(500, 'Internal Server Error, status code: ' . $status);
         }
-        
     }
 
     public function ticketDetail($ticketId)
