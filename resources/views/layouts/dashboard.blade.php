@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'My Profile | Bug Buster')
+@section('title', 'Dashboard | Bug Buster')
 
 @section('custom-css')
     <link rel="stylesheet" href="{{ asset('assets') }}/css/dashboard/main.css">
@@ -224,303 +224,448 @@
 
 
 {{-- Phan task detail --}}
-
-
-<div class="Day-styles__root planner-day">
-    <h2 class="fOyUs_bGBk blnAQ_bGBk blnAQ_cVrl blnAQ_drOs"><div class="Day-styles__secondary">Wednesday, September 13, 2023</div></h2>
-    <div>
-        <div class="Grouping-styles__root planner-grouping" style="--bDBte-titleColor: #199eb7;">
-            <div class="NotificationBadge-styles__activityIndicator NotificationBadge-styles__hasBadge">
-                <div><span class="fOyUs_bGBk fOyUs_cuDs cECYn_bGBk cECYn_KksD cECYn_bXiG cECYn_dDWY cECYn_bXgF cECYn_bBTa"></span><span class="ergWt_bGBk">New activity for Đồ án cơ sở học kỳ I năm học 2023 - 2024</span></div>
-            </div>
-            <a href="/courses/7095" class="Grouping-styles__hero Grouping-styles__heroHover" style="background-image: url('');">
-                <span class="Grouping-styles__overlay" style="background-color: rgb(25, 158, 183);"></span><span class="Grouping-styles__title">Đồ án cơ sở học kỳ I năm học 2023 - 2024</span>
-            </a>
-            <ol class="Grouping-styles__items" style="border-color: rgb(25, 158, 183);">
-                <li>
-                    <div class="PlannerItem-styles__root planner-item">
-                        <div class="PlannerItem-styles__completed">
-                            <div class="epRMX_bGBk">
-                                <input id="uUx7fkmVLYCK" type="checkbox" class="epRMX_cwos" value="" />
-                                <label for="uUx7fkmVLYCK" class="epRMX_bOnW">
-                                    <span class="yyQPt_bGBk yyQPt_ycrn" style="--yyQPt-borderColor: #199eb7; --yyQPt-checkedBackground: #199eb7; --yyQPt-checkedBorderColor: #199eb7; --yyQPt-hoverBorderColor: #199eb7;">
-                                        <span class="yyQPt_cSXm" aria-hidden="true"></span><span class="yyQPt_blJt"><span class="ergWt_bGBk">Announcement [Quan trọng] Danh sách phân công hướng dẫn ĐACS is not marked as done.</span></span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="PlannerItem-styles__icon" aria-hidden="true" style="color: rgb(25, 158, 183);">
-                            <svg
-                                name="IconAnnouncement"
-                                viewBox="0 0 1920 1920"
-                                rotate="0"
-                                width="1em"
-                                height="1em"
-                                aria-hidden="true"
-                                role="presentation"
-                                focusable="false"
-                                class="dUOHu_bGBk dUOHu_drOs dUOHu_eXrk cGqzL_bGBk cGqzL_owrh"
-                                style="width: 1em; height: 1em;"
-                            >
-                                <g role="presentation">
-                                    <path
-                                        d="M1587.16235,31.2784941 C1598.68235,7.78672942 1624.43294,-4.41091764 1650.63529,1.46202354 C1676.16,7.56084707 1694.11765,30.2620235 1694.11765,56.4643765 L1694.11765,56.4643765 L1694.11765,570.459671 C1822.87059,596.662024 1920,710.732612 1920,847.052612 C1920,983.372612 1822.87059,1097.55614 1694.11765,1123.75849 L1694.11765,1123.75849 L1694.11765,1637.64085 C1694.11765,1663.8432 1676.16,1686.65732 1650.63529,1692.6432 C1646.23059,1693.65967 1641.93882,1694.11144 1637.64706,1694.11144 C1616.52706,1694.11144 1596.87529,1682.36555 1587.16235,1662.93967 C1379.23765,1247.2032 964.178824,1242.34673 960,1242.34673 L960,1242.34673 L564.705882,1242.34673 L564.705882,1807.05261 L652.461176,1807.05261 C640.602353,1716.92555 634.955294,1560.05026 715.934118,1456.37026 C768.338824,1389.2832 845.590588,1355.28791 945.882353,1355.28791 L945.882353,1355.28791 L945.882353,1468.22908 C881.392941,1468.22908 835.312941,1487.09026 805.044706,1525.71614 C736.263529,1613.58438 759.981176,1789.54673 774.776471,1849.97026 C778.955294,1866.79849 775.115294,1884.6432 764.498824,1898.30908 C753.769412,1911.97496 737.28,1919.99379 720,1919.99379 L720,1919.99379 L508.235294,1919.99379 C477.063529,1919.99379 451.764706,1894.80791 451.764706,1863.5232 L451.764706,1863.5232 L451.764706,1242.34673 L395.294118,1242.34673 C239.548235,1242.34673 112.941176,1115.73967 112.941176,959.993788 L112.941176,959.993788 L112.941176,903.5232 L56.4705882,903.5232 C25.2988235,903.5232 0,878.337318 0,847.052612 C0,815.880847 25.2988235,790.582024 56.4705882,790.582024 L56.4705882,790.582024 L112.941176,790.582024 L112.941176,734.111435 C112.941176,578.478494 239.548235,451.758494 395.294118,451.758494 L395.294118,451.758494 L959.887059,451.758494 C976.828235,451.645553 1380.36706,444.756141 1587.16235,31.2784941 Z M1581.17647,249.706729 C1386.46588,492.078494 1128.96,547.871435 1016.47059,560.746729 L1016.47059,560.746729 L1016.47059,1133.47144 C1128.96,1146.34673 1386.46588,1202.02673 1581.17647,1444.51144 L1581.17647,1444.51144 Z M903.529412,564.699671 L395.294118,564.699671 C301.891765,564.699671 225.882353,640.709082 225.882353,734.111435 L225.882353,734.111435 L225.882353,959.993788 C225.882353,1053.39614 301.891765,1129.40555 395.294118,1129.40555 L395.294118,1129.40555 L903.529412,1129.40555 L903.529412,564.699671 Z M1694.11765,688.144376 L1694.11765,1006.07379 C1759.73647,982.694965 1807.05882,920.577318 1807.05882,847.052612 C1807.05882,773.527906 1759.73647,711.5232 1694.11765,688.144376 L1694.11765,688.144376 Z"
-                                        fill-rule="evenodd"
-                                        stroke="none"
-                                        stroke-width="1"
-                                    ></path>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="PlannerItem-styles__layout">
-                            <div class="PlannerItem-styles__innerLayout">
-                                <div class="PlannerItem-styles__details PlannerItem-styles__details_no_badges">
-                                    <div class="PlannerItem-styles__type">
-                                        <span color="secondary" wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG enRcg_bLsb">Đồ án cơ sở học kỳ I năm học 2023 - 2024 Announcement</span>
-                                    </div>
-                                    <a href="/courses/7095/discussion_topics/25755" class="fOyUs_bGBk fbyHH_bGBk fbyHH_bSMN">
-                                        <span class="ergWt_bGBk">Announcement [Quan trọng] Danh sách phân công hướng dẫn ĐACS posted Wednesday, September 13, 2023 11:33 AM.</span>
-                                        <span aria-hidden="true">[Quan trọng] Danh sách phân công hướng dẫn ĐACS</span>
-                                    </a>
-                                </div>
-                                <div class="PlannerItem-styles__secondary PlannerItem-styles__secondary_no_badges">
-                                    <div class="PlannerItem-styles__badges"></div>
-                                    <div class="PlannerItem-styles__metrics">
-                                        <div class="PlannerItem-styles__due">
-                                            <span wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG"><span aria-hidden="true">11:33 AM</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="PlannerItem-styles__root planner-item">
-                        <div class="PlannerItem-styles__completed">
-                            <div class="epRMX_bGBk">
-                                <input id="uKyfYgUuzDUT" type="checkbox" class="epRMX_cwos" value="" />
-                                <label for="uKyfYgUuzDUT" class="epRMX_bOnW">
-                                    <span class="yyQPt_bGBk yyQPt_ycrn" style="--yyQPt-borderColor: #199eb7; --yyQPt-checkedBackground: #199eb7; --yyQPt-checkedBorderColor: #199eb7; --yyQPt-hoverBorderColor: #199eb7;">
-                                        <span class="yyQPt_cSXm" aria-hidden="true"></span>
-                                        <span class="yyQPt_blJt"><span class="ergWt_bGBk">Announcement Link vào nhóm Zalo đồ án cơ sở cho các SV thầy Phạm Ngọc Hưng hướng dẫn is not marked as done.</span></span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="PlannerItem-styles__icon" aria-hidden="true" style="color: rgb(25, 158, 183);">
-                            <svg
-                                name="IconAnnouncement"
-                                viewBox="0 0 1920 1920"
-                                rotate="0"
-                                width="1em"
-                                height="1em"
-                                aria-hidden="true"
-                                role="presentation"
-                                focusable="false"
-                                class="dUOHu_bGBk dUOHu_drOs dUOHu_eXrk cGqzL_bGBk cGqzL_owrh"
-                                style="width: 1em; height: 1em;"
-                            >
-                                <g role="presentation">
-                                    <path
-                                        d="M1587.16235,31.2784941 C1598.68235,7.78672942 1624.43294,-4.41091764 1650.63529,1.46202354 C1676.16,7.56084707 1694.11765,30.2620235 1694.11765,56.4643765 L1694.11765,56.4643765 L1694.11765,570.459671 C1822.87059,596.662024 1920,710.732612 1920,847.052612 C1920,983.372612 1822.87059,1097.55614 1694.11765,1123.75849 L1694.11765,1123.75849 L1694.11765,1637.64085 C1694.11765,1663.8432 1676.16,1686.65732 1650.63529,1692.6432 C1646.23059,1693.65967 1641.93882,1694.11144 1637.64706,1694.11144 C1616.52706,1694.11144 1596.87529,1682.36555 1587.16235,1662.93967 C1379.23765,1247.2032 964.178824,1242.34673 960,1242.34673 L960,1242.34673 L564.705882,1242.34673 L564.705882,1807.05261 L652.461176,1807.05261 C640.602353,1716.92555 634.955294,1560.05026 715.934118,1456.37026 C768.338824,1389.2832 845.590588,1355.28791 945.882353,1355.28791 L945.882353,1355.28791 L945.882353,1468.22908 C881.392941,1468.22908 835.312941,1487.09026 805.044706,1525.71614 C736.263529,1613.58438 759.981176,1789.54673 774.776471,1849.97026 C778.955294,1866.79849 775.115294,1884.6432 764.498824,1898.30908 C753.769412,1911.97496 737.28,1919.99379 720,1919.99379 L720,1919.99379 L508.235294,1919.99379 C477.063529,1919.99379 451.764706,1894.80791 451.764706,1863.5232 L451.764706,1863.5232 L451.764706,1242.34673 L395.294118,1242.34673 C239.548235,1242.34673 112.941176,1115.73967 112.941176,959.993788 L112.941176,959.993788 L112.941176,903.5232 L56.4705882,903.5232 C25.2988235,903.5232 0,878.337318 0,847.052612 C0,815.880847 25.2988235,790.582024 56.4705882,790.582024 L56.4705882,790.582024 L112.941176,790.582024 L112.941176,734.111435 C112.941176,578.478494 239.548235,451.758494 395.294118,451.758494 L395.294118,451.758494 L959.887059,451.758494 C976.828235,451.645553 1380.36706,444.756141 1587.16235,31.2784941 Z M1581.17647,249.706729 C1386.46588,492.078494 1128.96,547.871435 1016.47059,560.746729 L1016.47059,560.746729 L1016.47059,1133.47144 C1128.96,1146.34673 1386.46588,1202.02673 1581.17647,1444.51144 L1581.17647,1444.51144 Z M903.529412,564.699671 L395.294118,564.699671 C301.891765,564.699671 225.882353,640.709082 225.882353,734.111435 L225.882353,734.111435 L225.882353,959.993788 C225.882353,1053.39614 301.891765,1129.40555 395.294118,1129.40555 L395.294118,1129.40555 L903.529412,1129.40555 L903.529412,564.699671 Z M1694.11765,688.144376 L1694.11765,1006.07379 C1759.73647,982.694965 1807.05882,920.577318 1807.05882,847.052612 C1807.05882,773.527906 1759.73647,711.5232 1694.11765,688.144376 L1694.11765,688.144376 Z"
-                                        fill-rule="evenodd"
-                                        stroke="none"
-                                        stroke-width="1"
-                                    ></path>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="PlannerItem-styles__layout">
-                            <div class="PlannerItem-styles__innerLayout">
-                                <div class="PlannerItem-styles__details PlannerItem-styles__details_no_badges">
-                                    <div class="PlannerItem-styles__type">
-                                        <span color="secondary" wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG enRcg_bLsb">Đồ án cơ sở học kỳ I năm học 2023 - 2024 Announcement</span>
-                                    </div>
-                                    <a href="/courses/7095/discussion_topics/25768" class="fOyUs_bGBk fbyHH_bGBk fbyHH_bSMN">
-                                        <span class="ergWt_bGBk">Announcement Link vào nhóm Zalo đồ án cơ sở cho các SV thầy Phạm Ngọc Hưng hướng dẫn posted Wednesday, September 13, 2023 1:42 PM.</span>
-                                        <span aria-hidden="true">Link vào nhóm Zalo đồ án cơ sở cho các SV thầy Phạm Ngọc Hưng hướng dẫn</span>
-                                    </a>
-                                </div>
-                                <div class="PlannerItem-styles__secondary PlannerItem-styles__secondary_no_badges">
-                                    <div class="PlannerItem-styles__badges"></div>
-                                    <div class="PlannerItem-styles__metrics">
-                                        <div class="PlannerItem-styles__due">
-                                            <span wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG"><span aria-hidden="true">1:42 PM</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="PlannerItem-styles__root planner-item">
-                        <div class="PlannerItem-styles__completed">
-                            <div class="epRMX_bGBk">
-                                <input id="ukGHCGTYpaLn" type="checkbox" class="epRMX_cwos" value="" />
-                                <label for="ukGHCGTYpaLn" class="epRMX_bOnW">
-                                    <span class="yyQPt_bGBk yyQPt_ycrn" style="--yyQPt-borderColor: #199eb7; --yyQPt-checkedBackground: #199eb7; --yyQPt-checkedBorderColor: #199eb7; --yyQPt-hoverBorderColor: #199eb7;">
-                                        <span class="yyQPt_cSXm" aria-hidden="true"></span><span class="yyQPt_blJt"><span class="ergWt_bGBk">Announcement Meeting: 01. GV Trịnh Thanh Bình is not marked as done.</span></span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="PlannerItem-styles__icon" aria-hidden="true" style="color: rgb(25, 158, 183);">
-                            <svg
-                                name="IconAnnouncement"
-                                viewBox="0 0 1920 1920"
-                                rotate="0"
-                                width="1em"
-                                height="1em"
-                                aria-hidden="true"
-                                role="presentation"
-                                focusable="false"
-                                class="dUOHu_bGBk dUOHu_drOs dUOHu_eXrk cGqzL_bGBk cGqzL_owrh"
-                                style="width: 1em; height: 1em;"
-                            >
-                                <g role="presentation">
-                                    <path
-                                        d="M1587.16235,31.2784941 C1598.68235,7.78672942 1624.43294,-4.41091764 1650.63529,1.46202354 C1676.16,7.56084707 1694.11765,30.2620235 1694.11765,56.4643765 L1694.11765,56.4643765 L1694.11765,570.459671 C1822.87059,596.662024 1920,710.732612 1920,847.052612 C1920,983.372612 1822.87059,1097.55614 1694.11765,1123.75849 L1694.11765,1123.75849 L1694.11765,1637.64085 C1694.11765,1663.8432 1676.16,1686.65732 1650.63529,1692.6432 C1646.23059,1693.65967 1641.93882,1694.11144 1637.64706,1694.11144 C1616.52706,1694.11144 1596.87529,1682.36555 1587.16235,1662.93967 C1379.23765,1247.2032 964.178824,1242.34673 960,1242.34673 L960,1242.34673 L564.705882,1242.34673 L564.705882,1807.05261 L652.461176,1807.05261 C640.602353,1716.92555 634.955294,1560.05026 715.934118,1456.37026 C768.338824,1389.2832 845.590588,1355.28791 945.882353,1355.28791 L945.882353,1355.28791 L945.882353,1468.22908 C881.392941,1468.22908 835.312941,1487.09026 805.044706,1525.71614 C736.263529,1613.58438 759.981176,1789.54673 774.776471,1849.97026 C778.955294,1866.79849 775.115294,1884.6432 764.498824,1898.30908 C753.769412,1911.97496 737.28,1919.99379 720,1919.99379 L720,1919.99379 L508.235294,1919.99379 C477.063529,1919.99379 451.764706,1894.80791 451.764706,1863.5232 L451.764706,1863.5232 L451.764706,1242.34673 L395.294118,1242.34673 C239.548235,1242.34673 112.941176,1115.73967 112.941176,959.993788 L112.941176,959.993788 L112.941176,903.5232 L56.4705882,903.5232 C25.2988235,903.5232 0,878.337318 0,847.052612 C0,815.880847 25.2988235,790.582024 56.4705882,790.582024 L56.4705882,790.582024 L112.941176,790.582024 L112.941176,734.111435 C112.941176,578.478494 239.548235,451.758494 395.294118,451.758494 L395.294118,451.758494 L959.887059,451.758494 C976.828235,451.645553 1380.36706,444.756141 1587.16235,31.2784941 Z M1581.17647,249.706729 C1386.46588,492.078494 1128.96,547.871435 1016.47059,560.746729 L1016.47059,560.746729 L1016.47059,1133.47144 C1128.96,1146.34673 1386.46588,1202.02673 1581.17647,1444.51144 L1581.17647,1444.51144 Z M903.529412,564.699671 L395.294118,564.699671 C301.891765,564.699671 225.882353,640.709082 225.882353,734.111435 L225.882353,734.111435 L225.882353,959.993788 C225.882353,1053.39614 301.891765,1129.40555 395.294118,1129.40555 L395.294118,1129.40555 L903.529412,1129.40555 L903.529412,564.699671 Z M1694.11765,688.144376 L1694.11765,1006.07379 C1759.73647,982.694965 1807.05882,920.577318 1807.05882,847.052612 C1807.05882,773.527906 1759.73647,711.5232 1694.11765,688.144376 L1694.11765,688.144376 Z"
-                                        fill-rule="evenodd"
-                                        stroke="none"
-                                        stroke-width="1"
-                                    ></path>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="PlannerItem-styles__layout">
-                            <div class="PlannerItem-styles__innerLayout">
-                                <div class="PlannerItem-styles__details">
-                                    <div class="PlannerItem-styles__type">
-                                        <span color="secondary" wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG enRcg_bLsb">Đồ án cơ sở học kỳ I năm học 2023 - 2024 Announcement</span>
-                                    </div>
-                                    <a href="/courses/7095/discussion_topics/25778" class="fOyUs_bGBk fbyHH_bGBk fbyHH_bSMN">
-                                        <span class="ergWt_bGBk">Announcement Meeting: 01. GV Trịnh Thanh Bình posted Wednesday, September 13, 2023 5:16 PM.</span><span aria-hidden="true">Meeting: 01. GV Trịnh Thanh Bình</span>
-                                    </a>
-                                </div>
-                                <div class="PlannerItem-styles__secondary">
-                                    <div class="PlannerItem-styles__badges">
-                                        <ul class="BadgeList-styles__root">
-                                            <li class="BadgeList-styles__item">
-                                                <span
-                                                    class="fOyUs_bGBk fOyUs_fKyb fOyUs_cuDs fOyUs_cBHs fOyUs_eWbJ fOyUs_fmDy fOyUs_beQo fOyUs_cBtr fOyUs_fuTR fOyUs_cnfU"
-                                                    style="padding: 0px; border-radius: 999em; border-width: 0px; max-width: 15rem;"
-                                                >
-                                                    <span class="dLyYq_bGBk dLyYq_bXiG">
-                                                        <span class="dLyYq_eWKC">
-                                                            <span class="bjXfh_daKB"><span>Replies</span></span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="PlannerItem-styles__metrics">
-                                        <div class="PlannerItem-styles__due">
-                                            <span wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG"><span aria-hidden="true">5:16 PM</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ol>
-        </div>
+@php
+    $colors = [
+        'rgb(25, 158, 183)', // màu 1
+        'rgb(136, 176, 75)', // màu 2
+        'rgb(247, 202, 201)', // màu 3
+        'rgb(146, 168, 209)', // màu 4
+        'rgb(149, 82, 81)', // màu 5
+        'rgb(181, 101, 167)', // màu 6
+        'rgb(0, 155, 119)', // màu 7
+        'rgb(221, 65, 36)', // màu 8
+        'rgb(214, 80, 118)', // màu 9
+        'rgb(68, 184, 172)', // màu 10
+    ];
+    $colorIndex = 0;
+@endphp
+@if(empty($groupedTickets))
+    <div class="alert alert-info text-center .fs-4 text fw-bold" role="alert">
+        You don't have any assigned work yet
     </div>
-</div>
-
-<div class="Day-styles__root planner-day">
-    <h2 class="fOyUs_bGBk blnAQ_bGBk blnAQ_cVrl blnAQ_drOs"><div class="Day-styles__secondary">Tuesday, September 19, 2023</div></h2>
-    <div>
-        <div class="Grouping-styles__root planner-grouping" style="--bDBte-titleColor: #199eb7;">
-            <div class="NotificationBadge-styles__activityIndicator NotificationBadge-styles__hasBadge">
-                <div><span class="fOyUs_bGBk fOyUs_cuDs cECYn_bGBk cECYn_KksD cECYn_zGXc cECYn_dDWY cECYn_bXgF cECYn_bBTa"></span><span class="ergWt_bGBk">Missing items for Đồ án cơ sở học kỳ I năm học 2023 - 2024</span></div>
+    <div class="EmptyDays-styles__root planner-empty-days">
+        <h2 class="fOyUs_bGBk blnAQ_bGBk blnAQ_cVrl blnAQ_drOs blnAQ_kWwi"><div wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_ycrn enRcg_dfDs enRcg_eQnG">Today</div></h2>
+        <div class="EmptyDays-styles__nothingPlannedContent">
+            <svg role="img" aria-hidden="true" viewBox="0 0 907 155" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>Nothing Planned</title>
+                <defs>
+                    <path id="a" d="M0 155h906.934V.53H0z"></path>
+                    <path id="c" d="M0 20.299V.389h60.079V20.3z"></path>
+                </defs>
+                <g fill="none" fill-rule="evenodd">
+                    <path
+                        d="M555.847.977s12.627 2.763 15.348 17.622c0 0 8.79-8.81 22.937-5.71M586.655 30.033s9.718.942 13.089 11.843c0 0 5.805-7.394 16.692-6.335M524.082 9.733s9.763.14 14.02 10.726c0 0 5.175-7.847 16.114-7.688"
+                        stroke="#231F20"
+                        stroke-width="2"
+                    ></path>
+                    <path fill="#67C1F0" d="M175.898 126.104h42.195l-21.097-62.596z"></path>
+                    <path stroke="#231F20" stroke-width="2" d="M175.898 126.104h42.195l-21.097-62.596z"></path>
+                    <path d="M196.996 82.564v70.691M206.372 110.49l-9.376 8.512" stroke="#0E1D25" stroke-width="2"></path>
+                    <path fill="#67C1F0" d="M254.73 136.103h42.195l-21.097-84.88z"></path>
+                    <path stroke="#231F20" stroke-width="2" d="M254.73 136.103h42.195l-21.097-84.88z"></path>
+                    <path d="M275.828 80.54v72.716M283.641 118.203l-7.813 5.158M263.3 101.624l12.527 13.59" stroke="#0E1D25" stroke-width="2"></path>
+                    <path stroke="#C0C6CB" stroke-width="2" d="M583.588 153.028L723.433 15.083l56.422 54.285"></path>
+                    <path stroke="#C0C6CB" stroke-width="2" d="M685.627 152.88l129.11-116.62 52.09 45.893"></path>
+                    <path fill="#9BE1A4" d="M857.589 113.192h48.093L881.636 7.272z"></path>
+                    <path stroke="#231F20" stroke-width="2" d="M857.589 113.192h48.093L881.636 7.272z"></path>
+                    <path d="M881.635 41.305V153.81M872.082 82.37l8.596 8.143M890.053 60.063l-8.418 11.507" stroke="#0E1D25" stroke-width="2"></path>
+                    <path fill="#67C1F0" d="M827.092 126.14h42.196L848.19 63.545z"></path>
+                    <path stroke="#231F20" stroke-width="2" d="M827.092 126.14h42.196L848.19 63.545z"></path>
+                    <path d="M848.19 82.601v70.69M857.567 110.527l-9.377 8.512" stroke="#0E1D25" stroke-width="2"></path>
+                    <g transform="translate(0 -.53)">
+                        <path
+                            d="M889.994 146.914c0 4.212-3.431 7.642-7.65 7.642h-16.02v-.782h16.02a6.86 6.86 0 0 0 6.868-6.86 6.862 6.862 0 0 0-7.65-6.82 6.335 6.335 0 0 0-.226-.759c.336-.047.672-.07 1.008-.07 4.219 0 7.65 3.43 7.65 7.65z"
+                            fill="#231F20"
+                        ></path>
+                        <path
+                            d="M882.343 140.046a6.862 6.862 0 0 1 6.869 6.868 6.86 6.86 0 0 1-6.869 6.861h-16.019l.095-.782h15.924c3.36 0 6.088-2.726 6.088-6.079a6.09 6.09 0 0 0-6.713-6.056 6.4 6.4 0 0 0-.155-.765 6.5 6.5 0 0 1 .78-.047"
+                            fill="#231F20"
+                        ></path>
+                        <path d="M881.562 140.093c.07.25.117.508.156.766-.25.031-.5.07-.742.125l-.094-.39-.086-.376c.25-.055.508-.102.766-.125" fill="#231F20"></path>
+                        <path d="M881.531 144.391c.195-.72.289-1.47.289-2.22 0-.445-.031-.883-.102-1.312a6.088 6.088 0 0 1 6.712 6.055 6.087 6.087 0 0 1-6.087 6.08h-15.924l.015-.172 10.424-9.151 3.915.517h.008l.75.203z" fill="#9BE1A4"></path>
+                        <path d="M881.562 140.093c-.258.023-.516.07-.766.125l-.17-.758c.233-.054.475-.1.71-.125.093.25.164.5.226.758" fill="#231F20"></path>
+                        <path d="M881.718 140.859c.07.43.103.867.103 1.312 0 .75-.095 1.5-.29 2.22l-.75-.203a7.836 7.836 0 0 0 .258-2.017c0-.54-.054-1.07-.156-1.578l.093.39c.242-.054.492-.093.742-.124" fill="#9BE1A4"></path>
+                        <path d="M880.883 140.593a8.035 8.035 0 0 1-.102 3.595h-.007l-.75-.204a7.105 7.105 0 0 0 .101-3.18l.664-.578c.039.117.063.242.094.367" fill="#9BE1A4"></path>
+                        <path
+                            d="M880.789 140.218h.008l.086.375c-.032-.125-.055-.25-.094-.367v-.008zM880.773 144.188l-3.915-.517 3.267-2.867a7.12 7.12 0 0 1-.102 3.18l.75.204zM873.193 135.1c3.423 0 6.291 2.453 6.932 5.704l-3.267 2.867-9.689-1.265a6.064 6.064 0 0 0-1.032-.578c.18-3.744 3.275-6.728 7.056-6.728"
+                            fill="#9BE1A4"
+                        ></path>
+                        <path d="M876.858 143.671l-10.424 9.15 1.07-9.134.547-.555a6.008 6.008 0 0 0-.882-.727l9.69 1.266z" fill="#9BE1A4"></path>
+                        <path
+                            d="M880.625 139.46l.172.758h-.008a7.833 7.833 0 0 0-7.596-5.9c-4.117 0-7.493 3.172-7.821 7.212a6.48 6.48 0 0 0-.766-.187c.415-4.368 4.11-7.806 8.587-7.806 3.767 0 6.979 2.43 8.143 5.798-.234.023-.477.07-.711.125"
+                            fill="#231F20"
+                        ></path>
+                        <path
+                            d="M873.193 135.1c-3.78 0-6.876 2.984-7.056 6.728a4.814 4.814 0 0 0-.765-.297c.328-4.04 3.704-7.212 7.821-7.212a7.834 7.834 0 0 1 7.596 5.899v.008l-.664.578c-.64-3.251-3.509-5.704-6.932-5.704"
+                            fill="#231F20"
+                        ></path>
+                        <path d="M867.505 143.687l-1.07 9.135-.196.172h-2.86a5.11 5.11 0 0 1-5.102-5.103 5.11 5.11 0 0 1 5.103-5.102 5.08 5.08 0 0 1 3.578 1.454l.547-.556z" fill="#9BE1A4"></path>
+                        <path d="M867.169 142.406l-1.82-.234h.78c0-.118 0-.235.009-.344.359.156.703.35 1.03.578" fill="#231F20"></path>
+                        <path fill="#9BE1A4" d="M866.434 152.822l-.016.172h-.179z"></path>
+                        <path fill="#231F20" d="M866.419 152.994l-.094.78v-.78z"></path>
+                        <mask id="b" fill="#fff"><use xlink:href="#a"></use></mask>
+                        <path fill="#231F20" mask="url(#b)" d="M865.348 154.556h.977v-.781h-.977zM866.325 152.994v.78h-.977l.891-.78z"></path>
+                        <path fill="#231F20" mask="url(#b)" d="M866.239 152.994l-.891.78v-.78zM866.138 141.827c-.009.11-.009.227-.009.345h-.78c0-.22.007-.43.022-.642.259.078.517.172.767.297"></path>
+                        <path d="M865.372 141.53a8.428 8.428 0 0 0-.023.642h-.602c-.062-.024-.117-.032-.18-.047 0-.266.016-.524.039-.781.258.046.516.109.766.187" fill="#231F20" mask="url(#b)"></path>
+                        <path d="M865.348 142.171l1.82.234c.313.211.61.453.883.727l-.547.555a5.811 5.811 0 0 0-2.758-1.516h.602zM864.747 142.171h-.18v-.047c.063.016.118.024.18.047" fill="#231F20" mask="url(#b)"></path>
+                        <path
+                            d="M864.567 142.171h.18a5.816 5.816 0 0 1 2.758 1.516l-.547.555a5.085 5.085 0 0 0-3.578-1.454 5.11 5.11 0 0 0-5.103 5.103 5.108 5.108 0 0 0 5.103 5.102h1.968v.782h-1.96a5.89 5.89 0 0 1-5.893-5.884 5.89 5.89 0 0 1 5.892-5.884c.407 0 .797.04 1.18.117v.047z"
+                            fill="#231F20"
+                            mask="url(#b)"
+                        ></path>
+                        <path
+                            d="M863.38 154.556a6.671 6.671 0 0 1-6.666-6.665c0-3.672 2.993-6.665 6.666-6.665.414 0 .828.039 1.227.117-.024.258-.04.516-.04.781a5.864 5.864 0 0 0-1.18-.117c-3.25 0-5.892 2.634-5.892 5.884a5.89 5.89 0 0 0 5.893 5.884h1.96v.781h-1.968z"
+                            fill="#231F20"
+                            mask="url(#b)"
+                        ></path>
+                    </g>
+                    <path stroke="#C0C6CB" stroke-width="2" d="M681.72 56.228l21.53 9.872 17.28-9.872 25.697 7.422 19.97-7.422M797.635 51.707l24.215 6.618 8.334-6.618"></path>
+                    <g transform="translate(0 70.47)">
+                        <mask id="d" fill="#fff"><use xlink:href="#c"></use></mask>
+                        <path d="M50.582 20.299H9.498C4.274 20.299 0 16.025 0 10.8v-.914C0 4.664 4.274.39 9.498.39h41.084c5.224 0 9.497 4.274 9.497 9.497v.914c0 5.224-4.273 9.498-9.497 9.498" fill="#E5E7E9" mask="url(#d)"></path>
+                    </g>
+                    <path
+                        d="M48.657 67.596c-.886 0-1.749.101-2.577.292v.014c-1.438-5.648-6.556-9.825-12.651-9.825-7.209 0-13.053 5.844-13.053 13.054l3.586 2.524a9.756 9.756 0 0 0-6.85-2.796c-5.407 0-9.79 4.383-9.79 9.79 0 5.407 4.383 9.791 9.79 9.791h31.545c6.309 0 11.422-5.114 11.422-11.422 0-6.308-5.113-11.422-11.422-11.422"
+                        fill="#E5E7E9"
+                    ></path>
+                    <path d="M39.017 77.802c0 6.98 5.658 12.638 12.638 12.638 6.98 0 12.637-5.658 12.637-12.638 0-6.98-5.658-12.638-12.637-12.638-6.98 0-12.638 5.659-12.638 12.638" fill="#E5E7E9"></path>
+                    <path fill="#9BE1A4" d="M49.312 112.638h42.195L70.41 27.757z"></path>
+                    <path stroke="#231F20" stroke-width="2" d="M49.312 112.638h42.195L70.41 27.757z"></path>
+                    <path d="M78.223 94.737l-7.813 5.159M57.883 78.158l12.526 13.59" stroke="#0E1D25" stroke-width="2"></path>
+                    <path
+                        d="M191.11 22.787c0-11.456 9.287-20.743 20.743-20.743 11.457 0 20.744 9.287 20.744 20.743 0 1.845-.24 3.633-.693 5.335M196.81 26.797a15.506 15.506 0 0 0-10.886-4.442c-8.592 0-15.557 6.965-15.557 15.558s6.965 15.558 15.557 15.558h50.128"
+                        stroke="#C0C6CB"
+                        stroke-width="2"
+                    ></path>
+                    <path d="M231.957 17.634a18.244 18.244 0 0 1 4.096-.465c10.024 0 18.15 8.128 18.15 18.152 0 10.023-8.126 18.15-18.15 18.15h-5.186" stroke="#C0C6CB" stroke-width="2"></path>
+                    <path fill="#9BE1A4" d="M148.903 112.638h48.093L172.949 6.718z"></path>
+                    <path stroke="#231F20" stroke-width="2" d="M148.903 112.638h48.093L172.949 6.718z"></path>
+                    <path d="M172.949 40.75v112.506M70 55v99M161.052 81.817l8.596 8.142M181.368 59.509l-8.42 11.507" stroke="#0E1D25" stroke-width="2"></path>
+                    <path fill="#FDBD99" d="M69.629 126.292l-10.331 2.735 4.067 2.735z"></path>
+                    <path stroke="#231F20" stroke-width="2" d="M69.629 126.292l-10.331 2.735 4.067 2.735z"></path>
+                    <path fill="#FDBD99" d="M172.949 128.448l2.949 9.772 3.516-4.114z"></path>
+                    <path stroke="#231F20" stroke-width="2" d="M172.949 128.448l2.949 9.772 3.516-4.114z"></path>
+                    <path d="M155.5 130.98a6.355 6.355 0 1 1-12.71 0 6.355 6.355 0 0 1 12.71 0" fill="#C0C6CB"></path>
+                    <path d="M155.5 130.98a6.355 6.355 0 1 1-12.71 0 6.355 6.355 0 0 1 12.71 0z" stroke="#C0C6CB" stroke-width="2"></path>
+                    <path d="M72.962 125.51s16.2 19.926 44.332 20.708c28.13.782 52.319-18.935 52.319-18.935s-41.38 8.006-51.538 7.22c-10.158-.787-45.113-8.992-45.113-8.992" fill="#FDBD99"></path>
+                    <path d="M72.962 125.51s16.2 19.926 44.332 20.708c28.13.782 52.319-18.935 52.319-18.935s-41.38 8.006-51.538 7.22c-10.158-.787-45.113-8.992-45.113-8.992z" stroke="#231F20" stroke-width="2"></path>
+                </g>
+            </svg>
+            <div class="EmptyDays-styles__nothingPlannedContainer">
+                <div class="EmptyDays-styles__nothingPlanned"><span wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_cMDj enRcg_eQnG">Nothing Planned Yet</span></div>
             </div>
-            <a href="/courses/7095" class="Grouping-styles__hero Grouping-styles__heroHover" style="background-image: url('');">
-                <span class="Grouping-styles__overlay" style="background-color: rgb(25, 158, 183);"></span><span class="Grouping-styles__title">Đồ án cơ sở học kỳ I năm học 2023 - 2024</span>
-            </a>
-            <ol class="Grouping-styles__items" style="border-color: rgb(25, 158, 183);">
-                <li>
-                    <div class="PlannerItem-styles__root planner-item">
-                        <div class="PlannerItem-styles__completed">
-                            <div class="epRMX_bGBk">
-                                <input id="uLOKVynu2epj" type="checkbox" class="epRMX_cwos" value="" />
-                                <label for="uLOKVynu2epj" class="epRMX_bOnW">
-                                    <span class="yyQPt_bGBk yyQPt_ycrn" style="--yyQPt-borderColor: #199eb7; --yyQPt-checkedBackground: #199eb7; --yyQPt-checkedBorderColor: #199eb7; --yyQPt-hoverBorderColor: #199eb7;">
-                                        <span class="yyQPt_cSXm" aria-hidden="true"></span><span class="yyQPt_blJt"><span class="ergWt_bGBk">Assignment Nộp kế hoạch dự án (nhóm thầy Tráng) is not marked as done.</span></span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="PlannerItem-styles__icon" aria-hidden="true" style="color: rgb(25, 158, 183);">
-                            <svg
-                                name="IconAssignment"
-                                viewBox="0 0 1920 1920"
-                                rotate="0"
-                                width="1em"
-                                height="1em"
-                                aria-hidden="true"
-                                role="presentation"
-                                focusable="false"
-                                class="dUOHu_bGBk dUOHu_drOs dUOHu_eXrk cGqzL_bGBk cGqzL_owrh"
-                                style="width: 1em; height: 1em;"
-                            >
-                                <g role="presentation">
-                                    <path
-                                        d="M1468.2137,0 L1468.2137,564.697578 L1355.27419,564.697578 L1355.27419,112.939516 L112.939516,112.939516 L112.939516,1807.03225 L1355.27419,1807.03225 L1355.27419,1581.15322 L1468.2137,1581.15322 L1468.2137,1919.97177 L2.5243549e-29,1919.97177 L2.5243549e-29,0 L1468.2137,0 Z M1597.64239,581.310981 C1619.77853,559.174836 1655.46742,559.174836 1677.60356,581.310981 L1677.60356,581.310981 L1903.4826,807.190012 C1925.5058,829.213217 1925.5058,864.902104 1903.4826,887.038249 L1903.4826,887.038249 L1225.8455,1564.67534 C1215.22919,1575.17872 1200.88587,1581.16451 1185.86491,1581.16451 L1185.86491,1581.16451 L959.985883,1581.16451 C928.814576,1581.16451 903.516125,1555.86606 903.516125,1524.69475 L903.516125,1524.69475 L903.516125,1298.81572 C903.516125,1283.79477 909.501919,1269.45145 920.005294,1258.94807 L920.005294,1258.94807 Z M1442.35055,896.29929 L1016.45564,1322.1942 L1016.45564,1468.225 L1162.48643,1468.225 L1588.38135,1042.33008 L1442.35055,896.29929 Z M677.637094,1242.34597 L677.637094,1355.28548 L338.818547,1355.28548 L338.818547,1242.34597 L677.637094,1242.34597 Z M903.516125,1016.46693 L903.516125,1129.40645 L338.818547,1129.40645 L338.818547,1016.46693 L903.516125,1016.46693 Z M1637.62298,701.026867 L1522.19879,816.451052 L1668.22958,962.481846 L1783.65377,847.057661 L1637.62298,701.026867 Z M1129.39516,338.829841 L1129.39516,790.587903 L338.818547,790.587903 L338.818547,338.829841 L1129.39516,338.829841 Z M1016.45564,451.769356 L451.758062,451.769356 L451.758062,677.648388 L1016.45564,677.648388 L1016.45564,451.769356 Z"
-                                        fill-rule="evenodd"
-                                        stroke="none"
-                                        stroke-width="1"
-                                    ></path>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="PlannerItem-styles__layout">
-                            <div class="PlannerItem-styles__innerLayout">
-                                <div class="PlannerItem-styles__details">
-                                    <div class="PlannerItem-styles__type">
-                                        <span color="secondary" wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG enRcg_bLsb">Đồ án cơ sở học kỳ I năm học 2023 - 2024 Assignment</span>
-                                    </div>
-                                    <a href="/courses/7095/assignments/56605" class="fOyUs_bGBk fbyHH_bGBk fbyHH_bSMN">
-                                        <span class="ergWt_bGBk">Assignment Nộp kế hoạch dự án (nhóm thầy Tráng), due Tuesday, September 19, 2023 11:59 PM.</span><span aria-hidden="true">Nộp kế hoạch dự án (nhóm thầy Tráng)</span>
-                                    </a>
-                                </div>
-                                <div class="PlannerItem-styles__secondary">
-                                    <div class="PlannerItem-styles__badges">
-                                        <ul class="BadgeList-styles__root">
-                                            <li class="BadgeList-styles__item">
-                                                <span
-                                                    class="fOyUs_bGBk fOyUs_fKyb fOyUs_cuDs fOyUs_cBHs fOyUs_eWbJ fOyUs_fmDy fOyUs_beQo fOyUs_cBtr fOyUs_fuTR fOyUs_cnfU"
-                                                    style="padding: 0px; border-radius: 999em; border-width: 0px; max-width: 15rem;"
-                                                >
-                                                    <span class="dLyYq_bGBk dLyYq_zGXc">
-                                                        <span class="dLyYq_eWKC">
-                                                            <span class="bjXfh_daKB"><span>Missing</span></span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="PlannerItem-styles__metrics">
-                                        <div class="PlannerItem-styles__due">
-                                            <span wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG"><span aria-hidden="true">Due: 11:59 PM</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ol>
         </div>
-    </div>
-</div>
-
-<div class="Day-styles__root planner-day planner-today"><h2 class="fOyUs_bGBk blnAQ_bGBk blnAQ_cVrl blnAQ_drOs blnAQ_kWwi"><div wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_cMDj enRcg_bdMA enRcg_eQnG">Tomorrow</div><div class="Day-styles__secondary">June 13</div></h2><div><span class="fOyUs_bGBk fOyUs_ImeN fOyUs_UeJS" style="margin: 0.75rem 0px 0px;">Nothing Planned Yet</span></div></div>
-<div class="EmptyDays-styles__root planner-empty-days"><h2 class="fOyUs_bGBk blnAQ_bGBk blnAQ_cVrl blnAQ_drOs blnAQ_kWwi"><div wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_ycrn enRcg_dfDs enRcg_eQnG">June 15 to June 21</div></h2><div class="EmptyDays-styles__nothingPlannedContent"><svg role="img" aria-hidden="true" viewBox="0 0 907 155" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Nothing Planned</title><defs><path id="a" d="M0 155h906.934V.53H0z"></path><path id="c" d="M0 20.299V.389h60.079V20.3z"></path></defs><g fill="none" fill-rule="evenodd"><path d="M555.847.977s12.627 2.763 15.348 17.622c0 0 8.79-8.81 22.937-5.71M586.655 30.033s9.718.942 13.089 11.843c0 0 5.805-7.394 16.692-6.335M524.082 9.733s9.763.14 14.02 10.726c0 0 5.175-7.847 16.114-7.688" stroke="#231F20" stroke-width="2"></path><path fill="#67C1F0" d="M175.898 126.104h42.195l-21.097-62.596z"></path><path stroke="#231F20" stroke-width="2" d="M175.898 126.104h42.195l-21.097-62.596z"></path><path d="M196.996 82.564v70.691M206.372 110.49l-9.376 8.512" stroke="#0E1D25" stroke-width="2"></path><path fill="#67C1F0" d="M254.73 136.103h42.195l-21.097-84.88z"></path><path stroke="#231F20" stroke-width="2" d="M254.73 136.103h42.195l-21.097-84.88z"></path><path d="M275.828 80.54v72.716M283.641 118.203l-7.813 5.158M263.3 101.624l12.527 13.59" stroke="#0E1D25" stroke-width="2"></path><path stroke="#C0C6CB" stroke-width="2" d="M583.588 153.028L723.433 15.083l56.422 54.285"></path><path stroke="#C0C6CB" stroke-width="2" d="M685.627 152.88l129.11-116.62 52.09 45.893"></path><path fill="#9BE1A4" d="M857.589 113.192h48.093L881.636 7.272z"></path><path stroke="#231F20" stroke-width="2" d="M857.589 113.192h48.093L881.636 7.272z"></path><path d="M881.635 41.305V153.81M872.082 82.37l8.596 8.143M890.053 60.063l-8.418 11.507" stroke="#0E1D25" stroke-width="2"></path><path fill="#67C1F0" d="M827.092 126.14h42.196L848.19 63.545z"></path><path stroke="#231F20" stroke-width="2" d="M827.092 126.14h42.196L848.19 63.545z"></path><path d="M848.19 82.601v70.69M857.567 110.527l-9.377 8.512" stroke="#0E1D25" stroke-width="2"></path><g transform="translate(0 -.53)"><path d="M889.994 146.914c0 4.212-3.431 7.642-7.65 7.642h-16.02v-.782h16.02a6.86 6.86 0 0 0 6.868-6.86 6.862 6.862 0 0 0-7.65-6.82 6.335 6.335 0 0 0-.226-.759c.336-.047.672-.07 1.008-.07 4.219 0 7.65 3.43 7.65 7.65z" fill="#231F20"></path><path d="M882.343 140.046a6.862 6.862 0 0 1 6.869 6.868 6.86 6.86 0 0 1-6.869 6.861h-16.019l.095-.782h15.924c3.36 0 6.088-2.726 6.088-6.079a6.09 6.09 0 0 0-6.713-6.056 6.4 6.4 0 0 0-.155-.765 6.5 6.5 0 0 1 .78-.047" fill="#231F20"></path><path d="M881.562 140.093c.07.25.117.508.156.766-.25.031-.5.07-.742.125l-.094-.39-.086-.376c.25-.055.508-.102.766-.125" fill="#231F20"></path><path d="M881.531 144.391c.195-.72.289-1.47.289-2.22 0-.445-.031-.883-.102-1.312a6.088 6.088 0 0 1 6.712 6.055 6.087 6.087 0 0 1-6.087 6.08h-15.924l.015-.172 10.424-9.151 3.915.517h.008l.75.203z" fill="#9BE1A4"></path><path d="M881.562 140.093c-.258.023-.516.07-.766.125l-.17-.758c.233-.054.475-.1.71-.125.093.25.164.5.226.758" fill="#231F20"></path><path d="M881.718 140.859c.07.43.103.867.103 1.312 0 .75-.095 1.5-.29 2.22l-.75-.203a7.836 7.836 0 0 0 .258-2.017c0-.54-.054-1.07-.156-1.578l.093.39c.242-.054.492-.093.742-.124" fill="#9BE1A4"></path><path d="M880.883 140.593a8.035 8.035 0 0 1-.102 3.595h-.007l-.75-.204a7.105 7.105 0 0 0 .101-3.18l.664-.578c.039.117.063.242.094.367" fill="#9BE1A4"></path><path d="M880.789 140.218h.008l.086.375c-.032-.125-.055-.25-.094-.367v-.008zM880.773 144.188l-3.915-.517 3.267-2.867a7.12 7.12 0 0 1-.102 3.18l.75.204zM873.193 135.1c3.423 0 6.291 2.453 6.932 5.704l-3.267 2.867-9.689-1.265a6.064 6.064 0 0 0-1.032-.578c.18-3.744 3.275-6.728 7.056-6.728" fill="#9BE1A4"></path><path d="M876.858 143.671l-10.424 9.15 1.07-9.134.547-.555a6.008 6.008 0 0 0-.882-.727l9.69 1.266z" fill="#9BE1A4"></path><path d="M880.625 139.46l.172.758h-.008a7.833 7.833 0 0 0-7.596-5.9c-4.117 0-7.493 3.172-7.821 7.212a6.48 6.48 0 0 0-.766-.187c.415-4.368 4.11-7.806 8.587-7.806 3.767 0 6.979 2.43 8.143 5.798-.234.023-.477.07-.711.125" fill="#231F20"></path><path d="M873.193 135.1c-3.78 0-6.876 2.984-7.056 6.728a4.814 4.814 0 0 0-.765-.297c.328-4.04 3.704-7.212 7.821-7.212a7.834 7.834 0 0 1 7.596 5.899v.008l-.664.578c-.64-3.251-3.509-5.704-6.932-5.704" fill="#231F20"></path><path d="M867.505 143.687l-1.07 9.135-.196.172h-2.86a5.11 5.11 0 0 1-5.102-5.103 5.11 5.11 0 0 1 5.103-5.102 5.08 5.08 0 0 1 3.578 1.454l.547-.556z" fill="#9BE1A4"></path><path d="M867.169 142.406l-1.82-.234h.78c0-.118 0-.235.009-.344.359.156.703.35 1.03.578" fill="#231F20"></path><path fill="#9BE1A4" d="M866.434 152.822l-.016.172h-.179z"></path><path fill="#231F20" d="M866.419 152.994l-.094.78v-.78z"></path><mask id="b" fill="#fff"><use xlink:href="#a"></use></mask><path fill="#231F20" mask="url(#b)" d="M865.348 154.556h.977v-.781h-.977zM866.325 152.994v.78h-.977l.891-.78z"></path><path fill="#231F20" mask="url(#b)" d="M866.239 152.994l-.891.78v-.78zM866.138 141.827c-.009.11-.009.227-.009.345h-.78c0-.22.007-.43.022-.642.259.078.517.172.767.297"></path><path d="M865.372 141.53a8.428 8.428 0 0 0-.023.642h-.602c-.062-.024-.117-.032-.18-.047 0-.266.016-.524.039-.781.258.046.516.109.766.187" fill="#231F20" mask="url(#b)"></path><path d="M865.348 142.171l1.82.234c.313.211.61.453.883.727l-.547.555a5.811 5.811 0 0 0-2.758-1.516h.602zM864.747 142.171h-.18v-.047c.063.016.118.024.18.047" fill="#231F20" mask="url(#b)"></path><path d="M864.567 142.171h.18a5.816 5.816 0 0 1 2.758 1.516l-.547.555a5.085 5.085 0 0 0-3.578-1.454 5.11 5.11 0 0 0-5.103 5.103 5.108 5.108 0 0 0 5.103 5.102h1.968v.782h-1.96a5.89 5.89 0 0 1-5.893-5.884 5.89 5.89 0 0 1 5.892-5.884c.407 0 .797.04 1.18.117v.047z" fill="#231F20" mask="url(#b)"></path><path d="M863.38 154.556a6.671 6.671 0 0 1-6.666-6.665c0-3.672 2.993-6.665 6.666-6.665.414 0 .828.039 1.227.117-.024.258-.04.516-.04.781a5.864 5.864 0 0 0-1.18-.117c-3.25 0-5.892 2.634-5.892 5.884a5.89 5.89 0 0 0 5.893 5.884h1.96v.781h-1.968z" fill="#231F20" mask="url(#b)"></path></g><path stroke="#C0C6CB" stroke-width="2" d="M681.72 56.228l21.53 9.872 17.28-9.872 25.697 7.422 19.97-7.422M797.635 51.707l24.215 6.618 8.334-6.618"></path><g transform="translate(0 70.47)"><mask id="d" fill="#fff"><use xlink:href="#c"></use></mask><path d="M50.582 20.299H9.498C4.274 20.299 0 16.025 0 10.8v-.914C0 4.664 4.274.39 9.498.39h41.084c5.224 0 9.497 4.274 9.497 9.497v.914c0 5.224-4.273 9.498-9.497 9.498" fill="#E5E7E9" mask="url(#d)"></path></g><path d="M48.657 67.596c-.886 0-1.749.101-2.577.292v.014c-1.438-5.648-6.556-9.825-12.651-9.825-7.209 0-13.053 5.844-13.053 13.054l3.586 2.524a9.756 9.756 0 0 0-6.85-2.796c-5.407 0-9.79 4.383-9.79 9.79 0 5.407 4.383 9.791 9.79 9.791h31.545c6.309 0 11.422-5.114 11.422-11.422 0-6.308-5.113-11.422-11.422-11.422" fill="#E5E7E9"></path><path d="M39.017 77.802c0 6.98 5.658 12.638 12.638 12.638 6.98 0 12.637-5.658 12.637-12.638 0-6.98-5.658-12.638-12.637-12.638-6.98 0-12.638 5.659-12.638 12.638" fill="#E5E7E9"></path><path fill="#9BE1A4" d="M49.312 112.638h42.195L70.41 27.757z"></path><path stroke="#231F20" stroke-width="2" d="M49.312 112.638h42.195L70.41 27.757z"></path><path d="M78.223 94.737l-7.813 5.159M57.883 78.158l12.526 13.59" stroke="#0E1D25" stroke-width="2"></path><path d="M191.11 22.787c0-11.456 9.287-20.743 20.743-20.743 11.457 0 20.744 9.287 20.744 20.743 0 1.845-.24 3.633-.693 5.335M196.81 26.797a15.506 15.506 0 0 0-10.886-4.442c-8.592 0-15.557 6.965-15.557 15.558s6.965 15.558 15.557 15.558h50.128" stroke="#C0C6CB" stroke-width="2"></path><path d="M231.957 17.634a18.244 18.244 0 0 1 4.096-.465c10.024 0 18.15 8.128 18.15 18.152 0 10.023-8.126 18.15-18.15 18.15h-5.186" stroke="#C0C6CB" stroke-width="2"></path><path fill="#9BE1A4" d="M148.903 112.638h48.093L172.949 6.718z"></path><path stroke="#231F20" stroke-width="2" d="M148.903 112.638h48.093L172.949 6.718z"></path><path d="M172.949 40.75v112.506M70 55v99M161.052 81.817l8.596 8.142M181.368 59.509l-8.42 11.507" stroke="#0E1D25" stroke-width="2"></path><path fill="#FDBD99" d="M69.629 126.292l-10.331 2.735 4.067 2.735z"></path><path stroke="#231F20" stroke-width="2" d="M69.629 126.292l-10.331 2.735 4.067 2.735z"></path><path fill="#FDBD99" d="M172.949 128.448l2.949 9.772 3.516-4.114z"></path><path stroke="#231F20" stroke-width="2" d="M172.949 128.448l2.949 9.772 3.516-4.114z"></path><path d="M155.5 130.98a6.355 6.355 0 1 1-12.71 0 6.355 6.355 0 0 1 12.71 0" fill="#C0C6CB"></path><path d="M155.5 130.98a6.355 6.355 0 1 1-12.71 0 6.355 6.355 0 0 1 12.71 0z" stroke="#C0C6CB" stroke-width="2"></path><path d="M72.962 125.51s16.2 19.926 44.332 20.708c28.13.782 52.319-18.935 52.319-18.935s-41.38 8.006-51.538 7.22c-10.158-.787-45.113-8.992-45.113-8.992" fill="#FDBD99"></path><path d="M72.962 125.51s16.2 19.926 44.332 20.708c28.13.782 52.319-18.935 52.319-18.935s-41.38 8.006-51.538 7.22c-10.158-.787-45.113-8.992-45.113-8.992z" stroke="#231F20" stroke-width="2"></path></g></svg><div class="EmptyDays-styles__nothingPlannedContainer"><div class="EmptyDays-styles__nothingPlanned"><span wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_cMDj enRcg_eQnG">Nothing Planned Yet</span></div></div></div></div>
+    </div>  
+@else
+    @php
+        $today = \Carbon\Carbon::today();
+        $hasTicketsToday = false;
+    @endphp
+    @foreach ($groupedTickets as $element)
+        @foreach ($element['dates'] as $date => $tickets)
+            @if (\Carbon\Carbon::parse($date)->isSameDay($today))
+                @php
+                    $hasTicketsToday = true;
+                    break 2; // Thoát khỏi cả hai vòng lặp nếu tìm thấy ticket được tạo hôm nay
+                @endphp
+            @endif
+        @endforeach
+    @endforeach
+    @if (!$hasTicketsToday)
+        <div class="EmptyDays-styles__root planner-empty-days">
+            <h2 class="fOyUs_bGBk blnAQ_bGBk blnAQ_cVrl blnAQ_drOs blnAQ_kWwi"><div wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_ycrn enRcg_dfDs enRcg_eQnG">Today</div></h2>
+            <div class="EmptyDays-styles__nothingPlannedContent">
+                <svg role="img" aria-hidden="true" viewBox="0 0 907 155" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>Nothing Planned</title>
+                    <defs>
+                        <path id="a" d="M0 155h906.934V.53H0z"></path>
+                        <path id="c" d="M0 20.299V.389h60.079V20.3z"></path>
+                    </defs>
+                    <g fill="none" fill-rule="evenodd">
+                        <path
+                            d="M555.847.977s12.627 2.763 15.348 17.622c0 0 8.79-8.81 22.937-5.71M586.655 30.033s9.718.942 13.089 11.843c0 0 5.805-7.394 16.692-6.335M524.082 9.733s9.763.14 14.02 10.726c0 0 5.175-7.847 16.114-7.688"
+                            stroke="#231F20"
+                            stroke-width="2"
+                        ></path>
+                        <path fill="#67C1F0" d="M175.898 126.104h42.195l-21.097-62.596z"></path>
+                        <path stroke="#231F20" stroke-width="2" d="M175.898 126.104h42.195l-21.097-62.596z"></path>
+                        <path d="M196.996 82.564v70.691M206.372 110.49l-9.376 8.512" stroke="#0E1D25" stroke-width="2"></path>
+                        <path fill="#67C1F0" d="M254.73 136.103h42.195l-21.097-84.88z"></path>
+                        <path stroke="#231F20" stroke-width="2" d="M254.73 136.103h42.195l-21.097-84.88z"></path>
+                        <path d="M275.828 80.54v72.716M283.641 118.203l-7.813 5.158M263.3 101.624l12.527 13.59" stroke="#0E1D25" stroke-width="2"></path>
+                        <path stroke="#C0C6CB" stroke-width="2" d="M583.588 153.028L723.433 15.083l56.422 54.285"></path>
+                        <path stroke="#C0C6CB" stroke-width="2" d="M685.627 152.88l129.11-116.62 52.09 45.893"></path>
+                        <path fill="#9BE1A4" d="M857.589 113.192h48.093L881.636 7.272z"></path>
+                        <path stroke="#231F20" stroke-width="2" d="M857.589 113.192h48.093L881.636 7.272z"></path>
+                        <path d="M881.635 41.305V153.81M872.082 82.37l8.596 8.143M890.053 60.063l-8.418 11.507" stroke="#0E1D25" stroke-width="2"></path>
+                        <path fill="#67C1F0" d="M827.092 126.14h42.196L848.19 63.545z"></path>
+                        <path stroke="#231F20" stroke-width="2" d="M827.092 126.14h42.196L848.19 63.545z"></path>
+                        <path d="M848.19 82.601v70.69M857.567 110.527l-9.377 8.512" stroke="#0E1D25" stroke-width="2"></path>
+                        <g transform="translate(0 -.53)">
+                            <path
+                                d="M889.994 146.914c0 4.212-3.431 7.642-7.65 7.642h-16.02v-.782h16.02a6.86 6.86 0 0 0 6.868-6.86 6.862 6.862 0 0 0-7.65-6.82 6.335 6.335 0 0 0-.226-.759c.336-.047.672-.07 1.008-.07 4.219 0 7.65 3.43 7.65 7.65z"
+                                fill="#231F20"
+                            ></path>
+                            <path
+                                d="M882.343 140.046a6.862 6.862 0 0 1 6.869 6.868 6.86 6.86 0 0 1-6.869 6.861h-16.019l.095-.782h15.924c3.36 0 6.088-2.726 6.088-6.079a6.09 6.09 0 0 0-6.713-6.056 6.4 6.4 0 0 0-.155-.765 6.5 6.5 0 0 1 .78-.047"
+                                fill="#231F20"
+                            ></path>
+                            <path d="M881.562 140.093c.07.25.117.508.156.766-.25.031-.5.07-.742.125l-.094-.39-.086-.376c.25-.055.508-.102.766-.125" fill="#231F20"></path>
+                            <path d="M881.531 144.391c.195-.72.289-1.47.289-2.22 0-.445-.031-.883-.102-1.312a6.088 6.088 0 0 1 6.712 6.055 6.087 6.087 0 0 1-6.087 6.08h-15.924l.015-.172 10.424-9.151 3.915.517h.008l.75.203z" fill="#9BE1A4"></path>
+                            <path d="M881.562 140.093c-.258.023-.516.07-.766.125l-.17-.758c.233-.054.475-.1.71-.125.093.25.164.5.226.758" fill="#231F20"></path>
+                            <path d="M881.718 140.859c.07.43.103.867.103 1.312 0 .75-.095 1.5-.29 2.22l-.75-.203a7.836 7.836 0 0 0 .258-2.017c0-.54-.054-1.07-.156-1.578l.093.39c.242-.054.492-.093.742-.124" fill="#9BE1A4"></path>
+                            <path d="M880.883 140.593a8.035 8.035 0 0 1-.102 3.595h-.007l-.75-.204a7.105 7.105 0 0 0 .101-3.18l.664-.578c.039.117.063.242.094.367" fill="#9BE1A4"></path>
+                            <path
+                                d="M880.789 140.218h.008l.086.375c-.032-.125-.055-.25-.094-.367v-.008zM880.773 144.188l-3.915-.517 3.267-2.867a7.12 7.12 0 0 1-.102 3.18l.75.204zM873.193 135.1c3.423 0 6.291 2.453 6.932 5.704l-3.267 2.867-9.689-1.265a6.064 6.064 0 0 0-1.032-.578c.18-3.744 3.275-6.728 7.056-6.728"
+                                fill="#9BE1A4"
+                            ></path>
+                            <path d="M876.858 143.671l-10.424 9.15 1.07-9.134.547-.555a6.008 6.008 0 0 0-.882-.727l9.69 1.266z" fill="#9BE1A4"></path>
+                            <path
+                                d="M880.625 139.46l.172.758h-.008a7.833 7.833 0 0 0-7.596-5.9c-4.117 0-7.493 3.172-7.821 7.212a6.48 6.48 0 0 0-.766-.187c.415-4.368 4.11-7.806 8.587-7.806 3.767 0 6.979 2.43 8.143 5.798-.234.023-.477.07-.711.125"
+                                fill="#231F20"
+                            ></path>
+                            <path
+                                d="M873.193 135.1c-3.78 0-6.876 2.984-7.056 6.728a4.814 4.814 0 0 0-.765-.297c.328-4.04 3.704-7.212 7.821-7.212a7.834 7.834 0 0 1 7.596 5.899v.008l-.664.578c-.64-3.251-3.509-5.704-6.932-5.704"
+                                fill="#231F20"
+                            ></path>
+                            <path d="M867.505 143.687l-1.07 9.135-.196.172h-2.86a5.11 5.11 0 0 1-5.102-5.103 5.11 5.11 0 0 1 5.103-5.102 5.08 5.08 0 0 1 3.578 1.454l.547-.556z" fill="#9BE1A4"></path>
+                            <path d="M867.169 142.406l-1.82-.234h.78c0-.118 0-.235.009-.344.359.156.703.35 1.03.578" fill="#231F20"></path>
+                            <path fill="#9BE1A4" d="M866.434 152.822l-.016.172h-.179z"></path>
+                            <path fill="#231F20" d="M866.419 152.994l-.094.78v-.78z"></path>
+                            <mask id="b" fill="#fff"><use xlink:href="#a"></use></mask>
+                            <path fill="#231F20" mask="url(#b)" d="M865.348 154.556h.977v-.781h-.977zM866.325 152.994v.78h-.977l.891-.78z"></path>
+                            <path fill="#231F20" mask="url(#b)" d="M866.239 152.994l-.891.78v-.78zM866.138 141.827c-.009.11-.009.227-.009.345h-.78c0-.22.007-.43.022-.642.259.078.517.172.767.297"></path>
+                            <path d="M865.372 141.53a8.428 8.428 0 0 0-.023.642h-.602c-.062-.024-.117-.032-.18-.047 0-.266.016-.524.039-.781.258.046.516.109.766.187" fill="#231F20" mask="url(#b)"></path>
+                            <path d="M865.348 142.171l1.82.234c.313.211.61.453.883.727l-.547.555a5.811 5.811 0 0 0-2.758-1.516h.602zM864.747 142.171h-.18v-.047c.063.016.118.024.18.047" fill="#231F20" mask="url(#b)"></path>
+                            <path
+                                d="M864.567 142.171h.18a5.816 5.816 0 0 1 2.758 1.516l-.547.555a5.085 5.085 0 0 0-3.578-1.454 5.11 5.11 0 0 0-5.103 5.103 5.108 5.108 0 0 0 5.103 5.102h1.968v.782h-1.96a5.89 5.89 0 0 1-5.893-5.884 5.89 5.89 0 0 1 5.892-5.884c.407 0 .797.04 1.18.117v.047z"
+                                fill="#231F20"
+                                mask="url(#b)"
+                            ></path>
+                            <path
+                                d="M863.38 154.556a6.671 6.671 0 0 1-6.666-6.665c0-3.672 2.993-6.665 6.666-6.665.414 0 .828.039 1.227.117-.024.258-.04.516-.04.781a5.864 5.864 0 0 0-1.18-.117c-3.25 0-5.892 2.634-5.892 5.884a5.89 5.89 0 0 0 5.893 5.884h1.96v.781h-1.968z"
+                                fill="#231F20"
+                                mask="url(#b)"
+                            ></path>
+                        </g>
+                        <path stroke="#C0C6CB" stroke-width="2" d="M681.72 56.228l21.53 9.872 17.28-9.872 25.697 7.422 19.97-7.422M797.635 51.707l24.215 6.618 8.334-6.618"></path>
+                        <g transform="translate(0 70.47)">
+                            <mask id="d" fill="#fff"><use xlink:href="#c"></use></mask>
+                            <path d="M50.582 20.299H9.498C4.274 20.299 0 16.025 0 10.8v-.914C0 4.664 4.274.39 9.498.39h41.084c5.224 0 9.497 4.274 9.497 9.497v.914c0 5.224-4.273 9.498-9.497 9.498" fill="#E5E7E9" mask="url(#d)"></path>
+                        </g>
+                        <path
+                            d="M48.657 67.596c-.886 0-1.749.101-2.577.292v.014c-1.438-5.648-6.556-9.825-12.651-9.825-7.209 0-13.053 5.844-13.053 13.054l3.586 2.524a9.756 9.756 0 0 0-6.85-2.796c-5.407 0-9.79 4.383-9.79 9.79 0 5.407 4.383 9.791 9.79 9.791h31.545c6.309 0 11.422-5.114 11.422-11.422 0-6.308-5.113-11.422-11.422-11.422"
+                            fill="#E5E7E9"
+                        ></path>
+                        <path d="M39.017 77.802c0 6.98 5.658 12.638 12.638 12.638 6.98 0 12.637-5.658 12.637-12.638 0-6.98-5.658-12.638-12.637-12.638-6.98 0-12.638 5.659-12.638 12.638" fill="#E5E7E9"></path>
+                        <path fill="#9BE1A4" d="M49.312 112.638h42.195L70.41 27.757z"></path>
+                        <path stroke="#231F20" stroke-width="2" d="M49.312 112.638h42.195L70.41 27.757z"></path>
+                        <path d="M78.223 94.737l-7.813 5.159M57.883 78.158l12.526 13.59" stroke="#0E1D25" stroke-width="2"></path>
+                        <path
+                            d="M191.11 22.787c0-11.456 9.287-20.743 20.743-20.743 11.457 0 20.744 9.287 20.744 20.743 0 1.845-.24 3.633-.693 5.335M196.81 26.797a15.506 15.506 0 0 0-10.886-4.442c-8.592 0-15.557 6.965-15.557 15.558s6.965 15.558 15.557 15.558h50.128"
+                            stroke="#C0C6CB"
+                            stroke-width="2"
+                        ></path>
+                        <path d="M231.957 17.634a18.244 18.244 0 0 1 4.096-.465c10.024 0 18.15 8.128 18.15 18.152 0 10.023-8.126 18.15-18.15 18.15h-5.186" stroke="#C0C6CB" stroke-width="2"></path>
+                        <path fill="#9BE1A4" d="M148.903 112.638h48.093L172.949 6.718z"></path>
+                        <path stroke="#231F20" stroke-width="2" d="M148.903 112.638h48.093L172.949 6.718z"></path>
+                        <path d="M172.949 40.75v112.506M70 55v99M161.052 81.817l8.596 8.142M181.368 59.509l-8.42 11.507" stroke="#0E1D25" stroke-width="2"></path>
+                        <path fill="#FDBD99" d="M69.629 126.292l-10.331 2.735 4.067 2.735z"></path>
+                        <path stroke="#231F20" stroke-width="2" d="M69.629 126.292l-10.331 2.735 4.067 2.735z"></path>
+                        <path fill="#FDBD99" d="M172.949 128.448l2.949 9.772 3.516-4.114z"></path>
+                        <path stroke="#231F20" stroke-width="2" d="M172.949 128.448l2.949 9.772 3.516-4.114z"></path>
+                        <path d="M155.5 130.98a6.355 6.355 0 1 1-12.71 0 6.355 6.355 0 0 1 12.71 0" fill="#C0C6CB"></path>
+                        <path d="M155.5 130.98a6.355 6.355 0 1 1-12.71 0 6.355 6.355 0 0 1 12.71 0z" stroke="#C0C6CB" stroke-width="2"></path>
+                        <path d="M72.962 125.51s16.2 19.926 44.332 20.708c28.13.782 52.319-18.935 52.319-18.935s-41.38 8.006-51.538 7.22c-10.158-.787-45.113-8.992-45.113-8.992" fill="#FDBD99"></path>
+                        <path d="M72.962 125.51s16.2 19.926 44.332 20.708c28.13.782 52.319-18.935 52.319-18.935s-41.38 8.006-51.538 7.22c-10.158-.787-45.113-8.992-45.113-8.992z" stroke="#231F20" stroke-width="2"></path>
+                    </g>
+                </svg>
+                <div class="EmptyDays-styles__nothingPlannedContainer">
+                    <div class="EmptyDays-styles__nothingPlanned"><span wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_cMDj enRcg_eQnG">Nothing Planned Yet</span></div>
+                </div>
+            </div>
+        </div>    
+    @endif
+@endif
+        @if(!empty($groupedTickets))
+            @foreach($groupedTickets as $elements)
+                @php
+                    $currentColor = $colors[$colorIndex % count($colors)];
+                    $colorIndex++;
+                @endphp
+                @foreach($elements['dates'] as $dateSort => $tikets)
+                        <div class="Day-styles__root planner-day">
+                            <h2 class="fOyUs_bGBk blnAQ_bGBk blnAQ_cVrl blnAQ_drOs"><div class="Day-styles__secondary">{{ \Carbon\Carbon::parse($dateSort)->format('l, F j, Y') }}</div></h2>
+                            <div>
+                                <div class="Grouping-styles__root planner-grouping" style="--bDBte-titleColor: {{ $currentColor }};">
+                                    <div class="NotificationBadge-styles__activityIndicator NotificationBadge-styles__hasBadge">
+                                        <div><span class="fOyUs_bGBk fOyUs_cuDs cECYn_bGBk cECYn_KksD cECYn_bXiG cECYn_dDWY cECYn_bXgF cECYn_bBTa"></span><span class="ergWt_bGBk">New activity for {{$elements['project']['name']}}</span></div>
+                                    </div>
+                                    <a href="#" class="Grouping-styles__hero Grouping-styles__heroHover" style="background-image: url('');">
+                                        <span class="Grouping-styles__overlay" style="background-color: {{ $currentColor }};"></span><span class="Grouping-styles__title">{{$elements['project']['name']}}</span>
+                                    </a>
+                                    <ol class="Grouping-styles__items" style="border-color: {{ $currentColor }};">
+                                        @foreach($tikets as $ticket)
+                                        <li>
+                                            <div class="PlannerItem-styles__root planner-item">
+                                                <div class="PlannerItem-styles__completed">
+                                                    <div class="epRMX_bGBk">
+                                                        <input id="uUx7fkmVLYCK" type="checkbox" class="epRMX_cwos" value="" />
+                                                        <label for="uUx7fkmVLYCK" class="epRMX_bOnW">
+                                                            <span class="yyQPt_bGBk yyQPt_ycrn" style="--yyQPt-borderColor: {{ $currentColor }}; --yyQPt-checkedBackground: {{ $currentColor }}; --yyQPt-checkedBorderColor: {{ $currentColor }}; --yyQPt-hoverBorderColor: {{ $currentColor }};">
+                                                                <span class="yyQPt_cSXm" aria-hidden="true"></span><span class="yyQPt_blJt"><span class="ergWt_bGBk">Assign {{$elements['project']['name']}}</span></span>
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="PlannerItem-styles__icon" aria-hidden="true" style="color: {{ $currentColor }};">
+                                                    <svg
+                                                        name="IconAnnouncement"
+                                                        viewBox="0 0 1920 1920"
+                                                        rotate="0"
+                                                        width="1em"
+                                                        height="1em"
+                                                        aria-hidden="true"
+                                                        role="presentation"
+                                                        focusable="false"
+                                                        class="dUOHu_bGBk dUOHu_drOs dUOHu_eXrk cGqzL_bGBk cGqzL_owrh"
+                                                        style="width: 1em; height: 1em;"
+                                                    >
+                                                        <g role="presentation">
+                                                            <path
+                                                                d="M1587.16235,31.2784941 C1598.68235,7.78672942 1624.43294,-4.41091764 1650.63529,1.46202354 C1676.16,7.56084707 1694.11765,30.2620235 1694.11765,56.4643765 L1694.11765,56.4643765 L1694.11765,570.459671 C1822.87059,596.662024 1920,710.732612 1920,847.052612 C1920,983.372612 1822.87059,1097.55614 1694.11765,1123.75849 L1694.11765,1123.75849 L1694.11765,1637.64085 C1694.11765,1663.8432 1676.16,1686.65732 1650.63529,1692.6432 C1646.23059,1693.65967 1641.93882,1694.11144 1637.64706,1694.11144 C1616.52706,1694.11144 1596.87529,1682.36555 1587.16235,1662.93967 C1379.23765,1247.2032 964.178824,1242.34673 960,1242.34673 L960,1242.34673 L564.705882,1242.34673 L564.705882,1807.05261 L652.461176,1807.05261 C640.602353,1716.92555 634.955294,1560.05026 715.934118,1456.37026 C768.338824,1389.2832 845.590588,1355.28791 945.882353,1355.28791 L945.882353,1355.28791 L945.882353,1468.22908 C881.392941,1468.22908 835.312941,1487.09026 805.044706,1525.71614 C736.263529,1613.58438 759.981176,1789.54673 774.776471,1849.97026 C778.955294,1866.79849 775.115294,1884.6432 764.498824,1898.30908 C753.769412,1911.97496 737.28,1919.99379 720,1919.99379 L720,1919.99379 L508.235294,1919.99379 C477.063529,1919.99379 451.764706,1894.80791 451.764706,1863.5232 L451.764706,1863.5232 L451.764706,1242.34673 L395.294118,1242.34673 C239.548235,1242.34673 112.941176,1115.73967 112.941176,959.993788 L112.941176,959.993788 L112.941176,903.5232 L56.4705882,903.5232 C25.2988235,903.5232 0,878.337318 0,847.052612 C0,815.880847 25.2988235,790.582024 56.4705882,790.582024 L56.4705882,790.582024 L112.941176,790.582024 L112.941176,734.111435 C112.941176,578.478494 239.548235,451.758494 395.294118,451.758494 L395.294118,451.758494 L959.887059,451.758494 C976.828235,451.645553 1380.36706,444.756141 1587.16235,31.2784941 Z M1581.17647,249.706729 C1386.46588,492.078494 1128.96,547.871435 1016.47059,560.746729 L1016.47059,560.746729 L1016.47059,1133.47144 C1128.96,1146.34673 1386.46588,1202.02673 1581.17647,1444.51144 L1581.17647,1444.51144 Z M903.529412,564.699671 L395.294118,564.699671 C301.891765,564.699671 225.882353,640.709082 225.882353,734.111435 L225.882353,734.111435 L225.882353,959.993788 C225.882353,1053.39614 301.891765,1129.40555 395.294118,1129.40555 L395.294118,1129.40555 L903.529412,1129.40555 L903.529412,564.699671 Z M1694.11765,688.144376 L1694.11765,1006.07379 C1759.73647,982.694965 1807.05882,920.577318 1807.05882,847.052612 C1807.05882,773.527906 1759.73647,711.5232 1694.11765,688.144376 L1694.11765,688.144376 Z"
+                                                                fill-rule="evenodd"
+                                                                stroke="none"
+                                                                stroke-width="1"
+                                                            ></path>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                                <div class="PlannerItem-styles__layout">
+                                                    <div class="PlannerItem-styles__innerLayout">
+                                                        <div class="PlannerItem-styles__details PlannerItem-styles__details_no_badges">
+                                                            <div class="PlannerItem-styles__type">
+                                                                <span color="secondary" wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG enRcg_bLsb">{{$elements['project']['name']}} Assign</span>
+                                                            </div>
+                                                            <a href="#" class="fOyUs_bGBk fbyHH_bGBk fbyHH_bSMN">
+                                                                <span class="ergWt_bGBk">Assign {{$ticket['name']}} posted {{ \Carbon\Carbon::parse($elements['project']['created_at'])->format('l, F j, Y') }}</span>
+                                                                <span aria-hidden="true">{{$ticket['name']}}</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="PlannerItem-styles__secondary PlannerItem-styles__secondary_no_badges">
+                                                            @switch($ticket['status'])
+                                                                @case('Error')
+                                                                    <div class="PlannerItem-styles__badges">
+                                                                        <ul class="BadgeList-styles__root">
+                                                                            <li class="BadgeList-styles__item">
+                                                                                <span
+                                                                                    class="fOyUs_bGBk fOyUs_fKyb fOyUs_cuDs fOyUs_cBHs fOyUs_eWbJ fOyUs_fmDy fOyUs_beQo fOyUs_cBtr fOyUs_fuTR fOyUs_cnfU"
+                                                                                    style="padding: 0px; border-radius: 999em; border-width: 0px; max-width: 15rem;"
+                                                                                >
+                                                                                    <span class="dLyYq_bGBk dLyYq_zGXc">
+                                                                                        <span class="dLyYq_eWKC">
+                                                                                            <span class="bjXfh_daKB"><span>Error</span></span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    @break
+                                                                @case('Cancelled')
+                                                                    <div class="PlannerItem-styles__badges">
+                                                                        <ul class="BadgeList-styles__root">
+                                                                            <li class="BadgeList-styles__item">
+                                                                                <span
+                                                                                    class="fOyUs_bGBk fOyUs_fKyb fOyUs_cuDs fOyUs_cBHs fOyUs_eWbJ fOyUs_fmDy fOyUs_beQo fOyUs_cBtr fOyUs_fuTR fOyUs_cnfU"
+                                                                                    style="padding: 0px; border-radius: 999em; border-width: 0px; max-width: 15rem;"
+                                                                                >
+                                                                                    <span class="dLyYq_bGBk dLyYq_zGXc_cancel">
+                                                                                        <span class="dLyYq_eWKC">
+                                                                                            <span class="bjXfh_daKB"><span>Cancel</span></span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    @break
+                                                                @case('Pending')
+                                                                    <div class="PlannerItem-styles__badges">
+                                                                        <ul class="BadgeList-styles__root">
+                                                                            <li class="BadgeList-styles__item">
+                                                                                <span
+                                                                                    class="fOyUs_bGBk fOyUs_fKyb fOyUs_cuDs fOyUs_cBHs fOyUs_eWbJ fOyUs_fmDy fOyUs_beQo fOyUs_cBtr fOyUs_fuTR fOyUs_cnfU"
+                                                                                    style="padding: 0px; border-radius: 999em; border-width: 0px; max-width: 15rem;"
+                                                                                >
+                                                                                    <span class="dLyYq_bGBk dLyYq_zGXc_pending">
+                                                                                        <span class="dLyYq_eWKC">
+                                                                                            <span class="bjXfh_daKB"><span>Pending</span></span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    @break
+                                                                @case('Close')
+                                                                    <div class="PlannerItem-styles__badges">
+                                                                        <ul class="BadgeList-styles__root">
+                                                                            <li class="BadgeList-styles__item">
+                                                                                <span
+                                                                                    class="fOyUs_bGBk fOyUs_fKyb fOyUs_cuDs fOyUs_cBHs fOyUs_eWbJ fOyUs_fmDy fOyUs_beQo fOyUs_cBtr fOyUs_fuTR fOyUs_cnfU"
+                                                                                    style="padding: 0px; border-radius: 999em; border-width: 0px; max-width: 15rem;"
+                                                                                >
+                                                                                    <span class="dLyYq_bGBk dLyYq_zGXc_close">
+                                                                                        <span class="dLyYq_eWKC">
+                                                                                            <span class="bjXfh_daKB"><span>Close</span></span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    @break
+                                                                @case('Tested')
+                                                                    <div class="PlannerItem-styles__badges">
+                                                                        <ul class="BadgeList-styles__root">
+                                                                            <li class="BadgeList-styles__item">
+                                                                                <span
+                                                                                    class="fOyUs_bGBk fOyUs_fKyb fOyUs_cuDs fOyUs_cBHs fOyUs_eWbJ fOyUs_fmDy fOyUs_beQo fOyUs_cBtr fOyUs_fuTR fOyUs_cnfU"
+                                                                                    style="padding: 0px; border-radius: 999em; border-width: 0px; max-width: 15rem;"
+                                                                                >
+                                                                                    <span class="dLyYq_bGBk dLyYq_zGXc_tested">
+                                                                                        <span class="dLyYq_eWKC">
+                                                                                            <span class="bjXfh_daKB"><span>Tested</span></span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    @break
+                                                                @default
+                                                                    <div class="PlannerItem-styles__badges">
+                                                                    </div>
+                                                            @endswitch
+                                                            <div class="PlannerItem-styles__metrics">
+                                                                <div class="PlannerItem-styles__due">
+                                                                    <span wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG"><span aria-hidden="true">DUE: {{ \Carbon\Carbon::parse($ticket['estimated_hours'])->format('F j') }}</span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @endforeach
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+            @endforeach
+        @endif
 @endsection
 
 @section('custom-js')

@@ -10,6 +10,7 @@ Route::middleware([
     ->name('ticket.')
     ->namespace('\App\Http\Controllers')
     ->group(function () {
+        Route::get('project/tickets/{projectId}', [TicketController::class, 'index'])->name('index');
         Route::get('/tickets/dashboard', [TicketController::class, 'dashboard'])->name('dashboard');
         Route::get('/tickets/created/{projectId}', [TicketController::class, 'getUserTickets'])->name('userTicket');
         Route::get('/tickets/assigned/{projectId}', [TicketController::class, 'getAssignedTickets'])->name('assignedTicket');

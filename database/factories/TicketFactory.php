@@ -22,11 +22,11 @@ class TicketFactory extends Factory
             'description' => fake()->word(),
             'created_by' => 1,
             'assigned_to' => 3,
-            'estimated_hours' => '2024-06-30',
+            'estimated_hours' => '2024-06-22',
             'steps_to_reproduce' => fake()->word(),
             'expected_result' => fake()->word(),
             'actual_result'=> fake()->word(),
-            'priority'=> "MEDIUM",
+            'priority'=> "HIGH",
             'bug_type_id'=> 1,
             'test_type_id'=> 1,
 

@@ -13,6 +13,12 @@ use App\Models\TicketHistory;
 
 class TicketRepository
 {
+    public function getTickets($projectId, $pageSize = 10)
+    {
+        return Ticket::where('project_id', $projectId)->with(['histories' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }])->paginate($pageSize);
+    }
     public function getUserDashboardData($userId)
     {
         $projects = ProjectMember::where('user_id', $userId)->with('project')->get();

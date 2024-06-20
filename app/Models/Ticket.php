@@ -21,7 +21,7 @@ class Ticket extends Model
     public function setEstimatedHoursAttribute($value)
     {
         if (!empty($value)) {
-            $this->attributes['estimated_hours'] = Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
+            $this->attributes['estimated_hours'] = Carbon::createFromFormat('Y/m/d', $value)->startOfDay();
             $this->attributes['is_outdate'] = $this->isOutdate();
         } else {
             $this->attributes['estimated_hours'] = null;

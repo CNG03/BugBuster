@@ -71,7 +71,7 @@ Route::get('/test', function () {
     return view('layouts.app');
 });
 Route::get('/tickets', function () {
-    return view('layouts.tickets');
+    return view('layouts.tickets_all');
 });
 
 Route::get('/tickets/detail', function () {
@@ -82,4 +82,8 @@ Route::get('/profile', function () {
 })->name('myProfile');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(AdminMiddleware::class);
-
+Route::get('/project/all_tickets/{projectID}', [WebTicketController::class, 'allTickets'])->name('allTickets')->middleware(AdminMiddleware::class);
+Route::get('/project/created_tickets/{projectID}', [WebTicketController::class, 'createdTickets'])->name('createdTickets')->middleware(AdminMiddleware::class);
+// Route::post('/project/created_tickets/{projectID}', [WebTicketController::class, 'createTicket'])->name('test')->middleware(AdminMiddleware::class);
+Route::get('/project/assigned_tickets/{projectID}', [WebTicketController::class, 'assignedTickets'])->name('assignedTickets')->middleware(AdminMiddleware::class);
+Route::post('/project/create_ticket/{projectID}', [WebTicketController::class, 'createTicket'])->name('newTicket')->middleware(AdminMiddleware::class);

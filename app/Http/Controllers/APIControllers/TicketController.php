@@ -24,8 +24,13 @@ class TicketController extends Controller
      * 
      */
 
-    public function index()
+    public function index(Request $request, $projectId)
     {
+        $this->authorize('viewAny', [Ticket::class, $projectId]);
+        $pageSize = $request->page_size ?? 10;
+        $tickets = $this->repository->getTickets($projectId, $pageSize);
+
+        return TicketResource::collection($tickets);
     }
 
     public function dashboard()
@@ -43,7 +48,7 @@ class TicketController extends Controller
         $this->authorize('viewAny', [Ticket::class, $projectId]);
 
         $user = JWTAuth::parseToken()->authenticate();
-        $pageSize = $request->page_size ?? 10;
+        $pageSize = $request->page_size ?? 2;
 
         $tickets = $this->repository->getUserTickets($user->id, $projectId, $pageSize);
 
@@ -55,7 +60,7 @@ class TicketController extends Controller
         $this->authorize('viewAny', [Ticket::class, $projectId]);
 
         $user = JWTAuth::parseToken()->authenticate();
-        $pageSize = $request->page_size ?? 10;
+        $pageSize = $request->page_size ?? 2;
 
         $tickets = $this->repository->getAssignedTickets($user->id, $projectId, $pageSize);
 

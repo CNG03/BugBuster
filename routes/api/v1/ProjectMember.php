@@ -3,7 +3,7 @@
 use App\Http\Controllers\APIControllers\ProjectMemberController;
 use App\Http\Middleware\CustomAuthenticate;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\test;
 Route::middleware([
     CustomAuthenticate::class
 ])
