@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\APIControllers\BugTypeController;
+use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\CustomAuthenticate;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
-    'api',
+    CustomAuthenticate::class
 ])
-    ->name('testtypes.')
+    ->name('bugtypes.')
     ->namespace('\App\Http\Controllers')
     ->group(function () {
         Route::get('/bugtypes', [BugTypeController::class, 'index'])->name('index');

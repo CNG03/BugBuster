@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\APIControllers\ProjectController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\CustomAuthenticate;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
-    'auth:api'
+    CustomAuthenticate::class
 ])
     ->name('project.')
     ->namespace('\App\Http\Controllers')
