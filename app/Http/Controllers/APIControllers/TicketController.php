@@ -24,8 +24,13 @@ class TicketController extends Controller
      * 
      */
 
-    public function index()
+    public function index(Request $request, $projectId)
     {
+        $this->authorize('viewAny', [Ticket::class, $projectId]);
+        $pageSize = $request->page_size ?? 10;
+        $tickets = $this->repository->getTickets($projectId, $pageSize);
+
+        return TicketResource::collection($tickets);
     }
 
     public function dashboard()
