@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Log;
 
 class ProjectPolicy
 {
@@ -21,9 +22,8 @@ class ProjectPolicy
      */
     public function view(User $user, Project $project): bool
     {
-        //return $user->role === 'ADMIN' || $project->isAdmin($user->id) || $project->isMember($user->id);
-
-        return $user->role === 'ADMIN' || $user->id === $project->admin_id || $project->isMember($user->id);
+        Log::info('Policy view check', ['user_id' => $user->id, 'project_id' => $project->id]);
+        return $user->role === 'ADMIN' || $project->isAdmin($user) || $project->isMember($user);
     }
 
     /**
