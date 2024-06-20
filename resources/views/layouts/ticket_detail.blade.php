@@ -46,45 +46,49 @@
                     <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                         <div class="ticket-detail">
                             <div class="ticket-detail-title ">Name:</div>
-                            <div class="ticket-detail-value" id="ticketName">Create a notification system</div>
+                            <div class="ticket-detail-value" id="ticketName">{{$ticketDetail['name']}}</div>
                         </div>
                         <div class="ticket-detail">
                             <div class="ticket-detail-title">Priority:</div>
-                            <div class="ticket-detail-value " id="ticketPriority"><span class="priority-high">High</span></div>
+                            <div class="ticket-detail-value " id="ticketPriority"><span class="priority-high">{{$ticketDetail['priority']}}</span></div>
                         </div>
                         <div class="ticket-detail">
                             <div class="ticket-detail-title">Estimated hours:</div>
-                            <div class="ticket-detail-value" id="estimatedHours">4</div>
+                            <div class="ticket-detail-value" id="estimatedHours">{{$ticketDetail['formatted_estimated_hours']}}</div>
                         </div>
                         <div class="ticket-detail">
                             <div class="ticket-detail-title">Bug Type:</div>
-                            <div class="ticket-detail-value" id="bugType">Feature request</div>
+                            <div class="ticket-detail-value" id="bugType">{{$ticketDetail['bug_type']}}</div>
                         </div>
                         <div class="ticket-detail">
                             <div class="ticket-detail-title">Test Type:</div>
-                            <div class="ticket-detail-value" id="testType">New</div>
+                            <div class="ticket-detail-value" id="testType">{{$ticketDetail['test_type']}}</div>
                         </div>
                         <div class="ticket-detail">
                             <div class="ticket-detail-title">Description:</div>
-                            <div class="ticket-detail-value" id="ticketDescription">User should receive a notification when an action related to them occurs in the application.</div>
+                            <div class="ticket-detail-value" id="ticketDescription">{{$ticketDetail['description']}}</div>
                         </div>
                         <div class="ticket-detail">
                             <div class="ticket-detail-title">Steps to reproduce:</div>
-                            <div class="ticket-detail-value" id="ticketSTR">User should receive a notification when an action related to them occurs in the application.</div>
+                            <div class="ticket-detail-value" id="ticketSTR">{{$ticketDetail['steps_to_reproduce']}}</div>
                         </div>
                         <div class="ticket-detail">
                             <div class="ticket-detail-title">Expected Result:</div>
-                            <div class="ticket-detail-value" id="ticketER">User should receive a notification when an action related to them occurs in the application.</div>
+                            <div class="ticket-detail-value" id="ticketER">{{$ticketDetail['expected_result']}}</div>
                         </div>
                         <div class="ticket-detail">
                             <div class="ticket-detail-title">Actual Result:</div>
-                            <div class="ticket-detail-value" id="ticketAR">User should receive a notification when an action related to them occurs in the application.</div>
+                            <div class="ticket-detail-value" id="ticketAR">{{$ticketDetail['actual_result']}}</div>
                         </div>
                         <div class="ticket-detail">
                             <div class="ticket-detail-title">Image Detail:</div>
-                            <a href="https://cdn-media.sforum.vn/storage/app/media/THANHAN/avatar-vo-tri-99.jpg" data-lightbox="ticket-image">
-                                <img src="https://cdn-media.sforum.vn/storage/app/media/THANHAN/avatar-vo-tri-99.jpg" alt="Ticket Image" class="img-thumbnail ticket-image">
-                            </a>
+                            @if(!is_null($ticketDetail['illustration']))
+                                <a href="{{ asset('storage/' . $ticketDetail['illustration']) }}" data-lightbox="ticket-image">
+                                    <img src="{{ asset('storage/' . $ticketDetail['illustration']) }}" alt="Ticket Image" class="img-thumbnail ticket-image">
+                                </a>
+                            @else
+                                <p>No image available</p>
+                            @endif
                         </div>
                     </div>
                     <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="comments-tab">
@@ -119,36 +123,43 @@
                     </div>
                     <div class="tab-pane fade" id="team" role="tabpanel" aria-labelledby="team-tab">
                         <ul class="list-group mt-3">
-                            <li class="list-group-item animate-charcter">John Doe - Developer</li>
+                            <li class="list-group-item animate-charcter">
+                                <strong>Created By:</strong> {{$ticketDetail['created_by']}}
+                            </li>
+                            <li class="list-group-item animate-charcter">
+                                <strong>Assigned To:</strong> {{$ticketDetail['assigned_to']}} - Developer
+                            </li>
                         </ul>
                     </div>
                     <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
-                        <div class="history-item">
-                            <div class="history-time">4/8/2022 12:01:45 PM</div>
-                            <span class="history-status status-error">ERROR</span>
-                        </div>
-                        <div class="history-item">
-                            <div class="history-time">4/8/2022 12:21:35 PM</div>
-                            <span class="history-status status-pending">PENDING</span>
-                        </div>
-                        <div class="history-item">
-                            <div class="history-time">4/8/2022 12:21:35 PM</div>
-                            <span class="history-status status-cancel">CANCEL</span>
-                        </div>
-                        <div class="history-item">
-                            <div class="history-time">4/8/2022 12:21:35 PM</div>
-                            <span class="history-status status-close">CLOSE</span>
-                        </div>
-                        <div class="history-item">
-                            <div class="history-time">4/14/2022 7:30:05 AM</div>
-                            <span class="history-status status-tested">TESTED</span>
-                            <p>Ticket updated by Admin</p>
-                            <p><strong>User added</strong></p>
-                            <ul>
-                                <li>John Doe - Developer</li>
-                                <li>Jane Doe - Developer</li>
-                            </ul>
-                        </div>
+                        @foreach($ticketDetail['history'] as $historyItem)
+                            <div class="history-item {{ $loop->first ? 'history-item-now' : '' }}">
+                                <div class="history-time">
+                                    {{ \Carbon\Carbon::parse($historyItem['created_at'])->format('j/n/Y g:i:s A') }}
+                                    @if($loop->first)
+                                        <span class="now-label">now</span>
+                                    @endif
+                                </div>
+                                @switch($historyItem['status'])
+                                    @case('Error')
+                                        <span class="history-status status-error">ERROR</span>
+                                        @break
+                                    @case('Pending')
+                                        <span class="history-status status-pending">PENDING</span>
+                                        @break
+                                    @case('Tested')
+                                        <span class="history-status status-tested">TESTED</span>
+                                        @break
+                                    @case('Cancelled')
+                                        <span class="history-status status-cancel">CANCEL</span>
+                                        @break
+                                    @case('Closed')
+                                        <span class="history-status status-close">CLOSE</span>
+                                        @break
+                                    @default  
+                                @endswitch
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -101,6 +101,7 @@ class TicketController extends Controller
      */
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
+
         $this->authorize('update', $ticket);
 
         $validatedData = $request->validated();

@@ -4,6 +4,7 @@ use App\Http\Controllers\APIControllers\auth\AccessController;
 use App\Http\Controllers\APIControllers\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIControllers\auth\ForgotPasswordController;
+use App\Http\Controllers\ProjectDetailController;
 use App\Http\Controllers\WebControllers\WebTicketController;
 use App\Http\Controllers\WebControllers\DashboardController;
 use App\Http\Middleware\AddAuthorizationHeader;
@@ -64,9 +65,6 @@ Route::middleware([
 // Xác thực email của người dùng 
 Route::get('verify-email/{token}', [AccessController::class, 'verifyEmail'])->name('verify.email');
 
-Route::get('/tickets/{ticket}/edit', [WebTicketController::class, 'edit'])->name('tickets.edit');
-Route::patch('/tickets/{ticket}', [WebTicketController::class, 'update'])->name('tickets.update');
-
 Route::get('/test', function () {
     return view('layouts.app');
 });
@@ -87,3 +85,11 @@ Route::get('/project/created_tickets/{projectID}', [WebTicketController::class, 
 // Route::post('/project/created_tickets/{projectID}', [WebTicketController::class, 'createTicket'])->name('test')->middleware(AdminMiddleware::class);
 Route::get('/project/assigned_tickets/{projectID}', [WebTicketController::class, 'assignedTickets'])->name('assignedTickets')->middleware(AdminMiddleware::class);
 Route::post('/project/create_ticket/{projectID}', [WebTicketController::class, 'createTicket'])->name('newTicket')->middleware(AdminMiddleware::class);
+Route::post('/project/ticket/status', [WebTicketController::class, 'updateStatus'])->name('updateStatus')->middleware(AdminMiddleware::class);
+Route::get('/project/ticket/detail/{ticketID}', [WebTicketController::class, 'ticketDetail'])->name('ticketDetail')->middleware(AdminMiddleware::class);
+Route::get('/project/ticket/edit/{ticketID}', [WebTicketController::class, 'editTicket'])->name('editTicket')->middleware(AdminMiddleware::class);
+Route::post('/project/ticket/edit/{ticketID}', [WebTicketController::class, 'updateTicket'])->name('updateTicket')->middleware(AdminMiddleware::class);
+
+
+Route::get('/project/detail/{projectID}', [ProjectDetailController::class, 'index'])->name('projectDetail')->middleware(AdminMiddleware::class);
+

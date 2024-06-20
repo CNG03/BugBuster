@@ -9,15 +9,15 @@
 @endsection
 
 @section('content')
-    <div style="margin-top: 2rem;">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Bug Buster</a></li>
-                <li class="breadcrumb-item"><a href="#">Tickets</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Created Tickets</li>
-            </ol>
-        </nav>
-    </div>
+<div style="margin-top: 2rem;" >
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Bug Buster</a></li>
+            <li class="breadcrumb-item"><a href="#">Tickets</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Created Tickets</li>
+        </ol>
+    </nav>
+</div>
 
 
     <div class="content-table ">
@@ -52,10 +52,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($dashboard['data'] as $ticket)
+                    @foreach($dashboard['data'] as $ticket)
                         <tr>
-                            <td><a class="text" data-text="{{ $ticket['name'] }}" href="#">{{ $ticket['name'] }}</a>
-                            </td>
+                            <td><a class="text" data-text="{{ $ticket['name'] }}" href="#">{{ $ticket['name'] }}</a></td>
                             <td>{{ $ticket['created_by'] }}</td>
                             @switch($ticket['priority'])
                                 @case('HIGH')
@@ -108,8 +107,7 @@
                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                        data-bs-target="#changeStatusModal">Change Status</a></li>
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
                                                 <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
                                             </ul>
                                         </div>
@@ -122,8 +120,7 @@
                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                        data-bs-target="#changeStatusModal">Change Status</a></li>
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
                                             </ul>
                                         </div>
                                     @break
@@ -135,8 +132,7 @@
                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                        data-bs-target="#changeStatusModal">Change Status</a></li>
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
                                             </ul>
                                         </div>
                                     @break
@@ -207,67 +203,61 @@
                     @endif
                 </ul>
             </nav>
-        </div>
-        <style>
-            .file-item {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 10px;
-            }
-
-            .dropdown-toggle::after {
-                display: none;
-            }
-        </style>
-        <div class="modal fade" id="newTicketModal" tabindex="-1" aria-labelledby="newTicketModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="newTicketModalLabel">Create Ticket</h5>
-                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <form action="{{ route('newTicket', ['projectID' => $projectID]) }}" id="ticketForm"
-                                method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="" id="ticket">
-                                    <input name="project_id" hidden type="text" value="{{ $projectID }}">
-
+      </div>
+    <style>
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .dropdown-toggle::after {
+            display: none;
+        }
+    </style>
+    <div class="modal fade" id="newTicketModal" tabindex="-1" aria-labelledby="newTicketModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newTicketModalLabel">Create Ticket</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form action="{{route('newTicket', ['projectID' => $projectID])}}" id="ticketForm" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="" id="ticket">
+                                    <input name="project_id" hidden type="text" value="{{$projectID}}">
+                                    <div class="form-group mt-3">
+                                        <label class="label-new-ticket" for="ticketName">Name:</label>
+                                        <input type="text" class="form-control" id="ticketName" name="name" placeholder="Enter the name of the ticket">
+                                    </div>
                                     <div class="label-new-ticket form-group">
                                         <label for="estimatedDate">Estimated date:</label>
-                                        <input type="text" name="estimated_hours" class="form-control"
-                                            id="estimatedDate" placeholder="Select date">
+                                        <input type="text" name="estimated_hours" class="form-control" id="estimatedDate" placeholder="Select date">
                                     </div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="ticketDescription">Description:</label>
-                                        <textarea class="form-control" name="description" id="ticketDescription" rows="3"
-                                            placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
+                                        <textarea class="form-control" name="description" id="ticketDescription" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="ticketSTR">Steps to reproduce:</label>
-                                        <textarea class="form-control" name="steps_to_reproduce" id="ticketSTR" rows="3"
-                                            placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
+                                        <textarea class="form-control" name="steps_to_reproduce" id="ticketSTR" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="illustration">Image Detail:</label>
-                                        <input type="file" name="illustration" class="form-control"
-                                            id="illustration">
+                                        <input type="file" name="illustration" class="form-control" id="illustration" >
                                     </div>
                                     <div id="fileList"></div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="ticketER">Expected Result:</label>
-                                        <textarea class="form-control" name="expected_result" id="ticketER" rows="3"
-                                            placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
+                                        <textarea class="form-control" name="expected_result" id="ticketER" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="ticketAR">Actual Result :</label>
-                                        <textarea class="form-control" name="actual_result" id="ticketAR" rows="3"
-                                            placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
+                                        <textarea class="form-control" name="actual_result" id="ticketAR" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="ticketPriority">Priority:</label>
@@ -302,48 +292,47 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                                <button type="submit" style="display:none;">Submit</button>
-                            </form>
-                        </div>
+                            </div>
+                            <button type="submit" style="display:none;">Submit</button>
+                        </form>                       
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" id="createTicketBtn" class="btn btn-primary">Create Ticket</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="changeStatusModal" tabindex="-1" aria-labelledby="changeStatusModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="changeStatusModalLabel">Change Status</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="changeStatusForm">
-                        <div class="form-group">
-                            <label for="statusSelect">Select New Status</label>
-                            <select class="form-control" id="statusSelect">
-                                <option>Error</option>
-                                <option>Pending</option>
-                                <option>Tested</option>
-                                <option>Cancel</option>
-                                <option>Close</option>
-                            </select>
-                        </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="saveStatusBtn">Change Status</button>
+                    <button type="button" id="createTicketBtn" class="btn btn-primary">Create Ticket</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="changeStatusModal" tabindex="-1" aria-labelledby="changeStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changeStatusModalLabel">Change Status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="changeStatusForm">
+                    <div class="form-group">
+                        <label for="statusSelect">Select New Status</label>
+                        <select class="form-control" id="statusSelect">
+                            <option>Error</option>
+                            <option>Pending</option>
+                            <option>Tested</option>
+                            <option>Cancel</option>
+                            <option>Close</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveStatusBtn">Change Status</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 
@@ -411,7 +400,47 @@
     </script>
     <script>
         document.getElementById('createTicketBtn').addEventListener('click', function() {
-            document.getElementById('ticketForm').submit();
+            var form = document.getElementById('ticketForm');
+            if (form.checkValidity()) {
+                form.submit();
+            } else {
+                form.reportValidity(); // This will trigger the browser to display validation errors
+            }
+        });
+    </script>
+    <script>
+        // Tự động ẩn thông báo sau 5 giây
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".alert").alert('close');
+            }, 5000);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const changeStatusModal = document.getElementById('changeStatusModal');
+            changeStatusModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget; // Button that triggered the modal
+                const ticketId = button.getAttribute('data-ticket-id'); // Extract info from data-* attributes
+                
+                // Update the modal's content.
+                const modalTicketIdInput = document.getElementById('modalTicketId');
+                modalTicketIdInput.value = ticketId;
+            });
+        });
+        document.getElementById('saveStatusBtn').addEventListener('click', function() {
+            document.getElementById('changeStatusForm').submit();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var errorAlert = document.getElementById('errorAlert');
+            if (errorAlert) {
+                // Set a timeout to hide the alert after 15 seconds (15000 milliseconds)
+                setTimeout(function() {
+                    errorAlert.style.display = 'none';
+                }, 15000);
+            }
         });
     </script>
 @endsection

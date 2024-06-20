@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.list-group-item-action {
+    cursor: pointer;
+}
