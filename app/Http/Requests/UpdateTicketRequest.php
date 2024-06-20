@@ -35,4 +35,13 @@ class UpdateTicketRequest extends FormRequest
             'test_type_id' => 'sometimes|integer|exists:test_types,id',
         ];
     }
+     /**
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'project_id.required' => "djt moe eo hieu kieu gi"
+        ];
+    }
 }

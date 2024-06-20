@@ -93,7 +93,7 @@
     padding: 10px;
     background-color: #f8f9fa;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border-left: 5px solid #007bff;
 }
 .history-time {
@@ -124,6 +124,26 @@
 }
 .status-tested {
     background-color: #2196f3; /* Blue */
+}
+
+.history-item-now .now-label {
+    font-weight: bold;
+    color: red;
+    animation: blink 1.5s linear infinite;
+    margin-left: 10px; /* Khoảng cách giữa thời gian và chữ "New" */
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.history-time .now-label {
+    font-weight: bold;
+    color: #ff5722;
+    margin-left: 10px; /* Khoảng cách giữa thời gian và chữ "now" */
+    text-transform: uppercase;
 }
 
 @keyframes textclip {

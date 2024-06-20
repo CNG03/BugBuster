@@ -17,7 +17,33 @@
         </ol>
     </nav>
 </div>
-
+@if(session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+@if($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
+@if(session('success'))
+    <div class="alert2 fixed-top-right" id="errorAlert">
+        <i class="fa-solid fa-circle-check"></i>
+        <span style="font-size: 30px;order: 3;" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>{{  session('success')  }}!</strong>
+    </div>
+@endif
 
 <div class="content-table ">
       <div class="tab-content" id="myTabContent">
@@ -48,9 +74,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if (empty($dashboard['data']))
+                        <tr>
+                            <td colspan="8">
+                                <p style="font-size: 18px;">You haven't created any tickets yet</p>
+                            </td>
+                        </tr>
+                    @endif
                     @foreach($dashboard['data'] as $ticket)
                         <tr>
-                            <td><a class="text" data-text="{{ $ticket['name'] }}" href="#">{{ $ticket['name'] }}</a></td>
+                            <td><a class="text" data-text="{{ $ticket['name'] }}" href="{{route('ticketDetail', ['ticketID' => $ticket['id']])}}">{{ $ticket['name'] }}</a></td>
                             <td>{{ $ticket['created_by'] }}</td>
                             @switch($ticket['priority'])
                                 @case('HIGH')
@@ -96,8 +129,8 @@
                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
+                                                <li><a class="dropdown-item" href="{{route('editTicket', ['ticketID' => $ticket['id'],'page' => request()->get('page', 1)])}}">Edit Ticket</a></li>
                                             </ul>
                                         </div>                                    
                                         @break
@@ -107,7 +140,7 @@
                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
                                             </ul>
                                         </div> 
                                         @break
@@ -117,7 +150,7 @@
                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
                                             </ul>
                                         </div>
                                         @break
@@ -213,32 +246,32 @@
                                     <input name="project_id" hidden type="text" value="{{$projectID}}">
                                     <div class="form-group mt-3">
                                         <label class="label-new-ticket" for="ticketName">Name:</label>
-                                        <input type="text" class="form-control" id="ticketName" name="name" placeholder="Enter the name of the ticket">
+                                        <input type="text" required class="form-control" id="ticketName" name="name" placeholder="Enter the name of the ticket">
                                     </div>
                                     <div class="label-new-ticket form-group">
                                         <label for="estimatedDate">Estimated date:</label>
-                                        <input type="text" name="estimated_hours" class="form-control" id="estimatedDate" placeholder="Select date">
+                                        <input type="text" required name="estimated_hours" class="form-control" id="estimatedDate" placeholder="Select date">
                                     </div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="ticketDescription">Description:</label>
-                                        <textarea class="form-control" name="description" id="ticketDescription" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
+                                        <textarea class="form-control" required name="description" id="ticketDescription" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="ticketSTR">Steps to reproduce:</label>
-                                        <textarea class="form-control" name="steps_to_reproduce" id="ticketSTR" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
+                                        <textarea class="form-control" required name="steps_to_reproduce" id="ticketSTR" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="illustration">Image Detail:</label>
-                                        <input type="file" name="illustration" class="form-control" id="illustration" >
+                                        <input type="file" required name="illustration" class="form-control" id="illustration" accept="image/*">
                                     </div>
                                     <div id="fileList"></div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="ticketER">Expected Result:</label>
-                                        <textarea class="form-control" name="expected_result" id="ticketER" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
+                                        <textarea class="form-control" required name="expected_result" id="ticketER" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="ticketAR">Actual Result :</label>
-                                        <textarea class="form-control" name="actual_result" id="ticketAR" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
+                                        <textarea class="form-control" required name="actual_result" id="ticketAR" rows="3" placeholder="User should receive a notification when an action related to them occurs in the application."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label class="label-new-ticket" for="ticketPriority">Priority:</label>
@@ -293,17 +326,32 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="changeStatusForm">
+                <form action="{{route('updateStatus')}}" method="POST" id="changeStatusForm">
+                    @csrf
                     <div class="form-group">
+                        <input type="hidden" name="ticket_id" id="modalTicketId">
                         <label for="statusSelect">Select New Status</label>
-                        <select class="form-control" id="statusSelect">
-                            <option>Error</option>
-                            <option>Pending</option>
-                            <option>Tested</option>
-                            <option>Cancel</option>
-                            <option>Close</option>
-                        </select>
+                            <select name="status" class="form-control" id="statusSelect">
+                                @switch($role['role'])
+                                    @case('TESTER')
+                                        <option value="Error">Error</option>
+                                        <option value="Tested">Tested</option>
+                                        <option value="Cancelled">Cancel</option>
+                                        @break
+                                    @case('MANAGER')
+                                        <option value="Close">Close</option>
+                                        @break
+                                    @case('DEVELOPER')
+                                        <option value="Error">Error</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Cancelled">Cancel</option>
+                                        @break
+                                    @case('READER')
+                                        @break
+                                @endswitch
+                            </select>
                     </div>
+                    <button type="submit" style="display:none;">Submit</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -378,7 +426,47 @@
     </script>
     <script>
         document.getElementById('createTicketBtn').addEventListener('click', function() {
-            document.getElementById('ticketForm').submit();
+            var form = document.getElementById('ticketForm');
+            if (form.checkValidity()) {
+                form.submit();
+            } else {
+                form.reportValidity(); // This will trigger the browser to display validation errors
+            }
+        });
+    </script>
+    <script>
+        // Tự động ẩn thông báo sau 5 giây
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".alert").alert('close');
+            }, 5000);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const changeStatusModal = document.getElementById('changeStatusModal');
+            changeStatusModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget; // Button that triggered the modal
+                const ticketId = button.getAttribute('data-ticket-id'); // Extract info from data-* attributes
+                
+                // Update the modal's content.
+                const modalTicketIdInput = document.getElementById('modalTicketId');
+                modalTicketIdInput.value = ticketId;
+            });
+        });
+        document.getElementById('saveStatusBtn').addEventListener('click', function() {
+            document.getElementById('changeStatusForm').submit();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var errorAlert = document.getElementById('errorAlert');
+            if (errorAlert) {
+                // Set a timeout to hide the alert after 15 seconds (15000 milliseconds)
+                setTimeout(function() {
+                    errorAlert.style.display = 'none';
+                }, 15000);
+            }
         });
     </script>
 @endsection
