@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\APIControllers;
 
 use App\Http\Resources\UserResource;
+use App\Models\Project;
 use App\Models\ProjectMember;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -39,5 +41,21 @@ class UserController extends Controller
             ->first();
 
         return response()->json(['role' => $role]);
+    }
+
+    public function getUserForSearch(Project $project)
+    {
+        $user = JWTAuth::user();
+        if ($user->role === 'ADMIN' || $project->isManager($user)) {
+            $users = User::where('role', 'USER')
+                ->whereDoesntHave('projectMembers', function ($query) use ($project) {
+                    $query->where('project_id', $project->id);
+                })->get();
+
+            return UserResource::collection($users);
+        }
+        return new JsonResponse([
+            'message' => 'You do not have permission to perform this action.'
+        ], 403);
     }
 }
