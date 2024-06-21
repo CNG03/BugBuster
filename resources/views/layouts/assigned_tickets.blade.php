@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Created Tickets| Bug Buster')
+@section('title', 'Assigned Tickets| Bug Buster')
 
 @section('custom-css')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
@@ -11,9 +11,9 @@
 <div style="margin-top: 2rem;" >
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Bug Buster</a></li>
-            <li class="breadcrumb-item"><a href="#">Tickets</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Assigned Tickets</li>
+            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+            <li class="breadcrumb-item"><a href="{{route('projectDetail', [$projectID => $projectID])}}">Project Detail</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tickets - Assigned Tickets</li>
         </ol>
     </nav>
 </div>

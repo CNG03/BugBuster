@@ -34,7 +34,7 @@ class WebTicketController extends Controller
             $dashboard = $response->json();
             $paginationLinks = $dashboard['links'];
             $paginationMeta = $dashboard['meta'];
-            return view('layouts.tickets_all', compact('dashboard', 'paginationLinks', 'paginationMeta', 'role'));
+            return view('layouts.tickets_all', compact('dashboard', 'paginationLinks', 'paginationMeta', 'role', 'projectID'));
         } else {
             abort(500, 'Internal Server Error');
         }

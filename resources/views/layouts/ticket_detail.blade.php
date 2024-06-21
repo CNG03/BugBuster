@@ -9,12 +9,12 @@
 @endsection
 
 @section('content')
-<div style="margin-top: 2rem; margin-left: 1rem;" >
+<div style="margin-top: 2rem;" >
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Bug Buster</a></li>
-            <li class="breadcrumb-item"><a href="#">Ticket</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Details</li>
+            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+            <li class="breadcrumb-item"><a href="{{route('projectDetail', ['projectID' => $ticketDetail['project_id']])}}">Project Detail</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tickets - Tickets Detail</li>
         </ol>
     </nav>
 </div>

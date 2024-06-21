@@ -29,3 +29,17 @@
     margin-bottom: 15px;
     background-color: #f1f1f1;
 }
+.member-item {
+    margin-bottom: 10px;
+}
+.member-item input {
+    margin-bottom: 5px;
+}
+.member-item select {
+    margin-bottom: 10px;
+}
+.search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}

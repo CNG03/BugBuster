@@ -12,9 +12,9 @@
 <div style="margin-top: 2rem;" >
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Bug Buster</a></li>
-            <li class="breadcrumb-item"><a href="#">Tickets</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Created Tickets</li>
+            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+            <li class="breadcrumb-item"><a href="{{route('projectDetail', [$projectID => $projectID])}}">Project Detail</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tickets - Created Tickets</li>
         </ol>
     </nav>
 </div>
@@ -54,7 +54,7 @@
                 <tbody>
                     @foreach($dashboard['data'] as $ticket)
                         <tr>
-                            <td><a class="text" data-text="{{ $ticket['name'] }}" href="#">{{ $ticket['name'] }}</a></td>
+                            <td><a class="text" data-text="{{ $ticket['name'] }}" href="{{route('ticketDetail', ['ticketID' => $ticket['id']])}}">{{ $ticket['name'] }}</a></td>
                             <td>{{ $ticket['created_by'] }}</td>
                             @switch($ticket['priority'])
                                 @case('HIGH')

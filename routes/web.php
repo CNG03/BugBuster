@@ -4,9 +4,9 @@ use App\Http\Controllers\APIControllers\auth\AccessController;
 use App\Http\Controllers\APIControllers\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIControllers\auth\ForgotPasswordController;
-use App\Http\Controllers\ProjectDetailController;
 use App\Http\Controllers\WebControllers\WebTicketController;
 use App\Http\Controllers\WebControllers\DashboardController;
+use App\Http\Controllers\WebControllers\ProjectDetailController;
 use App\Http\Middleware\AddAuthorizationHeader;
 use App\Http\Middleware\JwtAuthMiddleware;
 use App\Http\Middleware\AdminMiddleware;
@@ -92,4 +92,7 @@ Route::post('/project/ticket/edit/{ticketID}', [WebTicketController::class, 'upd
 
 
 Route::get('/project/detail/{projectID}', [ProjectDetailController::class, 'index'])->name('projectDetail')->middleware(AdminMiddleware::class);
+Route::post('/project/member/{projectID}', [ProjectDetailController::class, 'updateRoleProject'])->name('updateRole')->middleware(AdminMiddleware::class);
+Route::post('/project/member/delete/{projectID}', [ProjectDetailController::class, 'removeMemberFromProject'])->name('removeMember')->middleware(AdminMiddleware::class);
+Route::post('/project/member/add/{projectID}', [ProjectDetailController::class, 'addMemberFromProject'])->name('addMember')->middleware(AdminMiddleware::class);
 
