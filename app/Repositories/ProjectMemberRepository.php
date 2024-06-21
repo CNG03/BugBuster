@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Events\AddedProject;
+use App\Events\RoleChanged;
 use App\Models\ProjectMember;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +30,8 @@ class ProjectMemberRepository
                 ]);
 
                 $user = $users[$member['user_id']];
-                Mail::to($user->email)->queue(new AddedProjectNotification($user->name, $project->name));
+
+                AddedProject::dispatch($user, $project);
             }
         });
     }
@@ -60,7 +63,7 @@ class ProjectMemberRepository
             }
 
             foreach ($membersToUpdate as $user) {
-                Mail::to($user->email)->queue(new RoleChangedNotification($user->name, $member['role_in_project'], $project->name));
+                RoleChanged::dispatch($user, $project, $member['role_in_project']);
             }
         });
     }

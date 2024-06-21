@@ -54,6 +54,26 @@ class ProjectController extends Controller
     }
 
     /**
+     * Close project
+     */
+
+    public function closeProject(Project $project)
+    {
+        $this->authorize('complete', $project);
+
+        $check =  $this->repository->closeProject($project);
+
+        if ($check)
+            return new JsonResponse([
+                'message' => 'close project sussess.'
+            ]);
+
+        return new JsonResponse([
+            'message' => 'close project failure!, some ticket not close'
+        ], 400);
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(Project $project)

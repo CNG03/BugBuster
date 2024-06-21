@@ -10,6 +10,7 @@ Route::middleware([
     ->name('users.')
     ->namespace('\App\Http\Controllers')
     ->group(function () {
+        Route::get('/users/not-in/{project}', [UserController::class, 'getUserForSearch'])->name('getUserForSearch');
         Route::get('/user/role/{projectId}', [UserController::class, 'getUserRole']);
         Route::get('/user/profile', [UserController::class, 'profile'])->name('profile');
         Route::get('/users', [UserController::class, 'index'])->name('index');

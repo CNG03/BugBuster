@@ -2,12 +2,15 @@
 
 namespace App\Repositories;
 
+use App\Events\ChangeStatus;
+use App\Events\TicketAssigned;
 use App\Models\ProjectMember;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AddedProjectNotification;
 use App\Mail\RoleChangedNotification;
+use App\Models\Project;
 use App\Models\Ticket;
 use App\Models\TicketHistory;
 
@@ -124,6 +127,12 @@ class TicketRepository
                 'status' => 'Error'
             ]);
 
+            $project = Project::find($data['project_id']);
+            $user = User::find($data['assigned_to']);
+
+            if ($user)
+                TicketAssigned::dispatch($user, $project, $ticket);
+
             return $ticket;
         });
     }
@@ -157,9 +166,21 @@ class TicketRepository
 
     public function updateStatus(Ticket $ticket, array $data)
     {
+        $status = data_get($data, 'status', 'Error');
+
+        $project = Project::find($ticket->project_id);
+
+        $userCreate = User::find($ticket->created_by);
+        $userAssigned = User::find($ticket->assigned_to);
+
+        ChangeStatus::dispatch($userCreate, $project, $ticket, $status);
+
+        if ($userAssigned)
+            ChangeStatus::dispatch($userAssigned, $project, $ticket, $status);
+
         TicketHistory::create([
             'ticket_id' => $ticket->id,
-            'status' => data_get($data, 'status', 'Error')
+            'status' => $status
         ]);
     }
 }
