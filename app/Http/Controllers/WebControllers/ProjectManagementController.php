@@ -46,7 +46,7 @@ class ProjectManagementController extends Controller
         $projects = Project::with(['projectMembers', 'projectMembers.user'])->get();
         $accessToken = Session::get('accessToken');
         Session::put('accessToken', $accessToken);
-        return view('layouts.projectManagement', ['projects' => $projects, 'accessToken' => $accessToken]);
+        return view('project-management.index', ['projects' => $projects, 'accessToken' => $accessToken]);
         // return response()->json($projects);
     }
     
