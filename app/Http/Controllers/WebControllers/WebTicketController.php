@@ -13,15 +13,16 @@ class WebTicketController extends Controller
 {
     public function allTickets(Request $request, $projectID)
     {
+        $isCompleted = $request->query('isCompleted');
         // Thêm header vào request
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), // Thay thế API_TOKEN bằng token của bạn
+            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
         ])->get('http://127.0.0.1:7000/api/v1/project/tickets/' . $projectID, [
             'page' => $request->input('page', 1)
         ]);
 
         $response1 = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), // Thay thế API_TOKEN bằng token của bạn
+            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
         ])->get('http://127.0.0.1:7000/api/v1/user/role/' . $projectID);
 
         if ($response1->successful()) {
@@ -34,7 +35,7 @@ class WebTicketController extends Controller
             $dashboard = $response->json();
             $paginationLinks = $dashboard['links'];
             $paginationMeta = $dashboard['meta'];
-            return view('layouts.tickets_all', compact('dashboard', 'paginationLinks', 'paginationMeta', 'role'));
+            return view('layouts.tickets_all', compact('isCompleted', 'dashboard', 'paginationLinks', 'paginationMeta', 'role', 'projectID'));
         } else {
             abort(500, 'Internal Server Error');
         }
@@ -143,6 +144,12 @@ class WebTicketController extends Controller
     }
 
     public function updateStatus(Request $request) {
+        // Cập nhật giá trị của status trước khi gửi tới API
+        if ($request->input('status') == 'Cancel') {
+            $request->merge(['status' => 'Cancelled']);
+        } elseif ($request->input('status') == 'Close') {
+            $request->merge(['status' => 'Closed']);
+        }
         $apiUrl = "http://127.0.0.1:7000/api/v1/tickets/status/".$request->input('ticket_id');
 
         try {
