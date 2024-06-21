@@ -19,8 +19,10 @@
         </ul>
       </div>
       
-      <div class="modal-body">
+      <form class="modal-body" action="{{ route('createProject') }}" method="POST" >
+      @csrf
         <div  id="project-team">
+          <input type="text" name="id" class="d-none id">
           <div class="col-12 content" id="project-detail">
                 <div class="form-group sub-edit-content d-flex justify-content-between">
                     <label for="name" class="col-form-label fw-normal created_by">Created by: Admin<span class="fs-15 fst-italic ps-1 text-green created_at">(12-11-2023 11:56)</span></label>
@@ -28,11 +30,11 @@
               </div>
               <div class="form-group">
                 <label for="name" class="col-form-label fw-normal">Name project:</label>
-                <input type="text" class="form-control name">
+                <input type="text" class="form-control name" name="name">
               </div>
               <div class="form-group">
                 <label for="message-text" class="col-form-label fw-normal description">Description:</label>
-                <textarea class="form-control description" ></textarea>
+                <textarea class="form-control description" name="description"></textarea>
               </div>
               <div class="d-none messege-error-area">
                     <label id="message-error" class=" text-danger mb-1">Input all field before submit</label>
@@ -60,7 +62,7 @@
                                 <!-- <div class="ml-auto d-flex justify-content-center align-items-center flex-wrap-reverse">
                                     <input type="button" class="x-btn text-white py-1 px-2 rounded border-0 custom-purple small select-cleaner" value="Clear" />
                                 </div> -->
-                                <ul class="form-control overflow-auto" id="manager-select" style="height: 95px;">
+                                <ul class="form-control overflow-auto" id="manager-select" style="height: 95px;" name="manager-list">
                                 
                                     
                                 
@@ -85,7 +87,7 @@
                                 </div>
                               
                             </div>
-                            <ul class="form-control overflow-auto" id="dev-select" style="height: 95px;">
+                            <ul class="form-control overflow-auto" id="dev-select" style="height: 95px;" name="dev-list">
                                 
                                     
                                 
@@ -111,7 +113,7 @@
                                 </div>
                               
                             </div>
-                            <ul class="form-control overflow-auto" id="tester-select" style="height: 95px;">
+                            <ul class="form-control overflow-auto" id="tester-select" style="height: 95px;" name="tester-list">
                                 
                                     
                                 
@@ -121,13 +123,13 @@
                         
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" id="close-btn" data-dismiss="modal">Close</button>
+            <div type="button" class="btn btn-secondary" id="close-btn" data-dismiss="modal">Close</div>
             <button type="submit" id="submit_project_Btn" data-value="null" onclick="handleSubmit(event.target.getAttribute('data-value'))" class="btn btn-primary green">Create</button>
     
           </div>
         </div>
 
-      </div>
+      </form>
     </div>
   </div>
 </div>

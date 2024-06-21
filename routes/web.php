@@ -83,7 +83,16 @@ Route::get('/profile', function () {
     return view('layouts.profile');
 })->name('myProfile');
 
+// Project-management
 Route::get('/project-management', [ProjectManagementController::class, 'index'])->middleware(AdminMiddleware::class);
+// Route::post('/project-management', [ProjectManagementController::class, 'createProject'])->middleware(AdminMiddleware::class);
+
+// Route::post('/project-management', 'ProjectManagementController@createProject')->name('project-management');
+Route::patch('/project-management', [ProjectManagementController::class, 'editProject'])->middleware(AdminMiddleware::class);
+Route::delete('/project-management', [ProjectManagementController::class, 'deleteProject'])->middleware(AdminMiddleware::class);
+Route::post('/project-management', [ProjectManagementController::class, 'createProject'])->name('createProject')->middleware(AdminMiddleware::class);
+
+
 Route::get('/user-management', [UserManagementController::class, 'index'])->name('users')->middleware(AdminMiddleware::class);
 Route::get('/test-management', [TestManagementController::class, 'index'])->name('entities')->middleware(AdminMiddleware::class);
 Route::get('/bug-management', [BugManagementController::class, 'index'])->name('entities')->middleware(AdminMiddleware::class);

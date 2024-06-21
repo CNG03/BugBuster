@@ -47,6 +47,9 @@
                     <div class="tab-pane active" id="tab" role="tabpanel">
                         <div class="card-body p-0">
                             <div class="header-user text-center mt-3">
+                                <p class="d-none" id="user_id" data-value="{{Session::get('user_id')}}"></p>
+                                <p class="d-none" id="accessToken" data-value="{{Session::get('accessToken')}}"></p>
+                                
                                 <span class="avatar avatar-xxl rounded-circle mx-auto"><img
                                         src="{{Session::get('user_avatar')}}"
                                         alt="Profile-img" class="avatar avatar-xxl rounded-circle" /></span>
