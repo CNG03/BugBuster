@@ -23,6 +23,10 @@ class ProjectDetailController extends Controller
             'Authorization' => 'Bearer ' . Session::get('accessToken'), 
         ])->get('http://127.0.0.1:7000/api/v1/user/role/'.$projectID);
 
+        $response2 = Http::withHeaders([
+            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
+        ])->get('http://127.0.0.1:7000/api/v1/users/not-in/'.$projectID);
+
         if ($response1->successful()) {
             $role = $response1->json();
         } else {
@@ -30,9 +34,16 @@ class ProjectDetailController extends Controller
             abort(500, 'Internal Server Error, status code: ' . $status);
         }
 
+        if ($response2->successful()) {
+            $userNotInProject = $response2->json()['data'];
+        } else {
+            $status = $response1->status();
+            abort(500, 'Internal Server Error, status code: ' . $status);
+        }
+
         if ($response->successful()) {
             $project = $response->json()['data'];
-            return view('layouts.project_detail', compact('project', 'role'));
+            return view('layouts.project_detail', compact('project', 'role', 'userNotInProject'));
         } else {
             abort(500, 'Internal Server Error');
         }
@@ -91,6 +102,40 @@ class ProjectDetailController extends Controller
     }
 
     public function addMemberFromProject(Request $request, $projectID) {
-        
+        // Lấy dữ liệu từ request
+        $members = $request->input('members');
+
+        // Gửi dữ liệu tới API bên ngoài
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . session()->get('accessToken'),
+            'Accept' => 'application/json',
+        ])->post('http://127.0.0.1:7000/api/v1/projectmembers/' . $projectID, [
+            'members' => $members
+        ]);
+
+        // Kiểm tra phản hồi từ API và đưa ra thông báo thích hợp
+        if ($response->successful()) {
+            return redirect()->route('projectDetail', ['projectID' => $projectID])
+                             ->with('success', 'Members added successfully!');
+        } else {
+            return redirect()->route('projectDetail', ['projectID' => $projectID])
+                             ->with('error', 'Failed to add members.');
+        }
+    }
+    public function closeProject($projectID) {
+        // Xử lý logic đóng project
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+            'Accept' => 'application/json',
+        ])->post('http://127.0.0.1:7000/api/v1/projects/close/'.$projectID);
+
+        // Kiểm tra phản hồi từ API và đưa ra thông báo thích hợp
+        if ($response->successful()) {
+            return redirect()->route('projectDetail', ['projectID' => $projectID])
+                             ->with('success', 'Project closed successfully!');
+        } else {
+            return redirect()->route('projectDetail', ['projectID' => $projectID])
+                             ->with('error', 'Failed to close project. There is an unclosed ticket');
+        }
     }
 }

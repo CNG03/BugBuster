@@ -46,6 +46,7 @@
                 </caption>
                 <thead class="table-primary">
                     <tr>
+                        <th>#</th>
                         <th>Ticket Title</th>
                         <th>Author</th>
                         <th>Priority</th>
@@ -57,6 +58,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $index = $paginationMeta['from'];
+                    @endphp
                     @if (empty($dashboard['data']))
                         <tr>
                             <td colspan="8">
@@ -66,6 +70,10 @@
                     @endif
                     @foreach($dashboard['data'] as $ticket)
                         <tr>
+                            <td>{{$index}}</td>
+                            @php
+                                $index++;
+                            @endphp
                             <td><a class="text" data-text="{{ $ticket['name'] }}" href="{{route('ticketDetail', ['ticketID' => $ticket['id']])}}">{{ $ticket['name'] }}</a></td>
                             <td>{{ $ticket['created_by'] }}</td>
                             @switch($ticket['priority'])
@@ -106,40 +114,20 @@
                             @endswitch
                             <td>
                                 @switch($role['role'])
-                                    @case('TESTER')
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
-                                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                            </ul>
-                                        </div>                                    
-                                        @break
-                                    @case('MANAGER')
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
-                                            </ul>
-                                        </div> 
-                                        @break
                                     @case('DEVELOPER')
                                         <div class="dropdown">
                                             <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
+                                                @if ($ticket['status'] == 'Error')
+                                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
+                                                @elseif($ticket['status'] == 'Pending')
+                                                    <li>Waiting for review!!! </li>
+                                                @else
+                                                    <li>Done, Good job!!! </li>
+                                                @endif
                                             </ul>
-                                        </div>
-                                        @break
-                                    @case('READER')
-                                        <div class="fw-bold">
-                                            <i class="fa-solid fa-lock"></i>
                                         </div>
                                         @break
                                 @endswitch
@@ -228,22 +216,8 @@
                         <label for="statusSelect">Select New Status</label>
                             <select name="status" class="form-control" id="statusSelect">
                                 @switch($role['role'])
-                                    @case('TESTER')
-                                        <option value="Error">Error</option>
-                                        <option value="Tested">Tested</option>
-                                        <option value="Cancelled">Cancel</option>
-                                        @break
-                                    @case('MANAGER')
-                                        <option value="Close">Close</option>
-                                        @break
                                     @case('DEVELOPER')
-                                        <option value="Error">Error</option>
                                         <option value="Pending">Pending</option>
-                                        @if ($ticket['created_by'] == Session::get('user_name'))
-                                            <option value="Cancelled">Cancel</option>
-                                        @endif
-                                        @break
-                                    @case('READER')
                                         @break
                                 @endswitch
                             </select>

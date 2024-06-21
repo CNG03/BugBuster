@@ -100,50 +100,86 @@
                                 @break
                             @endswitch
                             <td>
-                                @switch($role['role'])
-                                    @case('TESTER')
+                                @if ($isCompleted == 1)
+                                    <div></div>
+                                @else
+                                    @switch($role['role'])  
+                                        @case('TESTER')
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    @if (Session::get('user_name') == $ticket['created_by'] && ($ticket['status'] == 'Error' || $ticket['status'] == 'Pending'))
+                                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
+                                                    @elseif (Session::get('user_name') != $ticket['created_by'])
+                                                        <li class="dropdown-item">No permission</li>
+                                                    @else
+                                                        <li class="dropdown-item">Done, Good Job!</li>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                            @break
+
+                                        @case('MANAGER')
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    @if ($ticket['status'] == 'Tested')
+                                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-ticket-id="{{$ticket['id']}}" data-bs-target="#changeStatusModal">Change Status</a></li>
+                                                    @else
+                                                        <div></div>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                            @break
+
+                                        @case('DEVELOPER')
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    @if ($ticket['status'] == 'Error' && $ticket['assigned_to'] == Session::get('user_name'))
+                                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
+                                                    @elseif (Session::get('user_name') == $ticket['created_by'] && ($ticket['status'] == 'Error' || $ticket['status'] == 'Pending'))
+                                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
+                                                    @elseif ($ticket['assigned_to'] != Session::get('user_name'))
+                                                        <li class="dropdown-item">No permission!</li>
+                                                    @elseif ($ticket['status'] == "Tested" && Session::get('user_name') == $ticket['assigned_to'])
+                                                        <li class="dropdown-item">Done, Good Job!</li>
+                                                    @else
+                                                        <li class="dropdown-item">Waiting for review</li>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                            @break
+
+                                        @case('READER')
+                                            <div class="fw-bold">
+                                                <i class="fa-solid fa-lock"></i>
+                                            </div>
+                                            @break
+                                    @endswitch
+                                    @if ($ticket['status'] == 'Tested' && Session::get('user_role') =='ADMIN')
                                         <div class="dropdown">
                                             <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
                                                 id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal" data-ticket-id="{{$ticket['id']}}">Change Status</a></li>
                                             </ul>
                                         </div>
-                                    @break
-
-                                    @case('MANAGER')
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
-                                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                            </ul>
-                                        </div>
-                                    @break
-
-                                    @case('DEVELOPER')
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
-                                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                            </ul>
-                                        </div>
-                                    @break
-
-                                    @case('READER')
-                                        <div class="fw-bold">
-                                            <i class="fa-solid fa-lock"></i>
-                                        </div>
-                                    @break
-                                @endswitch
+                                    @else
+                                        <div></div>
+                                    @endif
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -225,17 +261,57 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="changeStatusForm">
+                <form action="{{route('updateStatus')}}" method="POST" id="changeStatusForm" id="changeStatusForm">
+                    @csrf
                     <div class="form-group">
+                        <input type="hidden" name="ticket_id" id="modalTicketId">
                         <label for="statusSelect">Select New Status</label>
-                        <select class="form-control" id="statusSelect">
-                            <option>Error</option>
-                            <option>Pending</option>
-                            <option>Tested</option>
-                            <option>Cancel</option>
-                            <option>Close</option>
+                        <select name="status" class="form-control" id="statusSelect">
+                            @php
+                                $options = [];
+                
+                                foreach ($dashboard['data'] as $ticket) {
+                                    switch ($role['role']) {
+                                        case 'TESTER':
+                                            if (Session::get('user_name') == $ticket['created_by'] && ($ticket['status'] == 'Error' || $ticket['status'] == 'Pending')) {
+                                                if (!in_array('Error', $options)) $options[] = 'Error';
+                                                if (!in_array('Tested', $options)) $options[] = 'Tested';
+                                                if (!in_array('Cancel', $options)) $options[] = 'Cancel';
+                                            }
+                                            break;
+                
+                                        case 'MANAGER':
+                                            if ($ticket['status'] == 'Tested') {
+                                                if (!in_array('Close', $options)) $options[] = 'Close';
+                                            }
+                                            break;
+                
+                                        case 'DEVELOPER':
+                                            if ($ticket['assigned_to'] == Session::get('user_name') && $ticket['status'] == 'Error') {
+                                                if (!in_array('Pending', $options)) $options[] = 'Pending';
+                                            } elseif (Session::get('user_name') == $ticket['created_by'] && ($ticket['status'] == 'Error' || $ticket['status'] == 'Pending')) {
+                                                if (!in_array('Error', $options)) $options[] = 'Error';
+                                                if (!in_array('Tested', $options)) $options[] = 'Tested';
+                                                if (!in_array('Cancel', $options)) $options[] = 'Cancel';
+                                            }
+                                            break;
+                
+                                        default:
+                                            break;
+                                    }
+                
+                                    if ($ticket['status'] == 'Tested' && Session::get('user_role') == 'ADMIN') {
+                                        if (!in_array('Close', $options)) $options[] = 'Close';
+                                    }
+                                }
+                            @endphp
+                
+                            @foreach ($options as $option)
+                                <option value="{{ $option }}">{{ $option }}</option>
+                            @endforeach
                         </select>
                     </div>
+                    <button type="submit" style="display:none;">Submit</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -298,6 +374,22 @@
                 fileItem.appendChild(removeButton);
                 fileList.appendChild(fileItem);
             });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const changeStatusModal = document.getElementById('changeStatusModal');
+            changeStatusModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget; // Button that triggered the modal
+                const ticketId = button.getAttribute('data-ticket-id'); // Extract info from data-* attributes
+                
+                // Update the modal's content.
+                const modalTicketIdInput = document.getElementById('modalTicketId');
+                modalTicketIdInput.value = ticketId;
+            });
+        });
+        document.getElementById('saveStatusBtn').addEventListener('click', function() {
+            document.getElementById('changeStatusForm').submit();
         });
     </script>
 @endsection
