@@ -5,6 +5,10 @@ use App\Http\Controllers\APIControllers\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIControllers\auth\ForgotPasswordController;
 use App\Http\Controllers\ProjectDetailController;
+use App\Http\Controllers\WebControllers\UserManagementController;
+use App\Http\Controllers\WebControllers\TestManagementController;
+use App\Http\Controllers\WebControllers\BugManagementController;
+use App\Http\Controllers\WebControllers\ProjectManagementController;
 use App\Http\Controllers\WebControllers\WebTicketController;
 use App\Http\Controllers\WebControllers\DashboardController;
 use App\Http\Middleware\AddAuthorizationHeader;
@@ -79,6 +83,10 @@ Route::get('/profile', function () {
     return view('layouts.profile');
 })->name('myProfile');
 
+Route::get('/project-management', [ProjectManagementController::class, 'index'])->middleware(AdminMiddleware::class);
+Route::get('/user-management', [UserManagementController::class, 'index'])->name('users')->middleware(AdminMiddleware::class);
+Route::get('/test-management', [TestManagementController::class, 'index'])->name('entities')->middleware(AdminMiddleware::class);
+Route::get('/bug-management', [BugManagementController::class, 'index'])->name('entities')->middleware(AdminMiddleware::class);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(AdminMiddleware::class);
 Route::get('/project/all_tickets/{projectID}', [WebTicketController::class, 'allTickets'])->name('allTickets')->middleware(AdminMiddleware::class);
 Route::get('/project/created_tickets/{projectID}', [WebTicketController::class, 'createdTickets'])->name('createdTickets')->middleware(AdminMiddleware::class);
