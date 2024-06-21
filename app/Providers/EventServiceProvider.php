@@ -2,6 +2,16 @@
 
 namespace App\Providers;
 
+use App\Events\AddedProject;
+use App\Events\ChangeStatus;
+use App\Events\MemberRemoved;
+use App\Events\RoleChanged;
+use App\Events\TicketAssigned;
+use App\Listeners\SendAddProjectNotification;
+use App\Listeners\SendChangeStatusNotification;
+use App\Listeners\SendMemberRemovedNotification;
+use App\Listeners\SendRoleChangedNotification;
+use App\Listeners\SendTicketAssignedNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +28,21 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        AddedProject::class => [
+            SendAddProjectNotification::class
+        ],
+        MemberRemoved::class => [
+            SendMemberRemovedNotification::class
+        ],
+        RoleChanged::class => [
+            SendRoleChangedNotification::class
+        ],
+        TicketAssigned::class => [
+            SendTicketAssignedNotification::class
+        ],
+        ChangeStatus::class => [
+            SendChangeStatusNotification::class
+        ]
     ];
 
     /**
