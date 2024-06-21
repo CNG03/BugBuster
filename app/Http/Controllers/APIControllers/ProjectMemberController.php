@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\APIControllers;
 
+use App\Events\MemberRemoved;
 use App\Exceptions\CustomQueryException;
 use App\Models\ProjectMember;
 use App\Http\Requests\StoreProjectMemberRequest;
@@ -89,7 +90,7 @@ class ProjectMemberController extends Controller
 
         throw_if(!$deleted, CustomQueryException::class, 'Error occurred while deleting the member.');
 
-        Mail::to($user->email)->queue(new ProjectMemberRemovedNotification($user->name, $project->name));
+        MemberRemoved::dispatch($user, $project);
 
         return new JsonResponse([
             'message' => 'delete member success'
