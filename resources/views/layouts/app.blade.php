@@ -684,7 +684,7 @@
         <aside class="app-sidebar sticky" id="sidebar">
             <!-- Start::main-sidebar-header -->
             <div class="main-sidebar-header">
-                <a href="index.html" class="header-logo">
+                <a href="{{route('dashboard')}}" class="header-logo">
                     <img src="{{ asset('assets') }}/img/logo2.png" alt="logo" /> <span id="brand-title">Bug
                         Buster</span>
                 </a>
@@ -753,7 +753,7 @@
                                             <li class="slide__category"><span class="category-name">Project</span></li>
                                             <li class="slide">
                                                 <a style="background-color: rgba(255, 255, 255, .05);color: #fff !important;"
-                                                    href="{{route('dashboard')}}" class="side-menu__item active"><i
+                                                    href="{{route('projectAll')}}" class="side-menu__item active"><i
                                                         style="color: #fff !important; fill: #fff !important;"
                                                         class=" side-menu__icon fa-solid fa-briefcase"></i><span
                                                         style="color: #fff !important; fill: #fff !important;"

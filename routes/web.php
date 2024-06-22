@@ -74,7 +74,7 @@ Route::get('/profile', function () {
 })->name('myProfile')->middleware(AdminMiddleware::class);
 
 // Project-management
-Route::get('/project-management', [ProjectManagementController::class, 'index'])->middleware(AdminMiddleware::class);
+Route::get('/project-management', [ProjectManagementController::class, 'index'])->name('projectAll')->middleware(AdminMiddleware::class);
 Route::post('/project-management', [ProjectManagementController::class, 'createProject'])->name('createProject')->middleware(AdminMiddleware::class);
 Route::patch('/project-management', [ProjectManagementController::class, 'editProject'])->name('editProject')->middleware(AdminMiddleware::class);
 Route::delete('/project-management', [ProjectManagementController::class, 'deleteProject'])->name('deleteProject')->middleware(AdminMiddleware::class);
