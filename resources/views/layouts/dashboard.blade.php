@@ -501,7 +501,7 @@
                                     <div class="NotificationBadge-styles__activityIndicator NotificationBadge-styles__hasBadge">
                                         <div><span class="fOyUs_bGBk fOyUs_cuDs cECYn_bGBk cECYn_KksD cECYn_bXiG cECYn_dDWY cECYn_bXgF cECYn_bBTa"></span><span class="ergWt_bGBk">New activity for {{$elements['project']['name']}}</span></div>
                                     </div>
-                                    <a href="#" class="Grouping-styles__hero Grouping-styles__heroHover" style="background-image: url('');">
+                                    <a href="{{route('projectDetail',['projectID'=>$elements['project']['id']])}}" class="Grouping-styles__hero Grouping-styles__heroHover" style="background-image: url('');">
                                         <span class="Grouping-styles__overlay" style="background-color: {{ $currentColor }};"></span><span class="Grouping-styles__title">{{$elements['project']['name']}}</span>
                                     </a>
                                     <ol class="Grouping-styles__items" style="border-color: {{ $currentColor }};">
@@ -547,7 +547,7 @@
                                                             <div class="PlannerItem-styles__type">
                                                                 <span color="secondary" wrap="normal" letter-spacing="normal" class="enRcg_bGBk enRcg_dfBC enRcg_eQnG enRcg_bLsb">{{$elements['project']['name']}} Assign</span>
                                                             </div>
-                                                            <a href="#" class="fOyUs_bGBk fbyHH_bGBk fbyHH_bSMN">
+                                                            <a href="{{route('ticketDetail', ['ticketID'=>$ticket['id']])}}" class="fOyUs_bGBk fbyHH_bGBk fbyHH_bSMN">
                                                                 <span class="ergWt_bGBk">Assign {{$ticket['name']}} posted {{ \Carbon\Carbon::parse($elements['project']['created_at'])->format('l, F j, Y') }}</span>
                                                                 <span aria-hidden="true">{{$ticket['name']}}</span>
                                                             </a>

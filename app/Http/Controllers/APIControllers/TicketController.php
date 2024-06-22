@@ -48,7 +48,7 @@ class TicketController extends Controller
         $this->authorize('viewAny', [Ticket::class, $projectId]);
 
         $user = JWTAuth::parseToken()->authenticate();
-        $pageSize = $request->page_size ?? 2;
+        $pageSize = $request->page_size ?? 10;
 
         $tickets = $this->repository->getUserTickets($user->id, $projectId, $pageSize);
 
@@ -60,7 +60,7 @@ class TicketController extends Controller
         $this->authorize('viewAny', [Ticket::class, $projectId]);
 
         $user = JWTAuth::parseToken()->authenticate();
-        $pageSize = $request->page_size ?? 2;
+        $pageSize = $request->page_size ?? 10;
 
         $tickets = $this->repository->getAssignedTickets($user->id, $projectId, $pageSize);
 

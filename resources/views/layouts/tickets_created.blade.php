@@ -12,13 +12,28 @@
 <div style="margin-top: 2rem;" >
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Bug Buster</a></li>
-            <li class="breadcrumb-item"><a href="#">Tickets</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Created Tickets</li>
+            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+            <li class="breadcrumb-item"><a href="{{route('projectDetail', [$projectID => $projectID])}}">Project Detail</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tickets - Created Tickets</li>
         </ol>
     </nav>
 </div>
+@if(session('success'))
+    <div class="alert2 fixed-top-right" id="errorAlert">
+        <i class="fa-solid fa-circle-check"></i>
+        <span style="font-size: 30px;order: 3;" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>{{  session('success')  }}!</strong>
+    </div>
+@endif
 
+@if(session('error'))
+    <div style="align-items: center; display: flex; justify-content: space-between;" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <p style="margin-top: 0px; margin-bottom: 0px;">{{ session('error') }}</p>
+        <button style="background-color: rgb(4 198 144); font-size: 22px; border: none; border-radius: 7px;" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
 
     <div class="content-table ">
         <div class="tab-content" id="myTabContent">
@@ -41,6 +56,7 @@
                 </caption>
                 <thead class="table-primary">
                     <tr>
+                        <th>#</th>
                         <th>Ticket Title</th>
                         <th>Author</th>
                         <th>Priority</th>
@@ -52,9 +68,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $index = $paginationMeta['from'];
+                    @endphp
                     @foreach($dashboard['data'] as $ticket)
                         <tr>
-                            <td><a class="text" data-text="{{ $ticket['name'] }}" href="#">{{ $ticket['name'] }}</a></td>
+                            <td>{{$index}}</td>
+                            @php
+                                $index++;
+                            @endphp
+                            <td><a class="text" data-text="{{ $ticket['name'] }}" href="{{route('ticketDetail', ['ticketID' => $ticket['id']])}}">{{ $ticket['name'] }}</a></td>
                             <td>{{ $ticket['created_by'] }}</td>
                             @switch($ticket['priority'])
                                 @case('HIGH')
@@ -99,50 +122,22 @@
                                 @break
                             @endswitch
                             <td>
-                                @switch($role['role'])
-                                    @case('TESTER')
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
-                                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                                <li><a class="dropdown-item" href="#">Edit Ticket</a></li>
-                                            </ul>
-                                        </div>
-                                    @break
-
-                                    @case('MANAGER')
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
-                                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                            </ul>
-                                        </div>
-                                    @break
-
-                                    @case('DEVELOPER')
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
-                                                id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#changeStatusModal">Change Status</a></li>
-                                            </ul>
-                                        </div>
-                                    @break
-
-                                    @case('READER')
-                                        <div class="fw-bold">
-                                            <i class="fa-solid fa-lock"></i>
-                                        </div>
-                                    @break
-                                @endswitch
+                                <div class="dropdown">
+                                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        @if ($ticket['status'] == 'Error' || $ticket['status'] == 'Pending')
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-ticket-id="{{$ticket['id']}}" data-bs-target="#changeStatusModal">Change Status</a></li>
+                                            <li><a class="dropdown-item" href="{{route('editTicket', ['ticketID' => $ticket['id']])}}">Edit Ticket</a></li>
+                                        @elseif($ticket['status'] == 'Cancelled')
+                                            <li><a class="dropdown-item" href="#">Cancelled</a></li>
+                                        @elseif($ticket['status'] == 'Closed' || $ticket['status'] == 'Tested')
+                                            <li><a class="dropdown-item" href="#">Done, Good job!!!</a></li>
+                                        @endif
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -313,15 +308,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="changeStatusForm">
+                <form action="{{route('updateStatus')}}" method="POST" id="changeStatusForm" id="changeStatusForm">
+                    @csrf
                     <div class="form-group">
+                        <input type="hidden" name="ticket_id" id="modalTicketId">
                         <label for="statusSelect">Select New Status</label>
-                        <select class="form-control" id="statusSelect">
-                            <option>Error</option>
-                            <option>Pending</option>
-                            <option>Tested</option>
-                            <option>Cancel</option>
-                            <option>Close</option>
+                        <select name="status" class="form-control" id="statusSelect">
+                            <option value="Error">Error</option>
+                            <option value="Tested">Tested</option>
+                            <option value="Cancel">Cancel</option>
                         </select>
                     </div>
                 </form>
