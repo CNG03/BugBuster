@@ -81,32 +81,23 @@ class ProjectManagementController extends Controller
             return redirect()->back()->with('error', 'Failed to create project.');
         }
     }
-
     public function deleteProject(Request $request)
     {
         // Lấy giá trị của các trường từ form
         $id = $request->input('id');
-        $name = $request->input('name');
-        $description = $request->input('description');
-        // $testers = $request->input('tester-list');
-    
-        // Gửi yêu cầu POST đến API
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
-        ])->delete('http://127.0.0.1:7000/api/v1/projects', [
-            'id' => $id,
-            'name' => $name,
-            'description' => $description,
-        ]);
+        ])->delete("http://127.0.0.1:7000/api/v1/projects/{$id}");
     
         if ($response->successful()) {
             // Xử lý response thành công từ API
     
-            return redirect()->back()->with('success', 'Project created successfully.');
+            return redirect()->back()->with('success', 'Project deleted successfully.');
         } else {
             // Xử lý response lỗi từ API
     
-            return redirect()->back()->with('error', 'Failed to create project.');
+            return redirect()->back()->with('error', 'Failed to delete project.');
         }
+
     }
 }

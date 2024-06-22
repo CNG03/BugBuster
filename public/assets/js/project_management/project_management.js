@@ -21,7 +21,6 @@ $(document).ready(function() {
 // Hiển thị số lượng project trong navbar
 function countProjects() {
   // Lấy các elements hiển thị 
-  console.log(document.getElementById('user_id'));
   var my_id = document.getElementById('user_id').getAttribute('data-value');
   var nav_bar = document.getElementById('navbar-project');
   var total_prj = nav_bar.querySelectorAll('.amount-total-project');
@@ -134,7 +133,7 @@ function searchProject() {
 
 // Mở form tạo mới Project
 function openProjectForm(){
-  var modal = document.getElementById('project-team');
+  var modal = document.getElementById('project_form');
   document.querySelector('.modal-title').textContent = 'Create Project';
   document.querySelector('.form-group.sub-edit-content').classList.add('d-none');
   document.querySelector('#submit_project_Btn').textContent = 'Create';
@@ -160,50 +159,48 @@ function openProjectForm(){
 
 // Mở form update Project
 function updateForm(event) {
-    document.getElementById("createProjectBtn").click();
-    var modalTitle = document.querySelector('.modal-title');
-    var createButton = document.querySelector('#submit_project_Btn');
-    modalTitle.textContent = 'Update Project';
-    createButton.textContent = 'Update';
-
-    // Lấy thông tin Project
-    var cell = event.target.closest('.cell-element'); // Lấy phần tử cha là hàng (row)
-    var id = cell.getAttribute('data-value'); // Lấy giá trị id từ cột đầu tiên (th)
-    var name = cell.querySelector('h5').innerText; // Lấy giá trị tên từ cột thứ hai (td)
-    var description = cell.querySelector('.description').innerText; // Lấy giá trị tên từ cột thứ hai (td)
-    var manager_list = Array.from(cell.querySelectorAll('ul.managers li'));
-    var tester_list = Array.from(cell.querySelectorAll('ul.testers li'));
-    var developer_list = Array.from(cell.querySelectorAll('ul.developers li'));
+  // document.getElementById('updateProjectBtn').click();
+  document.getElementById('fake-btn-detail').click();
 
 
-    createButton.setAttribute('data-value', id);
-    var modal_form = document.getElementById('project_form');
-     modal_form.querySelector('input.name').value=name;
-     modal_form.querySelector('textarea.description').value=description;
-    modal.form.querySelector('id').value = id;
-    var action = "{{ route('updateProject') }}"; // Lấy URL tương ứng với tên tuyến đường "createProject"
+  // Lấy thông tin Project
+  var cell = event.target.closest('.cell-element'); // Lấy phần tử cha là hàng (row)
+  var id = cell.getAttribute('data-value'); // Lấy giá trị id từ cột đầu tiên (th)
+  var name = cell.querySelector('h5').innerText; // Lấy giá trị tên từ cột thứ hai (td)
+  var description = cell.querySelector('.description').innerText; // Lấy giá trị tên từ cột thứ hai (td)
+  var manager_list = Array.from(cell.querySelectorAll('ul.managers li'));
+  var tester_list = Array.from(cell.querySelectorAll('ul.testers li'));
+  var developer_list = Array.from(cell.querySelectorAll('ul.developers li'));
+  
+   var elemen_id = document.getElementById('id_update').value=id;
+  var modal_form = document.getElementById('project_formupdateProject');
+  modal_form.querySelector('input.name').value=name;
+  modal_form.querySelector('textarea.description').value=description;
+  modal_form.action = "{{ $editProject }}";
 
-    modal_form.setAttribute('action', action);
 
-     var manager_update = document.getElementById('manager-select');
-     var dev_update = document.getElementById('dev-select');
-     var tester_update = document.getElementById('tester-select');
-     console.log(manager_list);
-     manager_list.forEach(function(element) {
+  // modal_form.setAttribute('action', `{{ route('updateProject') }}`);
+  
+  var manager_update = document.getElementById('manager-select');
+  var dev_update = document.getElementById('dev-select');
+  var tester_update = document.getElementById('tester-select');
+  // console.log(manager_list);
+  manager_list.forEach(function(element) {
       if (element instanceof Element) {
         var id = element.getAttribute('data-value');
         var email = element.textContent;
         var newLi = document.createElement('li');
         newLi.innerHTML = `
-          <li class="d-flex justify-content-between">
-            <p class="email" data-value="${id}">${email}</p> 
-            <button type="button" class="close border-0 bg-white" data-dismiss="modal" aria-label="Close"  onclick="removeUser(this)">
-              <img style="width: 14px; height: 18px" src="assets/img/xmark-solid.svg" alt="X icon">
-            </button>
+        <li class="d-flex justify-content-between">
+        <p class="email" data-value="${id}">${email}</p> 
+        <button type="button" class="close border-0 bg-white" data-dismiss="modal" aria-label="Close"  onclick="removeUser(this)">
+        <img style="width: 14px; height: 18px" src="assets/img/xmark-solid.svg" alt="X icon">
+        </button>
           </li>
-        `;
-
-        manager_update.appendChild(newLi);
+          `;
+          
+          manager_update.appendChild(newLi);
+          document.getElementById("createProjectBtn").click();
       }
     });
 
@@ -627,13 +624,8 @@ function updateBug(id, nameInput, descriptionTextarea){
 
 // Mở Modal Delete Project
   function openDeleteBasicForm(event) {
-    // Khóa button delete khi chưa nhập mã
-    deleteBtn = document.getElementById('delete-btn');
-    deleteBtn.classList.remove('bg-danger');
-    deleteBtn.disabled = true;
-    deleteBtn.style.cursor = 'default';
-    deleteBtn.style.fontWeight = 'normal';
-
+    var modal_form = document.getElementById('delete-form');
+    
     // Lấy thông tin Project
     var cell = event.target.closest('.cell-element'); // Lấy phần tử cha là hàng (row)
     var id = cell.getAttribute('data-value'); // Lấy giá trị id từ cột đầu tiên (th)
@@ -652,29 +644,14 @@ function updateBug(id, nameInput, descriptionTextarea){
     types.forEach(function(element){
       element.textContent = 'project';
     });
-    deleteBtn.setAttribute('data-value', id) // gán id vào button Delete
+    var inputId = modal.querySelector('input.delete'); // Lấy ô input có class "delete"
+    inputId.setAttribute('name', id); // Gán giá trị của "id" cho thuộc tính "name" của ô input "delete"
+
       // Mở modal
       $('#delete-modal').modal('show');
     }
     
-// Check input unlock button Delete
-var textConfirmInput = document.getElementById('text-confirm');
-textConfirmInput.addEventListener('input', function() { // gọi function mỗi khi input thay đổi value
-  var deleteBtn = document.getElementById('delete-btn');
-  var inputValue = textConfirmInput.value.trim();
-  
-  if (inputValue === 'Synchronize') { // mở khóa delete khi nhập Synchronize vào input
-    deleteBtn.disabled = false;
-    deleteBtn.style.cursor = 'pointer';
-    deleteBtn.style.fontWeight = 'bold';
-    deleteBtn.classList.add('bg-danger');
 
-  } else {
-    deleteBtn.disabled = true;
-    deleteBtn.style.cursor = 'default';
-    deleteBtn.style.fontWeight = 'normal';
-  }
-});
 
 // Button xóa Project
 function deleteConfirm(id){ // id truyền từ data-value của chính nó, được gán từ openDeleteBasicForm
