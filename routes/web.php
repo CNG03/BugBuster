@@ -74,18 +74,25 @@ Route::get('/profile', function () {
 })->name('myProfile')->middleware(AdminMiddleware::class);
 
 // Project-management
-Route::get('/project-management', [ProjectManagementController::class, 'index'])->middleware(AdminMiddleware::class);
-// Route::post('/project-management', [ProjectManagementController::class, 'createProject'])->middleware(AdminMiddleware::class);
-
-// Route::post('/project-management', 'ProjectManagementController@createProject')->name('project-management');
-Route::patch('/project-management', [ProjectManagementController::class, 'editProject'])->middleware(AdminMiddleware::class);
-Route::delete('/project-management', [ProjectManagementController::class, 'deleteProject'])->middleware(AdminMiddleware::class);
+Route::get('/project-management', [ProjectManagementController::class, 'index'])->name('projectAll')->middleware(AdminMiddleware::class);
 Route::post('/project-management', [ProjectManagementController::class, 'createProject'])->name('createProject')->middleware(AdminMiddleware::class);
+Route::patch('/project-management', [ProjectManagementController::class, 'editProject'])->name('editProject')->middleware(AdminMiddleware::class);
+Route::delete('/project-management', [ProjectManagementController::class, 'deleteProject'])->name('deleteProject')->middleware(AdminMiddleware::class);
 
 
 Route::get('/user-management', [UserManagementController::class, 'index'])->name('users')->middleware(AdminMiddleware::class);
-Route::get('/test-management', [TestManagementController::class, 'index'])->name('entities')->middleware(AdminMiddleware::class);
+Route::get('/test-management', [TestManagementController::class, 'index'])->name('testType')->middleware(AdminMiddleware::class);
 Route::get('/bug-management', [BugManagementController::class, 'index'])->name('entities')->middleware(AdminMiddleware::class);
+
+Route::post('/testtypes/add', [TestManagementController::class, 'addTestType'])->name('addTestType')->middleware(AdminMiddleware::class);
+Route::patch('/entities/edit', [TestManagementController::class, 'editEntity'])->name('editEntity');
+Route::delete('/entities/delete', [TestManagementController::class, 'deleteEntity'])->name('deleteEntity');
+
+
+Route::post('/bugtypes', [BugManagementController::class, 'store'])->name('addBugType');
+Route::patch('/bugtypes/edit', [BugManagementController::class, 'editBugType'])->name('editBugType');
+Route::delete('/bugtypes/delete', [BugManagementController::class, 'deleteBugType'])->name('deleteBugType');
+
 
 // Route ve hien thi giao dien dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(AdminMiddleware::class);
@@ -128,4 +135,8 @@ Route::post('/project/member/add/{projectID}', [ProjectDetailController::class, 
 
 // Route xu ly request close project danh cho admin hoac manager
 Route::post('/project/close/{projectID}', [ProjectDetailController::class, 'closeProject'])->name('closeProject')->middleware(AdminMiddleware::class);
+
+
+
+Route::post('/project/create', [ProjectManagementController::class, 'addProject'])->name('addProject')->middleware(AdminMiddleware::class);
 
