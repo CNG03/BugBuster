@@ -13,7 +13,17 @@
 @endsection
 
 @section('content')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 <div class="p-4 pb-0 row d-flex justify-content-around h-50 position-relative ">
 
     <div class="first-row col-11 p-0">
@@ -31,12 +41,10 @@
             </div>
 
             <div class="ml-auto d-flex">
-
-                    <button class="x-btn blue fs-15" onclick="openAddTestForm();">
-                        <span class="pe-1 green-btn"> <i class="fa-solid fa-square-plus"></i></span>
-                        <span class="locked-user-text"> Add Test </span>
-                    </button>
-                    
+                <button class="x-btn blue fs-15" data-bs-toggle="modal" data-bs-target="#add-basic-modal">
+                    <span class="pe-1 green-btn"> <i class="fa-solid fa-square-plus"></i></span>
+                    <span class="locked-user-text"> Add Test </span>
+                </button>
             </div>
         </div>
 
@@ -47,6 +55,21 @@
 
     @include('shared.add-basic-modal')
     @include('shared.delete-modal')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('addTestTypeForm').addEventListener('submit', function(event) {
+                const name = document.getElementById('testName').value.trim();
+                const description = document.getElementById('testDescription').value.trim();
+
+                if (!name || !description) {
+                    event.preventDefault();
+                    document.querySelector('.messege-error-area').classList.remove('d-none');
+                } else {
+                    document.querySelector('.messege-error-area').classList.add('d-none');
+                }
+            });
+        });
+    </script>
 </div>
 
 

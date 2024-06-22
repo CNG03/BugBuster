@@ -75,8 +75,11 @@ Route::get('/profile', function () {
 
 Route::get('/project-management', [ProjectManagementController::class, 'index'])->middleware(AdminMiddleware::class);
 Route::get('/user-management', [UserManagementController::class, 'index'])->name('users')->middleware(AdminMiddleware::class);
-Route::get('/test-management', [TestManagementController::class, 'index'])->name('entities')->middleware(AdminMiddleware::class);
+Route::get('/test-management', [TestManagementController::class, 'index'])->name('testType')->middleware(AdminMiddleware::class);
 Route::get('/bug-management', [BugManagementController::class, 'index'])->name('entities')->middleware(AdminMiddleware::class);
+
+Route::post('/testtypes/add', [TestManagementController::class, 'addTestType'])->name('addTestType')->middleware(AdminMiddleware::class);
+
 
 // Route ve hien thi giao dien dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(AdminMiddleware::class);
