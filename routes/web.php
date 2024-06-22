@@ -79,6 +79,13 @@ Route::get('/test-management', [TestManagementController::class, 'index'])->name
 Route::get('/bug-management', [BugManagementController::class, 'index'])->name('entities')->middleware(AdminMiddleware::class);
 
 Route::post('/testtypes/add', [TestManagementController::class, 'addTestType'])->name('addTestType')->middleware(AdminMiddleware::class);
+Route::patch('/entities/edit', [TestManagementController::class, 'editEntity'])->name('editEntity');
+Route::delete('/entities/delete', [TestManagementController::class, 'deleteEntity'])->name('deleteEntity');
+
+
+Route::post('/bugtypes', [BugManagementController::class, 'store'])->name('addBugType');
+Route::patch('/bugtypes/edit', [BugManagementController::class, 'editBugType'])->name('editBugType');
+Route::delete('/bugtypes/delete', [BugManagementController::class, 'deleteBugType'])->name('deleteBugType');
 
 
 // Route ve hien thi giao dien dashboard

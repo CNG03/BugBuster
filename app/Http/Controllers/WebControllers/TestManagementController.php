@@ -54,4 +54,35 @@ class TestManagementController extends Controller
             return redirect()->back()->with('error', 'Failed to create Test Type. The name require unique');
         }
     }
+
+    public function editEntity(Request $request)
+    {
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+            'Accept' => 'application/json',
+        ])->patch('http://127.0.0.1:7000/api/v1/testtypes/' . $request->input('id'), [
+            'name' => $request->input('name'),
+            'description' => $request->input('description')
+        ]);
+
+        if ($response->successful()) {
+            return redirect()->route('testType', ['page' => $request->input('current_page', 1)])->with('success', 'Test Type updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Failed to update Test Type.');
+        }
+    }
+
+    public function deleteEntity(Request $request)
+    {
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+            'Accept' => 'application/json',
+        ])->delete('http://127.0.0.1:7000/api/v1/testtypes/' . $request->input('id'));
+
+        if ($response->successful()) {
+            return redirect()->route('testType', ['page' => $request->input('current_page', 1)])->with('success', 'Test Type deleted successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Failed to delete Test Type.');
+        }
+    }
 }
