@@ -16,34 +16,34 @@ class DashboardController extends Controller
         // $tasks = $this->getUserTasks($user->id);
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
-        ])->get('http://127.0.0.1:7000/api/v1/tickets/dashboard');
-        
+        ])->get('https://bugbuster.click/api/v1/tickets/dashboard');
+
         if ($response->successful()) {
             $dashboard = $response->json();
-             // Nhóm các tickets theo ngày tạo
+            // Nhóm các tickets theo ngày tạo
             $groupedTickets = [];
             foreach ($dashboard as $projectData) {
                 foreach ($projectData['tickets'] as $ticket) {
                     $date = \Carbon\Carbon::parse($ticket['created_at'])->toDateString();
                     $projectId = $projectData['project']['id'];
-                     
+
                     if (!isset($groupedTickets[$projectId])) {
                         $groupedTickets[$projectId] = [
                             'project' => $projectData['project'],
                             'dates' => []
                         ];
                     }
-                     
+
                     if (!isset($groupedTickets[$projectId]['dates'][$date])) {
                         $groupedTickets[$projectId]['dates'][$date] = [];
                     }
-                     
+
                     $groupedTickets[$projectId]['dates'][$date][] = $ticket;
                 }
             }
             // dd($groupedTickets[1]);
-     
-             return view('layouts.dashboard', compact('groupedTickets'));
+
+            return view('layouts.dashboard', compact('groupedTickets'));
         } else {
             abort(500, 'Internal Server Error');
         }

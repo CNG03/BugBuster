@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\WebControllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
@@ -15,8 +16,8 @@ class BugManagementController extends Controller
 
         // Thêm header vào request
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
-        ])->get('http://127.0.0.1:7000/api/v1/bugtypes', [
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->get('https://bugbuster.click/api/v1/bugtypes', [
             'page' => $page,
             'per_page' => $perPage
         ]);
@@ -37,7 +38,7 @@ class BugManagementController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
             'Accept' => 'application/json',
-        ])->post('http://127.0.0.1:7000/api/v1/bugtypes', [
+        ])->post('https://bugbuster.click/api/v1/bugtypes', [
             'name' => $request->input('name'),
             'description' => $request->input('description')
         ]);
@@ -54,7 +55,7 @@ class BugManagementController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
             'Accept' => 'application/json',
-        ])->patch('http://127.0.0.1:7000/api/v1/bugtypes/' . $request->input('id'), [
+        ])->patch('https://bugbuster.click/api/v1/bugtypes/' . $request->input('id'), [
             'name' => $request->input('name'),
             'description' => $request->input('description')
         ]);
@@ -73,7 +74,7 @@ class BugManagementController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
             'Accept' => 'application/json',
-        ])->delete('http://127.0.0.1:7000/api/v1/bugtypes/' . $request->input('id'));
+        ])->delete('https://bugbuster.click/api/v1/bugtypes/' . $request->input('id'));
 
         $currentPage = $request->input('current_page', 1);
 

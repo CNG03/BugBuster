@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\WebControllers;
+
 use App\Models\Project;
 use App\Models\ProjectMember;
 use App\Models\User;
@@ -23,7 +24,7 @@ class ProjectManagementController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
             'Accept' => 'application/json',
-        ])->post('http://127.0.0.1:7000/api/v1/projects', [
+        ])->post('https://bugbuster.click/api/v1/projects', [
             'name' => $request->input('name'),
             'description' => $request->input('description')
         ]);
@@ -39,8 +40,8 @@ class ProjectManagementController extends Controller
         $page = $request->query('page', 1);
 
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
-        ])->get('http://127.0.0.1:7000/api/v1/projects', [
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->get('https://bugbuster.click/api/v1/projects', [
             'page' => $page
         ]);
 
@@ -53,7 +54,7 @@ class ProjectManagementController extends Controller
             abort(500, 'Internal Server Error');
         }
     }
-    
+
 
     public function createProject(Request $request)
     {
@@ -61,18 +62,18 @@ class ProjectManagementController extends Controller
         $name = $request->input('name');
         $description = $request->input('description');
         // $testers = $request->input('tester-list');
-    
+
         // Gửi yêu cầu POST đến API
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' .Session::get('accessToken'),
-        ])->post('http://127.0.0.1:7000/api/v1/projects', [
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->post('https://bugbuster.click/api/v1/projects', [
             'name' => $name,
             'description' => $description,
         ]);
-    
+
         if ($response->successful()) {
             // Xử lý response thành công từ API
-    
+
             return redirect()->back()->with('success', 'Project created successfully.');
         } else {
             // Xử lý response lỗi từ API
@@ -91,22 +92,22 @@ class ProjectManagementController extends Controller
         $name = $request->input('name');
         $description = $request->input('description');
         // $testers = $request->input('tester-list');
-    
+
         // Gửi yêu cầu POST đến API
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' .Session::get('accessToken'),
-        ])->patch("http://127.0.0.1:7000/api/v1/projects/{$id}", [
-                'name' => $name,
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->patch("https://bugbuster.click/api/v1/projects/{$id}", [
+            'name' => $name,
             'description' => $description,
         ]);
-    
+
         if ($response->successful()) {
             // Xử lý response thành công từ API
-    
+
             return redirect()->back()->with('success', 'Project created successfully.');
         } else {
             // Xử lý response lỗi từ API
-    
+
             return redirect()->back()->with('error', 'Failed to create project.');
         }
     }
@@ -116,17 +117,16 @@ class ProjectManagementController extends Controller
         $id = $request->input('id');
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
-        ])->delete("http://127.0.0.1:7000/api/v1/projects/{$id}");
-    
+        ])->delete("https://bugbuster.click/api/v1/projects/{$id}");
+
         if ($response->successful()) {
             // Xử lý response thành công từ API
-    
+
             return redirect()->back()->with('success', 'Project deleted successfully.');
         } else {
             // Xử lý response lỗi từ API
-    
+
             return redirect()->back()->with('error', 'Failed to delete project.');
         }
-
     }
 }

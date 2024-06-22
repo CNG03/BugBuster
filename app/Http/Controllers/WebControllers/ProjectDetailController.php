@@ -13,20 +13,21 @@ class ProjectDetailController extends Controller
 {
 
     //
-    public function index(Request $request, $projectID) {
+    public function index(Request $request, $projectID)
+    {
 
 
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
-        ])->get('http://127.0.0.1:7000/api/v1/projects/' . $projectID);
+        ])->get('https://bugbuster.click/api/v1/projects/' . $projectID);
 
         $response1 = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
-        ])->get('http://127.0.0.1:7000/api/v1/user/role/'.$projectID);
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->get('https://bugbuster.click/api/v1/user/role/' . $projectID);
 
         $response2 = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
-        ])->get('http://127.0.0.1:7000/api/v1/users/not-in/'.$projectID);
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->get('https://bugbuster.click/api/v1/users/not-in/' . $projectID);
 
         if ($response1->successful()) {
             $role = $response1->json();
@@ -48,10 +49,10 @@ class ProjectDetailController extends Controller
         } else {
             abort(500, 'Internal Server Error');
         }
-
     }
 
-    public function updateRoleProject(Request $request, $projectID) {
+    public function updateRoleProject(Request $request, $projectID)
+    {
 
         // Lấy tất cả dữ liệu từ request
         $requestData = $request->all();
@@ -69,7 +70,7 @@ class ProjectDetailController extends Controller
         // Gửi yêu cầu PATCH với payload đã tạo
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
-        ])->patch('http://127.0.0.1:7000/api/v1/projectmembers/' . $projectID, $payload);
+        ])->patch('https://bugbuster.click/api/v1/projectmembers/' . $projectID, $payload);
 
         // Kiểm tra phản hồi và xử lý tương ứng
         if ($response->successful()) {
@@ -78,15 +79,15 @@ class ProjectDetailController extends Controller
         } else {
             return redirect()->back()->with('error', 'Failed to update project members.');
         }
-
     }
 
-    public function removeMemberFromProject(Request $request, $projectID) {
+    public function removeMemberFromProject(Request $request, $projectID)
+    {
         // Lấy projectMemberID từ request
         $projectMemberID = $request->input('projectMemberID');
 
         // Xây dựng URL cho yêu cầu DELETE
-        $url = 'http://127.0.0.1:7000/api/v1/projectmembers/' . $projectID . '/' . $projectMemberID;
+        $url = 'https://bugbuster.click/api/v1/projectmembers/' . $projectID . '/' . $projectMemberID;
 
         // Gửi yêu cầu DELETE với token
         $response = Http::withHeaders([
@@ -102,7 +103,8 @@ class ProjectDetailController extends Controller
         }
     }
 
-    public function addMemberFromProject(Request $request, $projectID) {
+    public function addMemberFromProject(Request $request, $projectID)
+    {
         // Lấy dữ liệu từ request
         $members = $request->input('members');
 
@@ -110,33 +112,34 @@ class ProjectDetailController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . session()->get('accessToken'),
             'Accept' => 'application/json',
-        ])->post('http://127.0.0.1:7000/api/v1/projectmembers/' . $projectID, [
+        ])->post('https://bugbuster.click/api/v1/projectmembers/' . $projectID, [
             'members' => $members
         ]);
 
         // Kiểm tra phản hồi từ API và đưa ra thông báo thích hợp
         if ($response->successful()) {
             return redirect()->route('projectDetail', ['projectID' => $projectID])
-                             ->with('success', 'Members added successfully!');
+                ->with('success', 'Members added successfully!');
         } else {
             return redirect()->route('projectDetail', ['projectID' => $projectID])
-                             ->with('error', 'Failed to add members.');
+                ->with('error', 'Failed to add members.');
         }
     }
-    public function closeProject($projectID) {
+    public function closeProject($projectID)
+    {
         // Xử lý logic đóng project
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
             'Accept' => 'application/json',
-        ])->post('http://127.0.0.1:7000/api/v1/projects/close/'.$projectID);
+        ])->post('https://bugbuster.click/api/v1/projects/close/' . $projectID);
 
         // Kiểm tra phản hồi từ API và đưa ra thông báo thích hợp
         if ($response->successful()) {
             return redirect()->route('projectDetail', ['projectID' => $projectID])
-                             ->with('success', 'Project closed successfully!');
+                ->with('success', 'Project closed successfully!');
         } else {
             return redirect()->route('projectDetail', ['projectID' => $projectID])
-                             ->with('error', 'Failed to close project. There is an unclosed ticket');
+                ->with('error', 'Failed to close project. There is an unclosed ticket');
         }
     }
 }
