@@ -136,3 +136,7 @@ Route::post('/project/member/add/{projectID}', [ProjectDetailController::class, 
 // Route xu ly request close project danh cho admin hoac manager
 Route::post('/project/close/{projectID}', [ProjectDetailController::class, 'closeProject'])->name('closeProject')->middleware(AdminMiddleware::class);
 
+
+
+Route::post('/project/create', [ProjectManagementController::class, 'addProject'])->name('addProject')->middleware(AdminMiddleware::class);
+
