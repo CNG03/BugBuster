@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 
 class ProjectDetailController extends Controller
 {
+
     //
     public function index(Request $request, $projectID) {
 
