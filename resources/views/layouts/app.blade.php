@@ -758,23 +758,23 @@
                                             </li>
                                             @if (Session::get('user_role') == 'ADMIN')
                                                 <li class="slide__category">
-                                                    <span class="category-name">Tickets</span>
+                                                    <span class="category-name">Managements</span>
                                                 </li>
                                                 <li class="slide has-sub">
                                                     <a href="javascript:void(0);" class="side-menu__item">
                                                         <i class="side-menu__icon fa-solid fa-clipboard-list"></i>
-                                                        <span class="side-menu__label">Tickets</span>
+                                                        <span class="side-menu__label">Managements</span>
                                                         <i class="fa fa-chevron-right side-menu__angle"></i>
                                                     </a>
                                                     <ul class="slide-menu child1" style="position: relative; left: 0px; top: 0px; margin: 0px; transform: translate(120px, 772px);" data-popper-placement="bottom">
-                                                        <li class="slide side-menu__label1"><a href="javascript:void(0)">Tickets</a></li>
                                                         <li class="slide has-sub">
                                                             <a href="javascript:void(0);" class="side-menu__item">
-                                                                Blog
+                                                                Test and Bug Type
                                                                 <i class="fe fe-chevron-right side-menu__angle"></i>
                                                             </a>
                                                             <ul class="slide-menu child2">
-                                                                <li class="slide"><a href="blog.html" class="side-menu__item">Blog</a></li>
+                                                                <li class="slide"><a href="{{route('testType')}}" class="side-menu__item">Test Type</a></li>
+                                                                <li class="slide"><a href="{{route('entities')}}" class="side-menu__item">Bug Type</a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
