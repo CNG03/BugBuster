@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\WebControllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
@@ -12,8 +13,8 @@ class UserManagementController extends Controller
     {
         // Thêm header vào request
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
-        ])->get('http://127.0.0.1:7000/api/v1/users');
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->get('https://bugbuster.click/api/v1/users');
 
         if ($response->successful()) {
             $users = $response->json();
@@ -22,6 +23,4 @@ class UserManagementController extends Controller
             abort(500, 'Internal Server Error');
         }
     }
-    
-
 }

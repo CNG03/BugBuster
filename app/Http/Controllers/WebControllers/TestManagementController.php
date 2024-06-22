@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\WebControllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
@@ -15,7 +16,7 @@ class TestManagementController extends Controller
         // Thêm header vào request
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
-        ])->get('http://127.0.0.1:7000/api/v1/testtypes', [
+        ])->get('https://bugbuster.click/api/v1/testtypes', [
             'page' => $page
         ]);
 
@@ -31,8 +32,8 @@ class TestManagementController extends Controller
     {
         // Thêm header vào request
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . Session::get('accessToken'), 
-        ])->post('http://127.0.0.1:7000/api/v1/users');
+            'Authorization' => 'Bearer ' . Session::get('accessToken'),
+        ])->post('https://bugbuster.click/api/v1/users');
         return response()->json($response); // Trả về kết quả dưới dạng JSON
     }
 
@@ -41,7 +42,7 @@ class TestManagementController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
             'Accept' => 'application/json',
-        ])->post('http://127.0.0.1:7000/api/v1/testtypes', [
+        ])->post('https://bugbuster.click/api/v1/testtypes', [
             'name' => $request->input('name'),
             'description' => $request->input('description'),
         ]);
@@ -60,7 +61,7 @@ class TestManagementController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
             'Accept' => 'application/json',
-        ])->patch('http://127.0.0.1:7000/api/v1/testtypes/' . $request->input('id'), [
+        ])->patch('https://bugbuster.click/api/v1/testtypes/' . $request->input('id'), [
             'name' => $request->input('name'),
             'description' => $request->input('description')
         ]);
@@ -77,7 +78,7 @@ class TestManagementController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . Session::get('accessToken'),
             'Accept' => 'application/json',
-        ])->delete('http://127.0.0.1:7000/api/v1/testtypes/' . $request->input('id'));
+        ])->delete('https://bugbuster.click/api/v1/testtypes/' . $request->input('id'));
 
         if ($response->successful()) {
             return redirect()->route('testType', ['page' => $request->input('current_page', 1)])->with('success', 'Test Type deleted successfully!');
