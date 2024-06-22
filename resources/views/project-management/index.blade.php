@@ -40,6 +40,7 @@
 
                   @include('project-management.cell-table')
                   @include('shared.multi-tab-form')
+                  @include('shared.edit-multi-tab-form')
                   @include('shared.delete-modal')
                 </div>
                 <!-- End Row -->

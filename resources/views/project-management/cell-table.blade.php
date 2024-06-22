@@ -8,7 +8,7 @@
                               <i class="fe fe-more-vertical fs-18"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-start" style="">
-                              <a class="dropdown-item" href="javascript:void(0);" onclick="updateForm(event)">
+                              <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#project_form1" onclick="updateForm(event)">
                                 <i class="fe fe-edit me-2"></i> Edit </a>
                               <a class="dropdown-item" href="javascript:void(0);">
                                 <i class="fe fe-share me-2"></i> Share Link </a>

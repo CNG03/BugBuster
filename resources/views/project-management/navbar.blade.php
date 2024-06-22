@@ -4,6 +4,7 @@
                       <div class="p-4 pb-0">
                         <button class="btn btn-primary btn-block text-nowrap" id="createProjectBtn" data-toggle="modal" data-target="#project_form" onclick="openProjectForm()">
                           <i class="fe fe-plus me-1"></i> Create New Project </button>
+          
                           
                       </div>
                       <div class="list-group list-group-transparent mb-0 p-4 pt-2">

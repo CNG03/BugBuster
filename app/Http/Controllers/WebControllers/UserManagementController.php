@@ -22,6 +22,6 @@ class UserManagementController extends Controller
             abort(500, 'Internal Server Error');
         }
     }
-
+    
 
 }
